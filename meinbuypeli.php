@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="initial-scale=1, width=device-width">
-	<link rel="stylesheet" href="./meinbuypeli.css" />
+	<link rel="stylesheet" href="./styles/meinbuypeli.css" />
 
 </head>
 

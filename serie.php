@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="initial-scale=1, width=device-width">
 
-	<link rel="stylesheet" href="./serie.css" />
+	<link rel="stylesheet" href="./styles/serie.css" />
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=[object Object]&display=swap" />
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=[object Object]&display=swap" />
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=[object Object]&display=swap" />

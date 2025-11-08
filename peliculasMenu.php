@@ -3,9 +3,9 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charset="utf-8" />
-        <link rel="stylesheet" href="globals.css" />
-        <link rel="stylesheet" href="styleguide.css" />
-        <link rel="stylesheet" href="peliculasMenu.css" />
+        <link rel="stylesheet" href="./styles/globals.css" />
+        <link rel="stylesheet" href="./styles/styleguide.css" />
+        <link rel="stylesheet" href="./styles/peliculasMenu.css" />
     </head>
     <body>
         <div class="desktop">
