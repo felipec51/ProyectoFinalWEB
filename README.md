@@ -1,6 +1,4 @@
-# ProyectoFinalWEB
-
-# 🎬 MovieHub
+# 🎬 RewindCodeFilm
 
 Una página web básica para explorar y descubrir películas. Este proyecto muestra información de películas populares, incluyendo su título, sinopsis y calificación. Ideal como práctica de desarrollo web y diseño responsivo.
 
@@ -32,10 +30,11 @@ Una página web básica para explorar y descubrir películas. Este proyecto mues
 ---
 
 ## 🧰 Tecnologías Utilizadas
-- **HTML5**  
-- **CSS3**  
+- **HTML**  
+- **CSS**  
 - **JavaScript**  
-*(Opcionalmente puedes incluir React, API de TheMovieDB, etc.)*
+- **PHP**  
+
 
 ---
 
