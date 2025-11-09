@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, width=device-width">
     <link rel="stylesheet" href="./styles/config.css">
     <link rel="stylesheet" href="./styles/index.css" />
-    
+
 </head>
+
 <body>
-    
+
     <div class="home-registrar-iniciar">
         <img src="imgs/fondo.png" class="cofondocompleto" alt="fondo">
-        
+
         <div class="home">
             <div class="rewindcodefilm">
                 <div class="home-registrar-iniciar-rewindcodefilm">RewindCodeFilm</div>
             </div>
-            
+
             <div class="iniciar-sesion-btn">
                 <div class="boton-fondo iniciar-sesion-fondo">
                 </div>
-                <div class="iniciar-sesion">Iniciar Sesion</div>
+                <a href="iniciarsesion.php" style="text-decoration: none; color: inherit;">
+                    <div class="iniciar-sesion" onclick="iniciarSesion()">Iniciar Sesion</div>
+                </a>
             </div>
-            
+
             <div class="text-de-mnu-home">
                 <div class="text">
                     <div class="el-nico-lugar texto-linea-grande">El Único Lugar <br>Donde el Cine Se Toca.</div>
@@ -30,36 +34,34 @@
                 </div>
                 <div class="accede-al-catlogo texto-linea-grande">Accede al catálogo completo de RewindCodeFilm y a sus exclusivas copias físicas.</div>
             </div>
-            
+
             <div class="comenzatbtn">
                 <div class="boton-fondo comenzatbtn-fondo">
                 </div>
                 <div class="comenzar">Comenzar </div>
             </div>
-            
+
             <div class="box-email">
                 <div class="caja-email">
                 </div>
                 <div class="email">Email</div>
             </div>
         </div>
-        
+
         <div class="las-mas-pedidas">
             <div class="home-registrar-iniciar-las-mas-pedidas">Las mas pedidas.</div>
-            
             <img src="imgs/tronares.png" class="tronaresimg imgIni" alt="">
             <img src="imgs/john4wick.jpg" class="john4wickimg imgIni" alt="">
             <img src="imgs/culpaNuestra.png" class="culpaNuestraimg imgIni" alt="">
             <img src="imgs/blackphone.jpg" class="blackphoneimg imgIni" alt="">
             <img src="imgs/missionimpossible.png" class="missionImposible imgIni" alt="">
-            
             <div class="div numero-pelicula">1</div>
             <div class="home-registrar-iniciar-div numero-pelicula">2</div>
             <div class="div2 numero-pelicula">3<br></div>
             <div class="div3 numero-pelicula">4</div>
             <div class="div4 numero-pelicula">5<br></div>
         </div>
-        
+
         <div class="faq">
             <div class="despegable-1 desplegable-base">
                 <div class="desplegable-titulo-1">
@@ -102,7 +104,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="form-registrar">
             <div class="container">
                 <div class="heading-2">
@@ -113,65 +115,52 @@
                 </div>
             </div>
             <div class="form">
-                <div class="home-registrar-iniciar-container">
-                    
-                    <div class="container2 input-campo-base">
-                        <div class="primitivelabel">
-                            <div class="direccin">Dirección</div>
+                <form action="iniciarsesion.php" method="post">
+                    <div class="home-registrar-iniciar-container">
+                        <div class="container2 input-campo-base">
+                            <div class="primitivelabel">
+                                <div class="direccin">Dirección</div>
+                            </div>
+                            <input class="estilo-input-basico  estilo-input" type="text" placeholder="Ingresa tu dirección">
                         </div>
-                        <div class="text-input estilo-input">
-                            <div class="ingresa-tu-direccin">Ingresa tu dirección</div>
+                        <div class="container3 input-campo-base">
+                            <div class="primitivelabel">
+                                <div class="direccin">Código</div>
+                            </div>
+                            <input class="estilo-input-basico  estilo-input" type="text" placeholder="Ingresa tu código de socio">
                         </div>
-                    </div>
-                    
-                    <div class="container3 input-campo-base">
-                        <div class="primitivelabel">
-                            <div class="direccin">Código</div>
+
+                        <div class="container4 input-campo-base">
+                            <div class="primitivelabel">
+                                <div class="direccin">Nombre</div>
+                            </div>
+                            <input class="estilo-input-basico  estilo-input" type="text" placeholder="Tu nombre">
                         </div>
-                        <div class="home-registrar-iniciar-text-input estilo-input">
-                            <div class="ingresa-tu-direccin">Código de socio</div>
+
+                        <div class="container5 input-campo-base">
+                            <div class="primitivelabel">
+                                <div class="direccin">Apellido</div>
+                            </div>
+                            <input class="estilo-input-basico  estilo-input" type="text" placeholder="Tu apellido">
                         </div>
-                    </div>
-                    
-                    <div class="container4 input-campo-base">
-                        <div class="primitivelabel">
-                            <div class="direccin">Nombre</div>
+
+                        <div class="container6 input-campo-base">
+                            <div class="primitivelabel">
+                                <div class="direccin">Email</div>
+                            </div>
+                            <input class="estilo-input-basico estilo-input" type="email" placeholder="ejemplo@email.com">
                         </div>
-                        <div class="home-registrar-iniciar-text-input estilo-input">
-                            <div class="ingresa-tu-direccin">Tu nombre</div>
-                        </div>
-                    </div>
-                    
-                    <div class="container5 input-campo-base">
-                        <div class="primitivelabel">
-                            <div class="direccin">Apellido</div>
-                        </div>
-                        <div class="home-registrar-iniciar-text-input estilo-input">
-                            <div class="ingresa-tu-direccin">Tu apellido</div>
-                        </div>
-                    </div>
-                    
-                    <div class="container6 input-campo-base">
-                        <div class="primitivelabel">
-                            <div class="direccin">Email</div>
-                        </div>
-                        <div class="home-registrar-iniciar-text-input estilo-input">
-                            <div class="ingresa-tu-direccin">ejemplo@email.com</div>
+                        <div class="container7 input-campo-base">
+                            <div class="primitivelabel">
+                                <div class="direccin">Contraseña</div>
+                            </div>
+                            <input class="estilo-input-basico  estilo-input " type="password" placeholder="Ingresa tu contraseña">
                         </div>
                     </div>
-                    
-                    <div class="container7 input-campo-base">
-                        <div class="primitivelabel">
-                            <div class="direccin">Contraseña</div>
-                        </div>
-                        <div class="home-registrar-iniciar-text-input estilo-input">
-                            <div class="ingresa-tu-direccin">Mínimo 6 caracteres</div>
-                        </div>
+                    <div class="button">
+                        <input class="estilo-input-basico  registrarse-registro-grande " type="submit" value="Registrarse">
                     </div>
-                </div>
-                <div class="button">
-                    <i class="registrarse">Registrarse</i>
-                </div>
+                </form>
                 <div class="home-registrar-iniciar-button">
                     <div class="obtener-ayuda">Obtener ayuda</div>
                 </div>

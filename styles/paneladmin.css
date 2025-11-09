@@ -1,4 +1,3 @@
-/* --- Base y Estructura Principal --- */
 
 body {
     margin: 0;
@@ -36,7 +35,6 @@ body {
     height: 1356px;
 }
 
-/* Sidebar */
 .sidebar, .sidebar2 {
     position: absolute;
     bottom: 0;
@@ -68,9 +66,6 @@ body {
     align-items: flex-start;
 }
 
-/* --- Componentes Compartidos (Cards de Estadísticas) --- */
-
-/* Estilos de Contenedores Generales de Cards */
 .card, .card2, .card3, .card4 {
     position: absolute;
     top: 0.01px;
@@ -89,7 +84,6 @@ body {
 .card3 { left: 1097px; }
 .card4 { left: 1645px; }
 
-/* Estilos de Título H3 (comunes a varias cards y películas) */
 .heading-3, .heading-32, .heading-33, .heading-35, .heading-36, .heading-39, .heading-310, .heading-311 {
     font-size: 16px;
     color: #fff;
@@ -109,8 +103,6 @@ body {
 .heading-32 { top: 27.98px; left: 0; width: 434.3px; }
 .heading-33 { align-self: stretch; height: 24px; position: relative; }
 
-
-/* Estilos de Párrafos Secundarios (comunes a varias cards y películas) */
 .paragraph2, .paragraph4, .paragraph9, .paragraph10, .paragraph13, .paragraph14, .paragraph15 {
     height: 18.7px;
     overflow: hidden; 
@@ -129,8 +121,6 @@ body {
 }
 .paragraph4 { top: 55.97px; left: 0; width: 434.3px; }
 
-
-/* Estilos Comunes de Divs de Porcentaje (en cards) */
 .container6, .container8, .container11 {
     position: absolute;
     top: 82.62px;
@@ -144,7 +134,6 @@ body {
 .container8 { width: 54.1px; }
 .container11 { width: 65.6px; }
 
-/* Estilos de Iconos de Card (los 4 son casi idénticos) */
 .container-icon, .container-icon2, .container-icon3, .container-icon4 {
     height: 48px;
     width: 48px;
@@ -165,9 +154,6 @@ body {
     z-index: 1;
 }
 
-/* --- Elementos de Películas (Netflix Movie Card) --- */
-
-/* Contenedores de Películas */
 .netflixmoviecard, .netflixmoviecard2, .netflixmoviecard3, .netflixmoviecard4, .netflixmoviecard5, .netflixmoviecard6, .netflixmoviecard7 {
     position: absolute;
     border-radius: 8px;
@@ -187,7 +173,7 @@ body {
 .netflixmoviecard6 { bottom: 312px; left: 10px; height: 276px; }
 .netflixmoviecard7 { bottom: 313px; left: 430px; height: 276px; }
 
-/* Capa de Gradiente */
+
 .container15, .container19, .container31, .container35 {
     position: absolute;
     width: calc(100% + 12px); 
@@ -200,7 +186,6 @@ body {
 .container31 { height: calc(100% + 28px); width: 100%; right: 0; bottom: -28px; }
 .container35 { height: calc(100% + 6px); right: -12px; bottom: -6px; }
 
-/* Contenedor de Acciones (Editar y Botón-Icono) */
 .container18, .container22, .container34, .container38 {
     position: absolute;
     width: calc(100% - 24px);
@@ -216,7 +201,6 @@ body {
 .container34 { bottom: 38.07px; left: 4px; right: 20px; }
 .container38 { bottom: 19px; }
 
-/* Botón "Editar" */
 .button2 {
     height: 28px;
     flex: 1;
@@ -228,7 +212,6 @@ body {
 .icon5 { position: absolute; top: 6px; left: 111.08px; width: 16px; height: 16px; }
 .editar { position: absolute; top: 3.66px; left: 137.04px; line-height: 18.67px; }
 
-/* Badges de Género */
 .badge, .badge2, .badge3, .badge4, .badge6, .badge7 {
     position: absolute;
     border-radius: 8px;
@@ -264,7 +247,6 @@ body {
     box-sizing: border-box;
 }
 
-/* Estilos de Contenido de Sidebar (Navegación) */
 .sidebargrouplabel, .sidebargrouplabel2 {
     width: 238.9px;
     height: 32px;
@@ -305,8 +287,6 @@ body {
     gap: 8px;
 }
 .slotclone { background-color: #f5f5f5; }
-
-/* --- Resto de Selectores Únicos --- */
 
 .app2 {
     width: 2155px;

@@ -1,8 +1,9 @@
 @import url("config.css");
+
 body {
     margin: 0;
     line-height: normal;
-    font-family: var(--font-family-titulo); 
+    font-family: var(--font-family-titulo);
 }
 
 .cofondocompleto {
@@ -18,10 +19,10 @@ body {
     width: 100%;
     height: 3452px;
     position: relative;
-    background-color: var(--color-bg-secundario); 
+    background-color: var(--color-bg-secundario);
     overflow: hidden;
     text-align: left;
-    font-size: 30px; 
+    font-size: 30px;
     color: var(--color-texto-principal);
     font-family: var(--font-family-titulo);
 }
@@ -43,7 +44,7 @@ body {
     bottom: 94.31%;
     left: 1.64%;
     font-size: var(--font-size-xl);
-    color: var(--color-accent-rojo); 
+    color: var(--color-accent-rojo);
 }
 
 .home-registrar-iniciar-rewindcodefilm {
@@ -75,7 +76,7 @@ body {
     width: 272px;
     height: 52px;
     text-align: center;
-    color: #ebebeb; 
+    color: #ebebeb;
 }
 
 .iniciar-sesion {
@@ -151,7 +152,7 @@ body {
 }
 
 .comenzatbtn-fondo {
-    background-color: var(--color-accent-rojo); 
+    background-color: var(--color-accent-rojo);
     height: calc(100% - 2px);
     bottom: 2px;
     border-radius: 26px;
@@ -174,7 +175,7 @@ body {
     bottom: 25px;
     left: 20.48%;
     height: 85px;
-    font-size: 40px; 
+    font-size: 40px;
 }
 
 .caja-email {
@@ -183,7 +184,7 @@ body {
     top: 0px;
     bottom: 0px;
     left: 0px;
-    border: 1px solid var(--color-texto-principal); 
+    border: 1px solid var(--color-texto-principal);
     box-sizing: border-box;
     width: 937px;
 }
@@ -207,7 +208,7 @@ body {
     height: 475px;
     text-align: center;
     font-size: 150px;
-    font-family: 'Source Serif Pro'; 
+    font-family: 'Source Serif Pro';
 }
 
 .home-registrar-iniciar-las-mas-pedidas {
@@ -234,7 +235,7 @@ body {
     border-radius: 27px;
 }
 
-.tronaresimg{
+.tronaresimg {
     right: 77.65%;
     left: 6.74%;
 }
@@ -265,7 +266,7 @@ body {
     width: 8.14%;
     line-height: 105px;
     display: inline-block;
-    font-family: var(--font-family-cuerpo); 
+    font-family: var(--font-family-cuerpo);
 }
 
 .div {
@@ -300,7 +301,7 @@ body {
     width: 1506px;
     height: 1195px;
     font-size: 42px;
-    font-family: 'Baloo Tammudu 2'; 
+    font-family: 'Baloo Tammudu 2';
 }
 
 .desplegable-base {
@@ -333,7 +334,7 @@ body {
     align-self: stretch;
     height: 81px;
     position: relative;
-    background-color: #5b5b5b; 
+    background-color: #5b5b5b;
     overflow: hidden;
     flex-shrink: 0;
 }
@@ -352,15 +353,15 @@ body {
     position: relative;
     overflow: hidden;
     flex-shrink: 0;
-    font-size: var(--font-size-md); 
-    font-family: 'Baloo Tamma 2'; 
+    font-size: var(--font-size-md);
+    font-family: 'Baloo Tamma 2';
 }
 
 .desplegable-contenido {
     position: absolute;
     top: 0px;
     left: 0px;
-    background-color: #5b5b5b; 
+    background-color: #5b5b5b;
     width: 1474px;
     height: 186px;
     overflow: hidden;
@@ -421,7 +422,7 @@ body {
     align-self: stretch;
     height: 24px;
     position: relative;
-    font-size: var(--font-size-base); 
+    font-size: var(--font-size-base);
     color: rgba(255, 255, 255, 0.6);
 }
 
@@ -437,7 +438,7 @@ body {
     height: 435.9px;
     position: relative;
     text-align: left;
-    font-size: var(--font-size-base); 
+    font-size: var(--font-size-base);
     color: rgba(255, 255, 255, 0.9);
     font-family: var(--font-family-cuerpo);
 }
@@ -505,31 +506,27 @@ body {
     line-height: 20px;
 }
 
-.estilo-input {
-    position: absolute;
-    top: 27.98px;
-    left: 0px;
-    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -4px rgba(0, 0, 0, 0.1);
-    border-radius: 16px;
-    background-color: var(--color-transparencia-3); 
-    border: 0.8px solid rgba(255, 255, 255, 0.2);
-    box-sizing: border-box;
-    width: 490px;
-    height: 56px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    padding: 0px 16px;
-    font-size: var(--font-size-sm); 
-    color: rgba(255, 255, 255, 0.4);
-}
-
 .home-registrar-iniciar-text-input {
     font-family: var(--font-family-interfaz);
 }
 
 .ingresa-tu-direccin {
     position: relative;
+
+}
+
+.ingresa-tu-direccin input{
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #aaa;
+    background-color: transparent;
+    -webkit-appearance: none; 
+    -moz-appearance: none; 
+    appearance: none;
+    border: none;
+    outline: none;
+    background-color: transparent;
+
 }
 
 .button {
@@ -538,22 +535,16 @@ body {
     left: 396.94px;
     box-shadow: 0px 20px 25px -5px rgba(0, 0, 0, 0.1), 0px 8px 10px -6px rgba(0, 0, 0, 0.1);
     border-radius: 16px;
-    background: linear-gradient(180deg, var(--color-accent-rojo), #c20812); 
+    background: linear-gradient(180deg, var(--color-accent-rojo), #c20812);
     border: 0.8px solid rgba(255, 255, 255, 0.1);
     box-sizing: border-box;
     width: 300px;
     height: 56px;
     text-align: center;
-    color: var(--color-texto-principal); 
+    color: var(--color-texto-principal);
 }
 
-.registrarse {
-    position: absolute;
-    top: 18px;
-    left: 99.94px;
-    line-height: 20px;
-    font-weight: 700;
-}
+
 
 .home-registrar-iniciar-button {
     position: absolute;

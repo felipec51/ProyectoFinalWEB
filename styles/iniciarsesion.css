@@ -122,9 +122,7 @@ body {
     top: -0.44px;
     bottom: 0.44px;
 }
-.tuemailcom {
-    position: relative;
-}
+
 .icon {
     position: absolute;
     top: 18px;
@@ -234,6 +232,13 @@ body {
     display: flex;
     font-weight: 800;
     align-items: center;
+    border-radius: 16px;
+    background-color: linear-gradient(180deg, var(--color-accent-rojo), #c20812);
+    color: rgb(255, 255, 255);
+    border: 0.8px solid rgba(255, 255, 255, 0.2);
+}
+.registrarse p {
+    margin: auto;
 }
 .login-with-wrapper {
     position: absolute;

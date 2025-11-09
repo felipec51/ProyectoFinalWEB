@@ -28,6 +28,46 @@ body {
     overflow-x: hidden;
 }
 
+.text-main-title { 
+    font-family: var(--font-family-title);
+    font-weight: 400;
+    font-size: var(--font-size-title);
+    color: var(--color-text-main);
+    line-height: 1.1;
+    white-space: nowrap;
+}
+
+.text-section-title { 
+    font-family: var(--font-family-body);
+    font-weight: 400;
+    color: var(--color-text-main);
+    font-size: var(--font-size-section);
+    line-height: 27px;
+}
+
+.text-body { 
+    font-family: var(--font-family-body);
+    font-weight: 400;
+    color: var(--color-text-main);
+    font-size: var(--font-size-body);
+    line-height: 27px;
+}
+
+.btn-base {
+    height: 35px;
+    font-size: var(--font-size-body);
+    font-family: var(--font-family-body);
+    font-weight: 400;
+    color: var(--color-text-main);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    white-space: nowrap;
+    cursor: pointer;
+    border: none;
+}
+
 .desktop .nav {
     height: var(--nav-height); 
     position: relative;
@@ -41,156 +81,47 @@ body {
 }
 
 .desktop .rewind-code-film {
-    font-family: var(--font-family-title);
-    font-weight: 400;
     color: var(--color-accent-red);
-    font-size: var(--font-size-title);
-    line-height: 27px;
-    white-space: nowrap;
 }
-
-.desktop .rewind-code-film .text-wrapper {
-    color: inherit;
-    font-size: inherit;
-    font-family: inherit;
-}
-
-.desktop .text-wrapper-2 {
-    font-family: var(--font-family-body);
-    font-weight: 400;
-    color: var(--color-text-main);
-    font-size: var(--font-size-section);
-    white-space: nowrap;
-    margin-right: auto;
-    margin-left: 100px;
-}
-
-.desktop .btn-unirme,
-.desktop .btn-iniciar-sesion {
-    height: 35px;
-    font-size: var(--font-size-body);
-    font-family: var(--font-family-body);
-    font-weight: 400;
-    color: var(--color-text-main);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 2px;
-    white-space: nowrap;
-}
-
-.desktop .btn-unirme {
-    background-color: var(--color-accent-red-light);
-    width: 178px;
-}
-
-.desktop .btn-unirme .div {
-    line-height: 1;
-}
-
-.desktop .btn-iniciar-sesion {
-    background-color: var(--color-bg-nav);
-    border: 1px solid var(--color-text-main);
-    width: 140px;
-    margin-left: 16px;
-}
-
-.desktop .btn-iniciar-sesion .text-wrapper-3 {
-    line-height: 1;
-}
-
 .desktop .conten-div {
     width: 781px; 
     position: relative;
-    margin: 45px 0 0 var(--padding-sides);
+    margin: var(--spacing-category) 0 0 var(--padding-sides);
 }
 
 .desktop .text-wrapper-4 {
-    font-family: var(--font-family-title);
-    font-weight: 400;
-    color: var(--color-text-main);
-    font-size: var(--font-size-title);
-    line-height: 1.1;
     margin-bottom: 20px;
 }
 
 .desktop .p {
-    font-family: var(--font-family-body);
-    font-weight: 400;
-    color: var(--color-text-main);
-    font-size: var(--font-size-body);
-    line-height: 27px;
     width: 100%;
 }
 
-.desktop .vtp-peliculas,
-.desktop .vtp-series,
-.desktop .vtp-accion-imgs {
+.desktop .vtp-peliculas{
     width: calc(100% - 2 * var(--padding-sides));
     height: 214px;
     position: relative;
-    margin: var(--spacing-category) auto 0 var(--padding-sides);
+    margin: var(--spacing-category) 0 0 var(--padding-sides);
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end; 
+    gap: 1%;
 }
 
 .desktop .vtp-accion-imgs {
     margin-top: 32px;
 }
 
-.desktop .text-wrapper-5,
-.desktop .text-wrapper-6,
-.desktop .text-wrapper-7 {
+.desktop .text-wrapper-5 {
     position: absolute;
     top: 0;
     left: 0;
-    font-family: var(--font-family-body);
-    font-weight: 400;
-    color: var(--color-text-main);
-    font-size: var(--font-size-section);
-    line-height: 27px;
 }
 
-.desktop .vtp-peliculas img,
-.desktop .vtp-series img,
-.desktop .vtp-accion-imgs img {
-    width: 15.8%;
+.desktop .vtp-peliculas img {
+    width: calc((100% - 5 * 1%) / 6); 
     height: 80%;
-    position: absolute;
     object-fit: cover;
-    top: 20%;
-}
-
-.desktop .vtp-peliculas .vista-previa,
-.desktop .vtp-series .vista-previa-6,
-.desktop .vtp-accion-imgs .vista-previa-12 {
-    left: 0;
-}
-
-.desktop .vtp-peliculas .img,
-.desktop .vtp-series .vista-previa-7,
-.desktop .vtp-accion-imgs .vista-previa-13 {
-    left: 16.8%;
-}
-
-.desktop .vtp-peliculas .vista-previa-2,
-.desktop .vtp-series .vista-previa-8,
-.desktop .vtp-accion-imgs .vista-previa-14 {
-    left: 33.6%;
-}
-
-.desktop .vtp-peliculas .vista-previa-3,
-.desktop .vtp-series .vista-previa-9,
-.desktop .vtp-accion-imgs .vista-previa-15 {
-    left: 50.4%;
-}
-
-.desktop .vtp-peliculas .vista-previa-4,
-.desktop .vtp-series .vista-previa-10,
-.desktop .vtp-accion-imgs .vista-previa-16 {
-    left: 67.2%;
-}
-
-.desktop .vtp-peliculas .vista-previa-5,
-.desktop .vtp-series .vista-previa-11,
-.desktop .vtp-accion-imgs .vista-previa-17 {
-    left: 84%;
+    position: relative; 
+    flex-shrink: 0; 
 }

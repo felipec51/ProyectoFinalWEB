@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, width=device-width">
-
+    <link rel="stylesheet" href="./styles/config.css">
     <link rel="stylesheet" href="./styles/iniciarsesion.css" />
 
 </head>
@@ -22,7 +22,7 @@
             <div class="btn-continuar">
                 <div class="btn-continuar-child">
                 </div>
-                <div class="iniciar-sesion2">Iniciar Sesion</div>
+                <div class="iniciar-sesion2"><a href="peliculasMenu.php">Iniciar Sesion</a></div>
             </div>
             
             <div class="olvidaste-contrasea">¿Olvidaste contraseña?</div>
@@ -34,7 +34,9 @@
             </div>
             
             <div class="primera-vez-en">¿Primera vez en rewindCodeFilm?</div>
-            <i class="registrarse">Registrarse</i>
+
+            <a href="index.php" style="text-decoration: none; color: inherit;">
+            <div class="registrarse "><p>Registrarse</p></div></a>
             
             <div class="login-with-wrapper">
                 <div class="login-with">
@@ -56,9 +58,10 @@
                 <div class="primitivelabel">
                     <div class="correo-electrnico">Correo electrónico</div>
                 </div>
+                
                 <div class="loginscreen">
                     <div class="input estilo-input-base">
-                        <div class="tuemailcom">tu@email.com</div>
+                        <input class="estilo-input-basico tuemailcom" type="text" placeholder="Ingresa tu dirección">
                     </div>
                     <img src="./imgs/icons/Icon-1.svg" class="icon" alt="icon correo">
                 </div>
@@ -66,11 +69,13 @@
             
             <div class="container2 campo-input-contenedor">
                 <div class="primitivelabel">
+                    
                     <div class="correo-electrnico">Contraseña</div>
                 </div>
                 <div class="loginscreen">
-                    <div class="input2 estilo-input-base">
-                        <div class="tuemailcom">••••••••</div>
+                    <div class="input estilo-input-base">
+                         <input class="estilo-input-basico tuemailcom" type="password" placeholder="••••••••">
+                  
                     </div>
                     <img src="./imgs/icons/Icon.svg" class="icon" alt="icon pws">
                 </div>
