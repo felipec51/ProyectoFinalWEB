@@ -1,0 +1,84 @@
+:root {
+    /* 🎨 Paleta de Colores Principal */
+    --color-bg-principal: #000000;              /* Fondo negro (General) - Coincide con #000 */
+    --color-bg-admin: #141414;                  /* Fondo negro admin (Nuevo) */
+    --color-bg-secundario: #131313;             /* Fondo secundario / Contenido (Home) */
+    --color-bg-medio: #2f2f2f;                  /* Fondo medio / Caja gris oscuro (Consolida --color-caja-gris-oscuro y --color-bg-medium) */
+    --color-bg-faq: #5b5b5b;                    /* Color de fondo de los desplegables FAQ */
+    
+    --color-accent-rojo: #e50914;               /* Rojo principal (Consolida --color-accent-red) */
+    --color-accent-rojo-claro: #e21a23;         
+    --color-accent-rojo-oscuro: #c20812;        /* Color oscuro del gradiente del botón de registro */
+    --color-accent-green: #00c950;              /* Verde de acento (Nuevo) */
+
+    --color-texto-principal: #ffffff;           /* Texto blanco (Consolida --color-text-main) */
+    --color-texto-secundario: #99a1af;          /* Gris para texto menos importante (Consolida --color-text-secondary) */
+    --color-texto-terciario: #6a7282;           /* Gris terciario (Nuevo) */
+    --color-input-texto: #717182;               /* Texto dentro de inputs */
+    --color-base-claro: #d1d5dc;                /* Color casi blanco para detalles y sidebar */
+    
+    --color-rating: gold;                       /* Color para calificaciones (Nuevo) */
+
+    /* Transparencias Específicas */
+    --color-transparencia-1: rgba(0, 0, 0, 0.5);/* Overlay general (Diálogo) */
+    --color-transparencia-2: rgba(17, 17, 17, 0.75); /* Fondo de diálogo modal */
+    --color-transparencia-3: rgba(255, 255, 255, 0.1); /* Input de login */
+    
+    --color-accent-green-alpha: rgba(0, 201, 80, 0.1);  /* Fondo de badge verde (Nuevo) */
+    --color-accent-red-alpha: rgba(229, 9, 20, 0.1);    /* Fondo de menú activo rojo (Nuevo) */
+    --color-bg-transparente-60: rgba(0, 0, 0, 0.6);     /* Negro con 60% de opacidad para gradientes (Nuevo) */
+    --color-bg-transparente-0: rgba(0, 0, 0, 0);        /* Negro con 0% de opacidad (transparente) (Nuevo) */
+
+    /* ✒️ Tipografía */
+    --font-family-titulo: "Baloo Thambi", sans-serif;
+    --font-family-cuerpo: "Sofia Sans", sans-serif;
+    --font-family-interfaz: "Arimo", sans-serif;
+    --font-family-base: Arimo, sans-serif;              /* Mantiene la duplicidad pero apunta a la misma fuente */
+    --font-family-serif-pro: "Source Serif Pro";
+    --font-family-faq-titulo: "Baloo Tammudu 2";
+    --font-family-faq-cuerpo: "Baloo Tamma 2";
+
+    /* 📏 Tamaños de Fuente */
+    --font-size-xxl: 70px;                      /* Home Titulo Grande */
+    --font-size-xl: 64px;       
+    --font-size-xl-2: 36px;                     /* Home Subtítulo */
+    --font-size-l: 32px;                        /* Home Form / Consolidado con --font-size-heading-stat */
+    --font-size-faq: 42px;                      /* FAQ Titulo */
+    --font-size-md: 24px;       
+    --font-size-base-home: 20px;                /* Renombrado de --font-size-base original */
+    --font-size-sm: 18px;       
+    --font-size-xs: 14px;                       /* Renombrado de --font-size-base del admin panel */
+    --font-size-heading-stat: 32px;             /* Admin Stat (Duplicado con --font-size-l, pero conservado) */
+    --font-size-heading-main: 16px;             /* Admin Título Película */
+    
+    /* 🖼️ Espaciado y Medidas */
+    --nav-height: 124px;
+    --padding-lados: 100px;
+    --spacing-categoria: 45px;
+    --border-radius-xl: 21px;
+    --border-radius-md: 8px;                    /* Consolidado con --border-radius-base */
+    --border-radius-base: 8px;                  /* Mantengo por retrocompatibilidad */
+    --border-radius-sm: 4px;                    /* Admin Small Radius (Nuevo) */
+    --border-style-divider: 1.1px solid var(--color-bg-medio);
+
+       --color-bg-dark: #141414;
+    --color-bg-light: #fff;
+    --color-text-main: #fff;
+    --color-text-secondary: #99a1af;
+    --color-text-muted: #6a7282;
+    --color-accent-red: #e50914;
+    --color-accent-green: #00c950;
+    --color-border-dark: #2f2f2f;
+    --color-bg-card: #141414;
+    --color-bg-input: #2f2f2f;
+
+    /* Fuentes y Tamaños */
+    --font-family-body: 'Arimo', sans-serif;
+    --font-size-base: 14px;
+    --font-size-heading: 16px;
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+}

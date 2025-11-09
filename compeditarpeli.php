@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="initial-scale=1, width=device-width">
+	<link rel="stylesheet" href="./styles/config.css">
 	<link rel="stylesheet" href="./styles/compeditarpeli.css" />
 </head>
 <body>

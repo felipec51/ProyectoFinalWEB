@@ -1,27 +1,31 @@
+@import url("config.css");
 body {
     margin: 0;
     line-height: normal;
-    font-family: 'Baloo Thambi';
+    font-family: var(--font-family-titulo); 
 }
+
 .cofondocompleto {
-  	position: absolute;
-  	top: 0px;
-  	left: calc(50% - 983.5px);
-  	width: 1969px;
-  	height: 896px;
-  	object-fit: cover;
+    position: absolute;
+    top: 0px;
+    left: calc(50% - 983.5px);
+    width: 1969px;
+    height: 896px;
+    object-fit: cover;
 }
+
 .home-registrar-iniciar {
-  	width: 100%;
-  	height: 3452px;
-  	position: relative;
-  	background-color: #131313;
-  	overflow: hidden;
-  	text-align: left;
-  	font-size: 30px;
-  	color: #fff;
-  	font-family: 'Baloo Thambi';
+    width: 100%;
+    height: 3452px;
+    position: relative;
+    background-color: var(--color-bg-secundario); 
+    overflow: hidden;
+    text-align: left;
+    font-size: 30px; 
+    color: var(--color-texto-principal);
+    font-family: var(--font-family-titulo);
 }
+
 .home {
     position: absolute;
     top: 60px;
@@ -29,6 +33,7 @@ body {
     width: 1587px;
     height: 756px;
 }
+
 .rewindcodefilm {
     position: absolute;
     height: 3.57%;
@@ -37,8 +42,8 @@ body {
     right: 67.67%;
     bottom: 94.31%;
     left: 1.64%;
-    font-size: 64px;
-    color: #e50914;
+    font-size: var(--font-size-xl);
+    color: var(--color-accent-rojo); 
 }
 
 .home-registrar-iniciar-rewindcodefilm {
@@ -60,7 +65,7 @@ body {
 }
 
 .iniciar-sesion-fondo {
-    background-color: #e50914;
+    background-color: var(--color-accent-rojo);
 }
 
 .iniciar-sesion-btn {
@@ -70,7 +75,7 @@ body {
     width: 272px;
     height: 52px;
     text-align: center;
-    color: #ebebeb;
+    color: #ebebeb; 
 }
 
 .iniciar-sesion {
@@ -146,7 +151,7 @@ body {
 }
 
 .comenzatbtn-fondo {
-    background-color: #ff0000;
+    background-color: var(--color-accent-rojo); 
     height: calc(100% - 2px);
     bottom: 2px;
     border-radius: 26px;
@@ -169,7 +174,7 @@ body {
     bottom: 25px;
     left: 20.48%;
     height: 85px;
-    font-size: 40px;
+    font-size: 40px; 
 }
 
 .caja-email {
@@ -178,7 +183,7 @@ body {
     top: 0px;
     bottom: 0px;
     left: 0px;
-    border: 1px solid #fff;
+    border: 1px solid var(--color-texto-principal); 
     box-sizing: border-box;
     width: 937px;
 }
@@ -202,7 +207,7 @@ body {
     height: 475px;
     text-align: center;
     font-size: 150px;
-    font-family: 'Source Serif Pro';
+    font-family: 'Source Serif Pro'; 
 }
 
 .home-registrar-iniciar-las-mas-pedidas {
@@ -260,7 +265,7 @@ body {
     width: 8.14%;
     line-height: 105px;
     display: inline-block;
-    font-family: 'Sofia Sans';
+    font-family: var(--font-family-cuerpo); 
 }
 
 .div {
@@ -287,6 +292,7 @@ body {
     top: 68.63%;
     left: 80.32%;
 }
+
 .faq {
     position: absolute;
     top: 2129px;
@@ -294,7 +300,7 @@ body {
     width: 1506px;
     height: 1195px;
     font-size: 42px;
-    font-family: 'Baloo Tammudu 2';
+    font-family: 'Baloo Tammudu 2'; 
 }
 
 .desplegable-base {
@@ -327,7 +333,7 @@ body {
     align-self: stretch;
     height: 81px;
     position: relative;
-    background-color: #5b5b5b;
+    background-color: #5b5b5b; 
     overflow: hidden;
     flex-shrink: 0;
 }
@@ -346,15 +352,15 @@ body {
     position: relative;
     overflow: hidden;
     flex-shrink: 0;
-    font-size: 24px;
-    font-family: 'Baloo Tamma 2';
+    font-size: var(--font-size-md); 
+    font-family: 'Baloo Tamma 2'; 
 }
 
 .desplegable-contenido {
     position: absolute;
     top: 0px;
     left: 0px;
-    background-color: #5b5b5b;
+    background-color: #5b5b5b; 
     width: 1474px;
     height: 186px;
     overflow: hidden;
@@ -372,6 +378,7 @@ body {
     align-items: center;
     flex-shrink: 0;
 }
+
 .form-registrar {
     position: absolute;
     top: 923px;
@@ -384,9 +391,10 @@ body {
     justify-content: center;
     gap: 48px;
     text-align: center;
-    font-size: 40px;
-    font-family: Arimo;
+    font-size: var(--font-size-lg);
+    font-family: var(--font-family-interfaz);
 }
+
 .container {
     align-self: stretch;
     height: 72px;
@@ -395,22 +403,25 @@ body {
     align-items: flex-start;
     gap: 8px;
 }
+
 .heading-2 {
     align-self: stretch;
     height: 40px;
     position: relative;
 }
+
 .crear-una-cuenta {
     position: absolute;
     top: -3.2px;
     left: 345.01px;
     line-height: 40px;
 }
+
 .paragraph {
     align-self: stretch;
     height: 24px;
     position: relative;
-    font-size: 20px;
+    font-size: var(--font-size-base); 
     color: rgba(255, 255, 255, 0.6);
 }
 
@@ -426,9 +437,9 @@ body {
     height: 435.9px;
     position: relative;
     text-align: left;
-    font-size: 20px;
+    font-size: var(--font-size-base); 
     color: rgba(255, 255, 255, 0.9);
-    font-family: 'Sofia Sans';
+    font-family: var(--font-family-cuerpo);
 }
 
 .home-registrar-iniciar-container {
@@ -445,7 +456,7 @@ body {
     position: absolute;
     width: 490px;
     height: 84px;
-    font-family: Arimo;
+    font-family: var(--font-family-interfaz);
 }
 
 .container2 {
@@ -493,13 +504,14 @@ body {
     position: relative;
     line-height: 20px;
 }
+
 .estilo-input {
     position: absolute;
     top: 27.98px;
     left: 0px;
     box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -4px rgba(0, 0, 0, 0.1);
     border-radius: 16px;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--color-transparencia-3); 
     border: 0.8px solid rgba(255, 255, 255, 0.2);
     box-sizing: border-box;
     width: 490px;
@@ -508,12 +520,12 @@ body {
     display: flex;
     align-items: center;
     padding: 0px 16px;
-    font-size: 18px;
+    font-size: var(--font-size-sm); 
     color: rgba(255, 255, 255, 0.4);
 }
 
 .home-registrar-iniciar-text-input {
-    font-family: Arimo;
+    font-family: var(--font-family-interfaz);
 }
 
 .ingresa-tu-direccin {
@@ -526,13 +538,13 @@ body {
     left: 396.94px;
     box-shadow: 0px 20px 25px -5px rgba(0, 0, 0, 0.1), 0px 8px 10px -6px rgba(0, 0, 0, 0.1);
     border-radius: 16px;
-    background: linear-gradient(180deg, #e50914, #c20812);
+    background: linear-gradient(180deg, var(--color-accent-rojo), #c20812); 
     border: 0.8px solid rgba(255, 255, 255, 0.1);
     box-sizing: border-box;
     width: 300px;
     height: 56px;
     text-align: center;
-    color: #fff;
+    color: var(--color-texto-principal); 
 }
 
 .registrarse {
@@ -543,7 +555,6 @@ body {
     font-weight: 700;
 }
 
-
 .home-registrar-iniciar-button {
     position: absolute;
     top: 415.23px;
@@ -553,8 +564,9 @@ body {
     display: flex;
     align-items: flex-start;
     color: rgba(255, 255, 255, 0.8);
-    font-family: Arimo;
+    font-family: var(--font-family-interfaz);
 }
+
 .obtener-ayuda {
     position: relative;
     line-height: 20px;
