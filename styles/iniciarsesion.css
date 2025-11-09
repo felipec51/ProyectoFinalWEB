@@ -1,335 +1,302 @@
 body {
-margin: 0;
-line-height: normal;
+    margin: 0;
+    line-height: normal;
 }
-
 .desktop {
-  	width: 100%;
-  	height: 100vh;
-  	position: relative;
-  	background-color: #000;
-  	overflow: hidden;  
-  	text-align: left;
-  	font-size: 20px;
-  	color: #fff;
-  	font-family: 'Sofia Sans';
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background-color: #000;
+    overflow: hidden;
+    text-align: left;
+    font-size: 20px;
+    color: #ffffff;
+    font-family: 'Sofia Sans';
 }
-.co-es-20251027-trifecta-perspe-icon {
-  	position: absolute;
-  	height: calc(100% + 18px);
-  	top: -9px;
-  	bottom: -9px;
-  	left: calc(50% - 1206.5px);
-  	max-height: 100%;
-  	width: 2414px;
-  	object-fit: cover;
-}
-.iniciar-sesion-pc {
-  	position: absolute;
-  	top: 100px;
-  	left: calc(50% - 317.5px);
-  	width: 636px;
-  	height: 893px;
-}
-.iniciar-sesion-pc-child {
-  	position: absolute;
-  	height: 100%;
-  	width: 90.6%;
-  	top: 0%;
-  	right: 4.82%;
-  	bottom: 0%;
-  	left: 4.59%;
-  	background-color: rgba(0, 0, 0, 0.73);
-}
-.iniciar-sesion {
-  	position: absolute;
-  	height: 3.67%;
-  	width: 70.86%;
-  	top: 8.18%;
-  	left: 12.39%;
-  	font-size: 40px;
-  	display: flex;
-  	font-weight: 900;
-  	align-items: center;
-}
-.obtener-ayuda {
-  	position: absolute;
-  	height: 2.84%;
-  	width: 36.7%;
-  	top: 63.63%;
-  	left: 8.49%;
-  	display: inline-block;
-}
-.btn-continuar {
-  	position: absolute;
-  	height: 8.85%;
-  	width: 73%;
-  	top: 35.31%;
-  	right: 13.85%;
-  	bottom: 55.85%;
-  	left: 13.15%;
-  	text-align: center;
-}
-.btn-continuar-child {
-  	position: absolute;
-  	height: 66.96%;
-  	width: 100%;
-  	top: 16.07%;
-  	right: 0%;
-  	bottom: 16.97%;
-  	left: 0%;
-  	border-radius: 4px;
-  	background-color: #e50914;
-}
-.iniciar-sesion2 {
-  	position: absolute;
-  	height: 100%;
-  	width: 57.59%;
-  	top: 0%;
-  	left: 21.57%;
-  	display: flex;
-  	align-items: center;
-  	justify-content: center;
-}
-.olvidaste-contrasea {
-  	position: absolute;
-  	height: 2.72%;
-  	width: 43.81%;
-  	top: 46.56%;
-  	left: 28.44%;
-  	font-size: 15px;
-  	text-decoration: underline;
-  	text-align: center;
-  	display: flex;
-  	align-items: center;
-  	justify-content: center;
-}
-.check-remenbered {
-  	position: absolute;
-  	height: 2.84%;
-  	width: 33.95%;
-  	top: 52.49%;
-  	right: 56.19%;
-  	bottom: 44.67%;
-  	left: 9.86%;
-  	text-align: center;
-}
-.checkbox {
-  	position: absolute;
-  	height: 100%;
-  	width: 12.18%;
-  	top: 0%;
-  	right: 87.82%;
-  	bottom: 0%;
-  	left: 0%;
-  	border-radius: 5px;
-  	background-color: #d9d9d9;
-}
-.recordarme {
-  	position: absolute;
-  	height: 87.4%;
-  	width: 81.75%;
-  	top: 12.5%;
-  	left: 18.24%;
-  	display: flex;
-  	align-items: center;
-  	justify-content: center;
-}
-.primera-vez-en {
-  	position: absolute;
-  	height: 3.55%;
-  	width: 48.4%;
-  	top: 57.7%;
-  	left: 8.26%;
-  	font-size: 14px;
-  	display: flex;
-  	align-items: center;
-}
-.registrarse {
-  	position: absolute;
-  	height: 3.55%;
-  	width: 28.9%;
-  	top: 57.7%;
-  	left: 58.72%;
-  	display: flex;
-  	font-weight: 800;
-  	align-items: center;
-}
-.login-with-wrapper {
-  	position: absolute;
-  	height: 2.02%;
-  	width: 80.5%;
-  	top: 70.14%;
-  	right: 11.01%;
-  	bottom: 27.84%;
-  	left: 8.49%;
-  	display: flex;
-  	flex-direction: column;
-  	align-items: center;
-  	justify-content: center;
-  	font-size: 14px;
-  	color: #6a707c;
-  	font-family: Urbanist;
-}
-.login-with {
-  	width: 351px;
-  	height: 17px;
-  	position: relative;
-}
-.or-login-with {
-  	position: absolute;
-  	top: 0px;
-  	left: 131.49px;
-  	font-weight: 600;
-  	display: inline-block;
-  	width: 95.4px;
-}
-.login-with-child {
-  	position: absolute;
-  	top: 8.5px;
-  	left: -0.5px;
-  	border-top: 1px solid #e8ecf4;
-  	box-sizing: border-box;
-  	width: 119.8px;
-  	height: 1px;
-}
-.login-with-item {
-  	position: absolute;
-  	top: 8.5px;
-  	left: 232.79px;
-  	border-top: 1px solid #e8ecf4;
-  	box-sizing: border-box;
-  	width: 118.7px;
-  	height: 1px;
-}
-.facebook-ic-parent {
-  	position: absolute;
-  	height: 3.55%;
-  	width: 38.54%;
-  	top: 78.55%;
-  	right: 27.75%;
-  	bottom: 17.9%;
-  	left: 33.72%;
-  	display: flex;
-  	align-items: flex-start;
-  	gap: 39px;
-}
-.facebook-ic-icon {
-  	height: 30px;
-  	width: 30px;
-  	position: relative;
-}
-.frame-child {
-  	height: 30px;
-  	width: 30px;
-}
-.container {
-  	position: absolute;
-  	height: 9.24%;
-  	width: 83.9%;
-  	top: 13.86%;
-  	right: 7.84%;
-  	bottom: 76.9%;
-  	left: 8.26%;
-  	display: flex;
-  	flex-direction: column;
-  	align-items: flex-start;
-  	gap: 8px;
-  	font-size: 14px;
-  	color: rgba(255, 255, 255, 0.9);
-  	font-family: Arimo;
-}
-.primitivelabel {
-  	align-self: stretch;
-  	height: 14px;
-  	position: relative;
-}
-.correo-electrnico {
-  	position: absolute;
-  	top: -1.24px;
-  	left: 0px;
-  	line-height: 14px;
-}
-.loginscreen {
-  	align-self: stretch;
-  	height: 56px;
-  	position: relative;
-  	color: rgba(255, 255, 255, 0.4);
-}
-.input {
-  	position: absolute;
-  	height: 100%;
-  	width: calc(100% - 41.6px);
-  	top: 0.22px;
-  	right: 41.11px;
-  	bottom: -0.22px;
-  	left: 0.49px;
-  	border-radius: 16px;
-  	background-color: rgba(255, 255, 255, 0.1);
-  	border: 1.1px solid rgba(255, 255, 255, 0.2);
-  	box-sizing: border-box;
-  	overflow: hidden;
-  	display: flex;
-  	align-items: center;
-  	padding: 4px 12px 4px 48px;
-}
-.tuemailcom {
-  	position: relative;
-}
-.icon {
-  	position: absolute;
-  	top: 18px;
-  	left: 15.98px;
-  	width: 20px;
-  	height: 20px;
-}
-.container2 {
-  	position: absolute;
-  	height: 9.24%;
-  	width: 83.9%;
-  	top: 25.47%;
-  	right: 7.84%;
-  	bottom: 65.29%;
-  	left: 8.26%;
-  	display: flex;
-  	flex-direction: column;
-  	align-items: flex-start;
-  	gap: 8px;
-  	font-size: 14px;
-  	color: rgba(255, 255, 255, 0.9);
-  	font-family: Arimo;
-}
-.input2 {
-  	position: absolute;
-  	height: 100%;
-  	width: calc(100% - 41.6px);
-  	top: -0.44px;
-  	right: 41.11px;
-  	bottom: 0.44px;
-  	left: 0.49px;
-  	border-radius: 16px;
-  	background-color: rgba(255, 255, 255, 0.1);
-  	border: 1.1px solid rgba(255, 255, 255, 0.2);
-  	box-sizing: border-box;
-  	overflow: hidden;
-  	display: flex;
-  	align-items: center;
-  	padding: 4px 12px 4px 48px;
+.cofondo {
+    position: absolute;
+    height: 100vh;
+	width: 100vh;
+    top: -9px;
+    bottom: -9px;
+    left: calc(50% - 1206.5px);
+    max-height: 100%;
+    width: 2414px;
+    object-fit: cover;
 }
 .rewindcodefilm {
-  	position: absolute;
-  	top: 87px;
-  	left: 54px;
-  	width: 487px;
-  	height: 27px;
-  	font-size: 64px;
-  	color: #e50914;
-  	font-family: 'Baloo Thambi';
+    position: absolute;
+    top: 87px;
+    left: 54px;
+    width: 487px;
+    height: 27px;
+    font-size: 64px;
+    color: #e50914;
+    font-family: 'Baloo Thambi';
 }
 .rewindcodefilm2 {
-  	position: absolute;
-  	top: 0%;
-  	left: 0%;
-  	line-height: 27px;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    line-height: 27px;
 }
-
+.iniciar-sesion-pc {
+    position: absolute;
+    top: 100px;
+    left: calc(50% - 317.5px);
+    width: 636px;
+    height: 893px;
+	color: rgba(255, 255, 255, 0.955);
+	background-color: #1e1e1eab;
+}
+.iniciar-sesion {
+    position: absolute;
+    height: 3.67%;
+    width: 70.86%;
+    top: 8.18%;
+    left: 12.39%;
+    font-size: 40px;
+    display: flex;
+    font-weight: 900;
+    align-items: center;
+}
+.campo-input-contenedor {
+    position: absolute;
+    height: 9.24%;
+    width: 83.9%;
+    right: 7.84%;
+    left: 8.26%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.9);
+    font-family: Arimo;
+}
+.container {
+    top: 13.86%;
+    bottom: 76.9%;
+}
+.container2 {
+    top: 25.47%;
+    bottom: 65.29%;
+}
+.primitivelabel {
+    align-self: stretch;
+    height: 14px;
+    position: relative;
+}
+.correo-electrnico {
+    position: absolute;
+    top: -1.24px;
+    left: 0px;
+    line-height: 14px;
+}
+.loginscreen {
+    align-self: stretch;
+    height: 56px;
+    position: relative;
+    color: rgba(255, 255, 255, 0.4);
+}
+.estilo-input-base {
+    position: absolute;
+    height: 100%;
+    width: calc(100% - 41.6px);
+    right: 41.11px;
+    left: 0.49px;
+    border-radius: 16px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1.1px solid rgba(255, 255, 255, 0.2);
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: 4px 12px 4px 48px;
+}
+.input {
+    top: 0.22px;
+    bottom: -0.22px;
+}
+.input2 {
+    top: -0.44px;
+    bottom: 0.44px;
+}
+.tuemailcom {
+    position: relative;
+}
+.icon {
+    position: absolute;
+    top: 18px;
+    left: 15.98px;
+    width: 20px;
+    height: 20px;
+}
+.btn-continuar {
+    position: absolute;
+    height: 8.85%;
+    width: 73%;
+    top: 35.31%;
+    right: 13.85%;
+    bottom: 55.85%;
+    left: 13.15%;
+    text-align: center;
+}
+.btn-continuar-child {
+    position: absolute;
+    height: 66.96%;
+    width: 100%;
+    top: 16.07%;
+    right: 0%;
+    bottom: 16.97%;
+    left: 0%;
+    border-radius: 4px;
+    background-color: #e50914;
+}
+.iniciar-sesion2 {
+    position: absolute;
+    height: 100%;
+    width: 57.59%;
+    top: 0%;
+    left: 21.57%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.olvidaste-contrasea {
+    position: absolute;
+    height: 2.72%;
+    width: 43.81%;
+    top: 46.56%;
+    left: 28.44%;
+    font-size: 15px;
+    text-decoration: underline;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.obtener-ayuda {
+    position: absolute;
+    height: 2.84%;
+    width: 36.7%;
+    top: 63.63%;
+    left: 8.49%;
+    display: inline-block;
+}
+.check-remenbered {
+    position: absolute;
+    height: 2.84%;
+    width: 33.95%;
+    top: 52.49%;
+    right: 56.19%;
+    bottom: 44.67%;
+    left: 9.86%;
+    text-align: center;
+}
+.checkbox {
+    position: absolute;
+    height: 100%;
+    width: 12.18%;
+    top: 0%;
+    right: 87.82%;
+    bottom: 0%;
+    left: 0%;
+    border-radius: 5px;
+    background-color: #d9d9d9;
+}
+.recordarme {
+    position: absolute;
+    height: 87.4%;
+    width: 81.75%;
+    top: 12.5%;
+    left: 18.24%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.primera-vez-en {
+    position: absolute;
+    height: 3.55%;
+    width: 48.4%;
+    top: 57.7%;
+    left: 8.26%;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+.registrarse {
+    position: absolute;
+    height: 3.55%;
+    width: 28.9%;
+    top: 57.7%;
+    left: 58.72%;
+    display: flex;
+    font-weight: 800;
+    align-items: center;
+}
+.login-with-wrapper {
+    position: absolute;
+    height: 2.02%;
+    width: 80.5%;
+    top: 70.14%;
+    right: 11.01%;
+    bottom: 27.84%;
+    left: 8.49%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #6a707c;
+    font-family: Urbanist;
+}
+.login-with {
+    width: 351px;
+    height: 17px;
+    position: relative;
+}
+.or-login-with {
+    position: absolute;
+    top: 0px;
+    left: 131.49px;
+    font-weight: 600;
+    display: inline-block;
+    width: 95.4px;
+}
+.linea-divisoria-social {
+    position: absolute;
+    top: 8.5px;
+    border-top: 1px solid #e8ecf4;
+    box-sizing: border-box;
+    height: 1px;
+}
+.login-with-child {
+    left: -0.5px;
+    width: 119.8px;
+}
+.login-with-item {
+    left: 232.79px;
+    width: 118.7px;
+}
+.facebook-ic-parent {
+    position: absolute;
+    height: 3.55%;
+    width: 38.54%;
+    top: 78.55%;
+    right: 27.75%;
+    bottom: 17.9%;
+    left: 33.72%;
+    display: flex;
+    align-items: flex-start;
+    gap: 39px;
+}
+.icono-social {
+    height: 30px;
+    width: 30px;
+    position: relative;
+}
+.frame-child {
+    height: 30px;
+    width: 30px;
+}

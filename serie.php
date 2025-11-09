@@ -6,9 +6,6 @@
 	<meta name="viewport" content="initial-scale=1, width=device-width">
 
 	<link rel="stylesheet" href="./styles/serie.css" />
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=[object Object]&display=swap" />
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=[object Object]&display=swap" />
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=[object Object]&display=swap" />
 </head>
 
 <body>
@@ -249,9 +246,6 @@
 			</div>
 		</div>
 	</div>
-
-
-
 
 </body>
 
