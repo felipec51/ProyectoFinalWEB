@@ -29,4 +29,4 @@ Una página web básica para explorar y descubrir películas. Este proyecto mues
 ##  Instalación
 1. Clona este repositorio:
    ```bash
-   git clone https://github.com/usuario/moviehub.git
+   git clone https://github.com/felipec51/ProyectoFinalWEB.git
