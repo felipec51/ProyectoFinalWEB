@@ -1,0 +1,263 @@
+/* Para referencia, la familia de fuente Arimo se utiliza 
+  en el código original, por lo que se incluye como fallback.
+*/
+
+.container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    /* Añadido un fondo oscuro para que el texto blanco sea visible */
+    background-color: #141414; 
+    min-height: 400px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* --- Título y Metadatos --- */
+
+.title-group {
+    width: 557px;
+    height: 77.90px;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+}
+
+.main-title {
+    color: white;
+    font-size: 72px;
+    font-family: Arimo, sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 72px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.metadata-group {
+    height: 23.39px;
+    position: absolute;
+    left: 14px; 
+    top: 76px;
+    width: 2142.53px; /* El ancho original es muy grande */
+}
+
+.metadata-item {
+    height: 19.99px;
+    position: absolute;
+}
+
+.metadata-match {
+    width: 126.03px;
+    left: 0px;
+    top: 1.69px;
+}
+
+.metadata-year {
+    width: 30.18px;
+    left: 142.02px;
+    top: 1.69px;
+}
+
+.metadata-duration {
+    width: 57.74px;
+    left: 243.78px;
+    top: 1.69px;
+}
+
+.match-score {
+    color: #46D369;
+    font-size: 14px;
+    font-family: Arimo, sans-serif;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.text-white {
+    color: white;
+    font-size: 14px;
+    font-family: Arimo, sans-serif;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.age-rating-box {
+    padding: 2px 8px;
+    overflow: hidden;
+    border-radius: 8px;
+    outline: 1.05px #808080 solid;
+    outline-offset: -1.05px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    font-size: 13px;
+    font-family: Arimo, sans-serif;
+    line-height: 17.33px;
+    color: white;
+    position: absolute; /* Para las clases modificadoras de posición */
+}
+
+.metadata-age-rating {
+    left: 188.19px;
+    top: 0px;
+    width: 39.60px;
+    height: 23.39px;
+}
+
+.metadata-quality {
+    left: 317.51px;
+    top: 0px;
+    width: 88.35px;
+    height: 23.39px;
+}
+
+
+/* --- Opciones de Renta --- */
+
+.rent-options-group {
+    width: 275px;
+    height: 90.49px;
+    left: 0px;
+    top: 114px;
+    position: absolute;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.option-label-row {
+    align-self: stretch;
+    height: 19.98px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.label-text {
+    flex: 1 1 0;
+    color: rgba(255, 255, 255, 0.80);
+    font-size: 14px;
+    font-family: Arimo, sans-serif;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.rent-card-container {
+    align-self: stretch;
+    height: 86.95px;
+    position: relative;
+}
+
+.rent-card {
+    width: 81px;
+    height: 87px;
+    position: absolute;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 14px;
+    outline: 0.84px rgba(255, 255, 255, 0.30) solid;
+    outline-offset: -0.84px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3.99px;
+    padding: 0;
+}
+
+.card-pos-1 { left: 0px; top: 0.02px; }
+.card-pos-2 { left: 90px; top: 0.02px; }
+.card-pos-3 { left: 180px; top: 0.02px; }
+
+.card-icon-container {
+    width: 15.99px;
+    height: 15.99px;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-icon-box {
+    width: 11.99px;
+    height: 11.99px;
+    left: 2px;
+    top: 2.67px;
+    position: absolute;
+    outline: 1.33px white solid;
+    outline-offset: -0.67px;
+}
+
+.card-duration-text {
+    color: white;
+    font-size: 13px;
+    font-family: Arimo, sans-serif;
+    font-weight: 400;
+    line-height: 17.33px;
+    word-wrap: break-word;
+    /* Ajustes menores para replicar el espaciado original */
+    margin-top: -3px; 
+}
+
+.card-price-row {
+    width: 51px;
+    height: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.card-price-text {
+    color: white;
+    font-size: 14px;
+    font-family: Arimo, sans-serif;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+
+/* --- Botón Rentar Película --- */
+
+.rent-button {
+    width: 158.23px;
+    height: 39.99px;
+    left: 0px;
+    top: 258px;
+    position: absolute;
+    background: white;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    padding-left: 16px;
+    box-sizing: border-box;
+}
+
+.button-icon-container {
+    width: 15.99px;
+    height: 15.99px;
+    position: relative;
+    overflow: hidden;
+    margin-right: 16px; /* Espacio entre el icono y el texto */
+}
+
+.button-icon-box {
+    width: 11.99px;
+    height: 11.99px;
+    left: 2px;
+    top: 2px;
+    position: absolute;
+    outline: 1.33px black solid;
+    outline-offset: -0.67px;
+}
+
+.button-text {
+    color: black;
+    font-size: 14px;
+    font-family: Arimo, sans-serif;
+    font-weight: 400;
+    line-height: 20px;
+    position: relative;
+    left: 0;
+    top: 0;
+}

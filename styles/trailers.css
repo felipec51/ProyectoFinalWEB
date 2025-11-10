@@ -1,0 +1,65 @@
+.traileres2 {
+    position: absolute;
+    top: 1425px;
+    left: calc(50% - 770px);
+    width: 1540px;
+    height: 325px;
+    font-size: 20px;
+}
+
+.trileres {
+    position: absolute;
+    height: 10.46%;
+    width: 16.3%;
+    top: 0;
+    left: 0;
+    font-size: 40px;
+    line-height: 101px;
+    display: flex;
+    font-weight: 800;
+    align-items: center;
+    margin: 0;
+}
+
+.trailer-card {
+    position: absolute;
+    height: 84.92%;
+    width: 29.29%;
+    top: 15.08%;
+    bottom: 0;
+}
+
+.trailer-card.trailer-1-pos { right: 70.71%; left: 0; }
+.trailer-card.trailer-2-pos { right: 34.81%; left: 35.91%; }
+.trailer-card.trailer-3-pos { right: -1.1%; left: 71.82%; }
+
+.trailer-image {
+    position: absolute;
+    height: 91.67%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    bottom: 8.33%;
+    left: 0;
+    border-radius: 12px;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+.triler-name-serie-container, .name-serie {
+    position: absolute;
+    height: 5.8%;
+    width: 64.52%;
+    top: 94.2%;
+    left: 0;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+.triler-name-serie-container2 { width: 100%; }
+.tr { letter-spacing: 0.05em; }
+

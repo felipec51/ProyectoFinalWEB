@@ -53,7 +53,6 @@ body {
     align-items: flex-start;
     gap: 12px;
 }
-/* ... otros selectores que no usan variables (primitiveh2, editar-pelcula, icon, etc.) ... */
 
 .moviedialog {
     width: 462.3px;
@@ -63,7 +62,6 @@ body {
     font-size: var(--font-size-xs); 
     color: var(--color-texto-secundario);
 }
-/* ... otros selectores que no usan variables ... */
 
 .editar-pelicula-moviedialog {
     position: absolute;
@@ -80,16 +78,16 @@ body {
     color: #d1d5dc; /* Color específico. Podrías añadirlo a las variables si se repite. */
 }
 
-/* Aplicación de variables a todos los campos de entrada (.input, .editar-pelicula-input, .input3, .primitivebutton) */
+
 .input,
 .editar-pelicula-input,
 .primitivebutton,
 .input3 {
-    /* Fondo y borde estándar para inputs/botones grises */
+
     background-color: var(--color-caja-gris-oscuro);
     border: 0.8px solid var(--color-caja-gris-oscuro);
     border-radius: var(--border-radius-base);
-    /* ... otras propiedades de layout ... */
+
 }
 
 .input,
@@ -103,11 +101,10 @@ body {
     display: flex;
     align-items: center;
     padding: 4px 12px;
-    /* Color de texto dentro del input (placeholder/valor) */
+
     color: var(--color-input-texto); 
 }
 
-/* ... Código intermedio omitido por ser similar ... */
 
 .dialogfooter {
     align-self: stretch;
