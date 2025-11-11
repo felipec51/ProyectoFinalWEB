@@ -1,0 +1,215 @@
+.peliculas-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+   justify-content: space-around;
+   overflow-y: auto;
+
+}
+
+.heading-35 {
+    font-size: 16px;
+    top: 120px;
+    left: 7px;
+    color: #fff;
+    position: absolute;
+}
+
+.container-icon2,
+.container-icon3,
+.container-icon4 {
+    height: 48px;
+    width: 48px;
+    border-radius: 10px;
+    left: 355px;
+}
+
+.container-icon,
+.container-icon2 {
+    position: absolute;
+    max-height: 100%;
+    top: 19.9px;
+}
+
+.container-icon .container-icon2 .container-icon3,
+.container-icon4 {
+    margin: 0 !important;
+    position: absolute;
+    top: 19.9px;
+    z-index: 1;
+}
+
+.netflixmoviecard {
+    position: relative;
+    border-radius: 8px;
+    background-color: #141414;
+    width: 411px;
+    overflow: hidden;
+    top: 19px;
+    height: 275px;
+}
+
+.netflixmoviecard {
+    left: 10px;
+    height: 276px;
+}
+
+.netflixmoviecard2 {
+    left: 430px;
+}
+
+.container15 {
+    position: absolute;
+    width: calc(100% + 12px);
+    top: 0;
+    left: 0;
+    background: linear-gradient(0deg, #000, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0));
+    height: calc(100% + 4px);
+    right: -12px;
+    bottom: -4px;
+}
+
+.container18 {
+    position: absolute;
+    width: calc(100% - 24px);
+    height: 28px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    color: #000;
+    left: 7px;
+    bottom: 17px;
+}
+
+.button2 {
+    height: 28px;
+    flex: 1;
+    position: relative;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.button-icon3 {
+    height: 31px;
+    background-color: #e50914;
+    width: 36px;
+    border-radius: 8px;
+}
+
+.icon5 {
+    position: absolute;
+    top: 6px;
+    left: 111.08px;
+    width: 16px;
+    height: 16px;
+}
+
+.editar {
+    position: absolute;
+    top: 3.66px;
+    left: 137.04px;
+    line-height: 18.67px;
+}
+
+.badge {
+    position: absolute;
+    border-radius: 8px;
+    background-color: #2f2f2f;
+    height: 22.7px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px 8px;
+    box-sizing: border-box;
+    left: 7px;
+    width: 154px;
+    bottom: 63.65px;
+}
+
+.div {
+    position: absolute;
+    top: -1.88px;
+    left: 0;
+    line-height: 24px;
+}
+
+.image-inception-icon {
+    position: absolute;
+    height: 100%;
+    width: calc(100% + 12px);
+    top: 0;
+    right: -12px;
+    bottom: 0;
+    left: 0;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+.container16 {
+    position: absolute;
+    width: calc(100% - 24px);
+    right: 17px;
+    height: 18.7px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #d1d5dc;
+    left: 7px;
+    bottom: 94.3px;
+}
+
+.text,
+.text2,
+.text3 {
+    height: 18.7px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.text {
+    width: 30.2px;
+}
+
+.text2 {
+    width: 5.7px;
+}
+
+.container17 {
+    height: 18.7px;
+    width: 34.1px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.icon4 {
+    height: 12px;
+    width: 12px;
+    position: relative;
+}
+
+.ciencia-ficcin {
+    position: relative;
+    line-height: 18.67px;
+}
+
+.en-el-catlogo {
+    flex: 1;
+    position: relative;
+
+    line-height: 18.67px;
+}
+
+.paragra {
+    height: 18.7px;
+    overflow: hidden;
+    top: 145px;
+    left: 7px;
+    display: flex;
+    align-items: flex-start;
+    color: #6a7282;
+    position: absolute;
+}

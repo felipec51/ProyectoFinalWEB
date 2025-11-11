@@ -1,8 +1,9 @@
 <?php
 
-// ** MANDAORY: Incluye el archivo que contiene el arreglo de datos $peliculas
-// Debe estar en este mismo directorio.
+include 'componentes/adminpeliculas.php';
 include 'componentes/sidebar.php';
+include 'data_peliculas.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +12,8 @@ include 'componentes/sidebar.php';
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, width=device-width">
-    
+    <link rel="stylesheet" href="styles/peliculasMenu.css" />
+    <link rel="stylesheet" href="styles/config.css" />
     <link rel="stylesheet" href="./styles/paneladmin.css" />
 </head>
 
@@ -25,7 +27,7 @@ include 'componentes/sidebar.php';
                 <div class="sidebarinset">
                     <div class="app2">
                         <header class="app3">
-                            <img class="button-icon" alt="">
+                            <img src="./imgs/icons/icono-10-(1).svg" class="button-icon" alt="">
 
                             <div class="primitivediv"></div>
                             <div class="container">
@@ -33,19 +35,19 @@ include 'componentes/sidebar.php';
                                     <div class="primitivespan flex-row-center">
                                         <div class="todos text-base">Todos</div>
                                     </div>
-                                    <img class="icon" alt="">
+                                    <img src="./imgs/icons/icono-10-(20).svg" class="icon" alt="icono de todos">
                                 </div>
                                 <div class="container2">
                                     <div class="input flex-row-center">
                                         <div class="buscar-pelculas-directores text-secundario">Buscar películas, directores...</div>
                                     </div>
-                                    <img class="icon2" alt="">
+                                    <img src="./imgs/icons/Icon-7.svg" class="icon2" alt="">
                                 </div>
                             </div>
                             <div class="container3 flex-row-center">
-                                <img class="button-icon2" alt="">
+                                <img src="./imgs/icons/Icon-5.svg" class="button-icon2" alt="">
                                 <div class="button">
-                                    <img class="icon3" alt="">
+                                    <img src="./imgs/icons/icono-10-(15).svg" class="icon3" alt="">
                                     <div class="agregar-pelcula text-base">Agregar Película</div>
                                 </div>
                             </div>
@@ -53,7 +55,7 @@ include 'componentes/sidebar.php';
                                 <div class="toggle-sidebar text-base">Toggle Sidebar</div>
                             </div>
                         </header>
-                        
+
                         <div class="container4 text-secundario">
                             <div class="card card-base">
                                 <div class="statscard">
@@ -62,19 +64,19 @@ include 'componentes/sidebar.php';
                                             <div class="total-pelculas text-secundario">Total Películas</div>
                                         </div>
                                         <div class="heading-3 text-base">8</div>
-                                        <div class="paragraph2 text-secundario">
+                                        <div class="paragraph2 ">
                                             <div class="en-el-catlogo">En el catálogo</div>
                                         </div>
                                         <div class="container6">
                                             <div class="div2">↑ +12.5%</div>
                                         </div>
-                                        <img class="container-icon" alt="">
+                                        <img src="./imgs/icons/Container.svg" class="container-icon" alt="icono de configuración">
                                     </div>
                                 </div>
                             </div>
                             <div class="card2 card-base">
                                 <div class="statscard2">
-                                    <div class="container7">
+                                    <div class="container5">
                                         <div class="paragraph flex-row-center">
                                             <div class="total-pelculas text-secundario">Rating Promedio</div>
                                         </div>
@@ -86,7 +88,7 @@ include 'componentes/sidebar.php';
                                             <div class="div4">↑ +0.3</div>
                                         </div>
                                     </div>
-                                    <img class="container-icon2" alt="">
+                                    <img src="./imgs/icons/Container2.svg" class="container-icon" alt="icono de configuración">
                                 </div>
                             </div>
                             <div class="card3 card-base">
@@ -97,7 +99,7 @@ include 'componentes/sidebar.php';
                                         </div>
                                         <div class="heading-33 text-base">7</div>
                                     </div>
-                                    <img class="container-icon3" alt="">
+                                    <img src="./imgs/icons/Container3.svg" class="container-icon" alt="icono de configuración">
                                 </div>
                             </div>
                             <div class="card4 card-base">
@@ -114,11 +116,11 @@ include 'componentes/sidebar.php';
                                             <div class="div6">↑ +8.2%</div>
                                         </div>
                                     </div>
-                                    <img class="container-icon4" alt="">
+                                    <img src="./imgs/icons/Container4.svg" class="container-icon" alt="icono de configuración">
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="container12">
                             <div class="container13">
                                 <div class="heading-2 text-base">Catálogo de Películas</div>
@@ -126,259 +128,21 @@ include 'componentes/sidebar.php';
                                     <div class="pelculas-encontradas">8 películas encontradas</div>
                                 </div>
                             </div>
-                            <div class="container14">
-                                
-                                <div class="netflixmoviecard card-base">
-                                    <img class="image-inception-icon" alt="">
-                                    <div class="container15">
-                                        <div class="heading-35 text-base">Inception</div>
-                                        <div class="paragraph9 text-secundario">
-                                            <div class="en-el-catlogo">Christopher Nolan</div>
-                                        </div>
-                                        <div class="container16 flex-row-center">
-                                            <div class="text flex-row-center">
-                                                <div class="ciencia-ficcin">2010</div>
-                                            </div>
-                                            <div class="text2 flex-row-center">
-                                                <div class="en-el-catlogo">•</div>
-                                            </div>
-                                            <div class="container17 flex-row-center">
-                                                <img class="icon4" alt="">
-                                                <div class="text3 flex-row-center">
-                                                    <div class="ciencia-ficcin">8.8</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="badge flex-row-center">
-                                            <div class="ciencia-ficcin">Ciencia Ficción</div>
-                                        </div>
-                                        <div class="container18 flex-row-center">
-                                            <div class="button2">
-                                                <img class="icon5" alt="">
-                                                <div class="editar">Editar</div>
-                                            </div>
-                                            <img class="button-icon3" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="netflixmoviecard2 card-base">
-                                    <img class="image-inception-icon" alt="">
-                                    <div class="container19">
-                                        <div class="heading-36 text-base">El Caballero Oscuro</div>
-                                        <div class="paragraph10 text-secundario">
-                                            <div class="en-el-catlogo">Christopher Nolan</div>
-                                        </div>
-                                        <div class="container20 flex-row-center">
-                                            <div class="text flex-row-center">
-                                                <div class="ciencia-ficcin">2008</div>
-                                            </div>
-                                            <div class="text2 flex-row-center">
-                                                <div class="en-el-catlogo">•</div>
-                                            </div>
-                                            <div class="container17 flex-row-center">
-                                                <img class="icon4" alt="">
-                                                <div class="text3 flex-row-center">
-                                                    <div class="ciencia-ficcin">9.0</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="badge2 flex-row-center">
-                                            <div class="ciencia-ficcin">Acción</div>
-                                        </div>
-                                        <div class="container22 flex-row-center">
-                                            <div class="button2">
-                                                <img class="icon5" alt="">
-                                                <div class="editar">Editar</div>
-                                            </div>
-                                            <img class="button-icon3" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="netflixmoviecard3 card-base">
-                                    <img class="image-inception-icon" alt="">
-                                    <div class="container19">
-                                        <div class="heading-36 text-base">Interestelar</div>
-                                        <div class="paragraph10 text-secundario">
-                                            <div class="en-el-catlogo">Christopher Nolan</div>
-                                        </div>
-                                        <div class="container20 flex-row-center">
-                                            <div class="text flex-row-center">
-                                                <div class="ciencia-ficcin">2014</div>
-                                            </div>
-                                            <div class="text2 flex-row-center">
-                                                <div class="en-el-catlogo">•</div>
-                                            </div>
-                                            <div class="container17 flex-row-center">
-                                                <img class="icon4" alt="">
-                                                <div class="text3 flex-row-center">
-                                                    <div class="ciencia-ficcin">8.6</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="badge3 flex-row-center">
-                                            <div class="ciencia-ficcin">Ciencia Ficción</div>
-                                        </div>
-                                        <div class="container22 flex-row-center">
-                                            <div class="button2">
-                                                <img class="icon5" alt="">
-                                                <div class="editar">Editar</div>
-                                            </div>
-                                            <img class="button-icon3" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="netflixmoviecard4 card-base">
-                                    <img class="image-inception-icon" alt="">
-                                    <div class="container19">
-                                        <div class="heading-36 text-base">Mission:Impossible </div>
-                                        <div class="paragraph10 text-secundario">
-                                            <a class="christopher-mcquarrie text-secundario" href="https://www.google.com/search?sa=X&sca_esv=0fe16c1f02c217b7&cs=1&biw=2152&bih=1088&sxsrf=AE3TifO6C3EBZ4nMhgaoDOe_OLRE8nqMrQ:1762619218973&q=Christopher+McQuarrie&si=AMgyJEveiRpRWbYSNPkEPxCUbItHSvun4xkRgDDPLmrOjDx35JliuyjAEeeLos61G1Ki5lxxMKcjYP6lm1ApIamPupEbNNIcq_0_TTTgvwJXskhidFrD29fyhF61G8SW310BJzpSEs_figenIB29mjKM1BjxBaGfBd7d8Pq9XVC6Z-jK5DnHrvkqRcA2Lct2ffPVYG7VUsxRJTiVPTvKefqmSvdrnSU66g%3D%3D&ved=2ahUKEwij-K6j_OKQAxXSVTABHeGWFyoQmxN6BAgfEAI" target="_blank">Christopher McQuarrie</a>
-                                        </div>
-                                        <div class="container20 flex-row-center">
-                                            <div class="text flex-row-center">
-                                                <div class="ciencia-ficcin">2025</div>
-                                            </div>
-                                            <div class="text2 flex-row-center">
-                                                <div class="en-el-catlogo">•</div>
-                                            </div>
-                                            <div class="container17 flex-row-center">
-                                                <img class="icon4" alt="">
-                                                <div class="text3 flex-row-center">
-                                                    <div class="ciencia-ficcin">7.5</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="badge4 flex-row-center">
-                                            <div class="ciencia-ficcin">Comedia</div>
-                                        </div>
-                                        <div class="container22 flex-row-center">
-                                            <div class="button2">
-                                                <img class="icon5" alt="">
-                                                <div class="editar">Editar</div>
-                                            </div>
-                                            <img class="button-icon3" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="netflixmoviecard5 card-base">
-                                    <div class="image-la-noche-oscura">
-                                        <img class="image-8-icon" alt="">
-                                    </div>
-                                    <div class="container31">
-                                        <div class="heading-39 text-base">Dune</div>
-                                        <div class="paragraph13 text-secundario">
-                                            <div class="en-el-catlogo">Ari Aster</div>
-                                        </div>
-                                        <div class="container32 flex-row-center">
-                                            <div class="text flex-row-center">
-                                                <div class="ciencia-ficcin">2024</div>
-                                            </div>
-                                            <div class="text2 flex-row-center">
-                                                <div class="en-el-catlogo">•</div>
-                                            </div>
-                                            <div class="container17 flex-row-center">
-                                                <img class="icon4" alt="">
-                                                <div class="text3 flex-row-center">
-                                                    <div class="ciencia-ficcin">7.8</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="badge5 flex-row-center">
-                                            <div class="ciencia-ficcin3">Ciencia ficción</div>
-                                        </div>
-                                        <div class="container34 flex-row-center">
-                                            <div class="button2">
-                                                <img class="icon5" alt="">
-                                                <div class="editar">Editar</div>
-                                            </div>
-                                            <img class="button-icon3" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="netflixmoviecard6 card-base">
-                                    <img class="image-inception-icon" alt="">
-                                    <div class="container35">
-                                        <div class="heading-310 text-base">
-                                            <div class="monstruo">Monstruo</div>
-                                        </div>
-                                        <div class="paragraph14 text-secundario">
-                                            <div class="en-el-catlogo">Ian Brennan</div>
-                                        </div>
-                                        <div class="container36 flex-row-center">
-                                            <div class="text flex-row-center">
-                                                <div class="ciencia-ficcin">2025</div>
-                                            </div>
-                                            <div class="text2 flex-row-center">
-                                                <div class="en-el-catlogo">•</div>
-                                            </div>
-                                            <div class="container17 flex-row-center">
-                                                <img class="icon4" alt="">
-                                                <div class="text3 flex-row-center">
-                                                    <div class="ciencia-ficcin">8.9</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="badge6 flex-row-center">
-                                            <div class="ciencia-ficcin">Drama</div>
-                                        </div>
-                                        <div class="container38 flex-row-center">
-                                            <div class="button2">
-                                                <img class="icon5" alt="">
-                                                <div class="editar">Editar</div>
-                                            </div>
-                                            <img class="button-icon3" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="netflixmoviecard7 card-base">
-                                    <img class="image-el-ultimo-tren" alt="">
-                                    <div class="container35">
-                                        <div class="heading-311"></div> 
-                                        <div class="paragraph15 text-secundario">
-                                            <a class="martin-campbell" href="https://www.primevideo.com/search/ref=atv_dp_pd_dir?phrase=Martin%20Campbell&ie=UTF8" target="_blank">Martin Campbell</a>
-                                        </div>
-                                        <div class="heading-310 text-base">
-                                            <div class="monstruo">Casino Royal</div>
-                                        </div>
-                                        <div class="container36 flex-row-center">
-                                            <div class="text flex-row-center">
-                                                <div class="ciencia-ficcin">2006</div>
-                                            </div>
-                                            <div class="text2 flex-row-center">
-                                                <div class="en-el-catlogo">•</div>
-                                            </div>
-                                            <div class="container17 flex-row-center">
-                                                <img class="icon4" alt="">
-                                                <div class="text3 flex-row-center">
-                                                    <div class="ciencia-ficcin">7.6</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="badge7 flex-row-center">
-                                            <div class="ciencia-ficcin">Thriller</div>
-                                        </div>
-                                        <div class="container38 flex-row-center">
-                                            <div class="button2">
-                                                <img class="icon5" alt="">
-                                                <div class="editar">Editar</div>
-                                            </div>
-                                            <img class="button-icon3" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
+                        </div>
+                        <div class="container14">
+
+                            <?php renderpeliculas($peliculas); ?>
+
                         </div>
                     </div>
                 </div>
+
             </div>
-           <?php  rendersidebar() ?>
+
+            <?php rendersidebar() ?>
         </div>
     </div>
 </body>
+
 </html>

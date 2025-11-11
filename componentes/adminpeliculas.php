@@ -1,0 +1,51 @@
+<?php
+
+function renderpeliculas(array $peliculas): void
+{
+    ?>
+    <link rel="stylesheet" href="./styles/adminpeliculas.css" />
+<div class="peliculas-container">
+<?php foreach($peliculas as $pelicula): 
+    $nombre = htmlspecialchars($pelicula['nombre']);
+    $director = htmlspecialchars($pelicula['creadores']);
+    $anio = htmlspecialchars($pelicula['anio']);
+    $genero = htmlspecialchars($pelicula['genero']);
+    $img = htmlspecialchars($pelicula['imagen_fondo']);
+?>
+    <div class="netflixmoviecard card-base">
+        <img src="<?php echo $img; ?>" class="image-inception-icon" alt="fondo de <?php echo $nombre; ?>">
+        <div class="container15">
+            <div class="heading-35 text-base"><?php echo $nombre; ?></div>
+            <div class="paragra">
+                <div class="en-el-catlogo"><?php echo $director; ?></div>
+            </div>
+            <div class="container16 flex-row-center">
+                <div class="text flex-row-center">
+                    <div class="ciencia-ficcin"><?php echo $anio; ?></div>
+                </div>
+                
+                <div class="container17 flex-row-center">
+                    <img src="./imgs/icons/icono-10-(14).svg" class="icon4" alt="">
+                    <div class="text3 flex-row-center">
+                        <div class="ciencia-ficcin">8.8</div>
+                    </div>
+                </div>
+            </div>
+            <div class="badge flex-row-center">
+                <div class="ciencia-ficcin"><?php echo $genero; ?></div>
+            </div>
+            <div class="container18 flex-row-center">
+                <div class="button2">
+                    <img src="./imgs/icons/icono-10-(12).svg" class="icon5" alt="">
+                    <div class="editar">Editar</div>
+                </div>
+                <img src="./imgs/icons/icono-10-(8).svg" class="button-icon3" alt="">
+            </div>
+        </div>
+    </div>
+<?php endforeach; ?>
+</div>
+
+<?php
+}
+?>
