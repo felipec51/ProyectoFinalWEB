@@ -31,7 +31,7 @@ $peliculas = [
     // Datos de OTRA SERIE DE EJEMPLO (ID: the_crown)
     'the_crown' => [
         'nombre' => 'The Crown',
-        'imagen_fondo' => 'https://placehold.co/1920x1104/1A2E44/FFF?text=The+Crown+Background', 
+        'imagen_fondo' => './imgs/thecrow.webp', 
         'coincidencia' => '90%',
         'anio' => '2023',
         'clasificacion' => '13+',
@@ -40,6 +40,12 @@ $peliculas = [
         'ncopias' => '2',
         'ncopiastotales' => '10',
         'nfila' => '0',
+        'episodios' => [
+            'La desaparición de Will Byers',
+            'La búsqueda comienza',
+            'El Demogorgon',
+            'La niña con poderes',
+        ],
         'descripcion' => 'Una crónica de la vida de la Reina Isabel II, explorando sus relaciones, rivalidades y los eventos que moldearon la segunda mitad del siglo XX.',
         'elenco_resumen' => 'Olivia Colman, Imelda Staunton, Claire Foy, Matt Smith, Helena Bonham Carter',
         'creadores' => 'Peter Morgan',

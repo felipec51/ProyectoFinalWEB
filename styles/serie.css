@@ -8,7 +8,7 @@ body {
     height: 2816px;
     position: relative;
     background-color: #131313;
-    overflow-y: auto;
+    overflow-y: hidden;
     text-align: left;
     overflow-x: hidden;
     font-size: 16px;

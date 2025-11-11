@@ -15,7 +15,7 @@
 
 function rendertags(string $nombre_serie, string $anio, string $duracion_tag, string $clasificacion,string $descripcion, string $elenco_resumen, string $creadores): void {
 ?>
-<link rel="stylesheet" href="./styles/tagsinfo.css" />
+<link rel="stylesheet" href="./styles/tagseries.css" />
 <section class="info-pelicula">
     <div class="tags-de-peliculas">
         <div class="contenedor-div"></div>
@@ -29,9 +29,9 @@ function rendertags(string $nombre_serie, string $anio, string $duracion_tag, st
         <p class="lorem-ipsum-dolor"><?php echo $descripcion; ?></p>
         <div class="text-info-peli-child"></div>
         <p class="elenco-wilona">
-            <strong>Elenco:</strong> <?php echo $elenco_resumen; ?><br>
-            <strong>Creadores:</strong> <?php echo $creadores; ?>
+            <strong>Elenco: <?php echo $elenco_resumen; ?><br>Creadores: <?php echo $creadores; ?></strong>
         </p>
+        
     </div>
 </section>
 <?php

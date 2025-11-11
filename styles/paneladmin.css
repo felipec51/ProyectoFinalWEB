@@ -1,4 +1,3 @@
-
 body {
     margin: 0;
     line-height: normal;
@@ -9,9 +8,10 @@ body {
     height: 1352px;
     position: relative;
     background-color: #fff;
-    overflow-y: auto;
+    overflow-y: hidden;
     text-align: left;
     font-size: 14px;
+    overflow-x: hidden;
     color: #fff;
     font-family: Arimo;
 }
@@ -35,24 +35,6 @@ body {
     height: 1356px;
 }
 
-.sidebar, .sidebar2 {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 256px;
-    height: 1353px;
-}
-
-.sidebar2 {
-    top: 0;
-    height: 100%;
-    background-color: #000;
-    border-right: 1.1px solid #2f2f2f;
-    box-sizing: border-box;
-    display: flex;
-    align-items: flex-start;
-}
-
 .sidebarinset {
     position: absolute;
     height: calc(100% - 3px);
@@ -60,10 +42,19 @@ body {
     right: 0;
     bottom: 0;
     background-color: #141414;
-    width: 2103px;
+    width: 2103px; 
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+}
+
+
+.sidebar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 256px; 
+    height: 1353px;
 }
 
 .card, .card2, .card3, .card4 {
@@ -246,47 +237,6 @@ body {
     padding: 2px 2px 2px 8px;
     box-sizing: border-box;
 }
-
-.sidebargrouplabel, .sidebargrouplabel2 {
-    width: 238.9px;
-    height: 32px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    padding: 0 16px;
-    box-sizing: border-box;
-}
-
-.sidebarmenuitem, .sidebarmenuitem2, .sidebarmenuitem3, .sidebarmenuitem4, .sidebarmenuitem5, .sidebarmenuitem9 {
-    position: absolute;
-    left: 0;
-    width: 238.9px;
-    height: 32px;
-}
-.sidebarmenuitem { top: 0; color: #171717; }
-.sidebarmenuitem2 { top: 35.98px; }
-.sidebarmenuitem3 { top: 71.95px; }
-.sidebarmenuitem4 { top: 107.93px; }
-.sidebarmenuitem5 { top: 0; }
-.sidebarmenuitem9 { top: 35.98px; color: #fff; }
-
-.slotclone, .slotclone2, .slotclone9 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    border-radius: 8px;
-    width: 238.9px;
-    height: 32px;
-    overflow: hidden;
-    box-sizing: border-box;
-}
-.slotclone, .slotclone2 {
-    display: flex;
-    align-items: center;
-    padding: 0 0 0 8px;
-    gap: 8px;
-}
-.slotclone { background-color: #f5f5f5; }
 
 .app2 {
     width: 2155px;
@@ -712,180 +662,4 @@ body {
     color: inherit;
     display: inline-block;
     z-index: 0;
-}
-.container43 {
-    height: 1355.7px;
-    width: 254.9px;
-    background-color: #fafafa;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-.sidebarheader {
-    width: 254.9px;
-    height: 93.7px;
-    background-color: #000;
-    border-bottom: 1.1px solid #2f2f2f;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 8px 0 0 8px;
-    font-size: 16px;
-}
-.appsidebar {
-    width: 238.9px;
-    height: 76.6px;
-    display: flex;
-    align-items: center;
-    padding: 0 0 0 8px;
-    box-sizing: border-box;
-    gap: 8px;
-}
-.container44 {
-    height: 40px;
-    width: 40px;
-    border-radius: 4px;
-    background-color: #e50914;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.text22 {
-    height: 24px;
-    width: 12px;
-    position: relative;
-}
-.container45 {
-    height: 44.7px;
-    width: 77.6px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 2px;
-    color: #e50914;
-}
-.text23 {
-    width: 77.6px;
-    height: 24px;
-    position: relative;
-}
-.text24 {
-    width: 77.6px;
-    height: 18.7px;
-    display: flex;
-    align-items: flex-start;
-    font-size: 14px;
-    color: #99a1af;
-}
-.sidebarcontent {
-    width: 254.9px;
-    flex: 1;
-    position: relative;
-    background-color: #000;
-    overflow: hidden;
-    color: #99a1af;
-}
-.sidebargroup, .sidebargroup2 {
-    position: absolute;
-    left: 0;
-    width: 254.9px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 8px 0 0 8px;
-    box-sizing: border-box;
-}
-.sidebargroup { top: 0; height: 187.9px; }
-.sidebargroup2 { top: 195.85px; height: 151.9px; }
-.sidebarmenu, .sidebarmenu2, .sidebarmenu3 {
-    width: 238.9px;
-    position: relative;
-    color: #d1d5dc;
-}
-.sidebarmenu { height: 139.9px; }
-.sidebarmenu2 { height: 103.9px; top: 39.97px; left: 7.98px; }
-.sidebarmenu3 { height: 68px; }
-
-.icon18 {
-    height: 16px;
-    width: 16px;
-    position: relative;
-}
-.appsidebar2, .appsidebar3, .appsidebar4, .appsidebar5, .appsidebar6, .appsidebar7, .appsidebar8, .appsidebar9 {
-    height: 20px;
-    overflow: hidden;
-    flex-shrink: 0;
-    display: flex;
-    align-items: flex-start;
-}
-.appsidebar2 { width: 34.5px; }
-.appsidebar3 { width: 52.3px; }
-.appsidebar4 { width: 67.6px; }
-.appsidebar5 { width: 46.1px; }
-.appsidebar6 { width: 66.2px; }
-.appsidebar7 { width: 53px; }
-.appsidebar8 { width: 77.6px; }
-.appsidebar9 { width: 86.7px; }
-
-.sidebarfooter {
-    width: 254.9px;
-    height: 85px;
-    background-color: #000;
-    border-top: 1.1px solid #2f2f2f;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 8px 0 0 8px;
-    color: #d1d5dc;
-}
-.appsidebar10 {
-    position: absolute;
-    top: -3.66px;
-    left: 39.95px;
-    width: 119.4px;
-    height: 39.3px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 2px;
-}
-.text25 {
-    width: 119.4px;
-    height: 18.7px;
-    display: flex;
-    align-items: flex-start;
-}
-.text26 {
-    width: 119.4px;
-    height: 18.7px;
-    display: flex;
-    align-items: flex-start;
-    color: #99a1af;
-}
-.adminrewindcodefilmcom {
-    position: relative;
-    line-height: 18.67px;
-    flex-shrink: 0;
-}
-.primitivespan2 {
-    position: absolute;
-    top: 4.01px;
-    left: 7.98px;
-    border-radius: 37596000px;
-    width: 24px;
-    height: 24px;
-    overflow: hidden;
-    display: flex;
-    align-items: flex-start;
-}
-.text27 {
-    height: 24px;
-    flex: 1;
-    border-radius: 37596000px;
-    background-color: #e50914;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }

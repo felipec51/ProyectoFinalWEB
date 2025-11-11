@@ -1,0 +1,229 @@
+/* Variables de Estilo (Opcional: Si no tienes un archivo de variables) */
+/*
+:root {
+    --color-principal: #e50914; 
+    --color-fondo-oscuro: #141414;
+    --color-texto-base: #ffffff;
+    --color-texto-secundario: #a0a0a0;
+    --color-interaccion: #333333; 
+    --ancho-sidebar: 260px;
+}
+*/
+
+/* --- Estilos Generales y Contenedor Principal --- */
+
+.flex-row-center {
+    display: flex;
+    align-items: center;
+}
+
+.text-base {
+    color: var(--color-texto-base, #ffffff);
+    font-weight: 600;
+}
+
+.text-secundario {
+    color: var(--color-texto-secundario, #a0a0a0);
+    font-weight: 400;
+}
+
+.sidebar2 {
+    /* Estilo principal de la barra lateral */
+    width: var(--ancho-sidebar, 260px);
+    height: 100vh;
+    background-color: var(--color-fondo-oscuro, #141414); 
+    position: fixed; /* Asegura que permanezca al lado izquierdo */
+    top: 0;
+    left: 0;
+    padding: 20px 0;
+    flex-direction: column;
+    z-index: 1000;
+    box-sizing: border-box;
+}
+
+.container43 {
+    /* Contenedor interno para asegurar el padding y el scroll si es necesario */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+
+/* --- Encabezado (Logo y Título) --- */
+
+.sidebarheader {
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--color-interaccion, #333333);
+    margin-bottom: 20px;
+}
+
+.appsidebar {
+    gap: 10px;
+}
+
+.container44 {
+    /* Estilo del logo o inicial */
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    background-color: var(--color-principal, #e50914);
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    justify-content: center;
+}
+
+.text23 {
+    font-size: 16px;
+    line-height: 1.2;
+}
+
+.text24 {
+    font-size: 12px;
+    line-height: 1;
+}
+
+/* --- Contenido de Navegación (Enlaces) --- */
+
+.sidebarcontent {
+    flex-grow: 1; /* Permite que el contenido tome el espacio disponible */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sidebargroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sidebargrouplabel {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+.sidebarmenu {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* Estilo para un item de menú (No activo) */
+.sidebarmenuitem2, 
+.sidebarmenuitem3,
+.sidebarmenuitem4,
+.sidebarmenuitem5 {
+    cursor: pointer;
+    padding: 10px 12px;
+    border-radius: 6px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.sidebarmenuitem2:hover, 
+.sidebarmenuitem3:hover,
+.sidebarmenuitem4:hover,
+.sidebarmenuitem5:hover {
+    background-color: var(--color-interaccion, #333333);
+}
+
+/* Estilo para el item de menú ACTIVO (Ej: Películas) */
+.sidebarmenuitem {
+    background-color: var(--color-principal, #e50914); /* Color de fondo activo */
+    color: white; 
+    padding: 10px 12px;
+    border-radius: 6px;
+    cursor: default;
+}
+
+/* Estilo de los clones de slot */
+.slotclone,
+.slotclone2 {
+    gap: 10px;
+}
+
+/* Estilos de los iconos */
+.icon18 {
+    /* Asumiendo que los iconos son imágenes o SVG */
+    width: 20px;
+    height: 20px;
+    filter: invert(100%); /* Hace que los iconos oscuros sean blancos si son SVG/PNG */
+}
+
+/* Ajuste específico para el item activo */
+.sidebarmenuitem .icon18 {
+    /* No se aplica filtro de inversión si el color de fondo es principal */
+}
+
+.appsidebar2,
+.appsidebar3,
+.appsidebar4,
+.appsidebar5,
+.appsidebar6,
+.appsidebar7,
+.appsidebar8,
+.appsidebar9 {
+    font-size: 14px;
+}
+
+/* --- Pie de Página (Usuario y Configuración) --- */
+
+.sidebarfooter {
+    padding-top: 20px;
+    border-top: 1px solid var(--color-interaccion, #333333);
+}
+
+.sidebarmenu3 {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.sidebarmenuitem9 {
+    padding: 10px 12px;
+    border-radius: 6px;
+    background-color: var(--color-interaccion, #333333);
+    cursor: pointer;
+}
+
+.slotclone9 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.primitivespan2 {
+    /* Avatar/Iniciales del Usuario */
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background-color: #646464; /* Color de fondo del avatar */
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    justify-content: center;
+}
+
+.appsidebar10 {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.text25 {
+    font-size: 14px;
+    line-height: 1;
+}
+
+.text26 {
+    font-size: 12px;
+    line-height: 1;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Para emails largos */
+    white-space: nowrap;
+}

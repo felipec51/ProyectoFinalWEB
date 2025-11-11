@@ -1,5 +1,4 @@
 <?php
-include 'componentes/infoprincipal.php';
 function renderdisponible(): void
 { ?>
 
@@ -38,7 +37,7 @@ function renderdisponible(): void
             <!-- Tarjeta 1: 3 días -->
             <div class="rent-card card-pos-1">
                 <div class="card-icon-container">
-                    <div class="card-icon-box"></div>
+                    <img src="./imgs/icons/iconofecha.svg" alt="fecha">
                 </div>
                 <div class="card-duration-text">3 días</div>
                 <div class="card-price-row">
@@ -49,7 +48,7 @@ function renderdisponible(): void
             <!-- Tarjeta 2: 15 días -->
             <div class="rent-card card-pos-2">
                 <div class="card-icon-container">
-                    <div class="card-icon-box"></div>
+                    <img src="./imgs/icons/iconofecha.svg" alt="fecha">
                 </div>
                 <div class="card-duration-text">15 días</div>
                 <div class="card-price-row">
@@ -60,7 +59,7 @@ function renderdisponible(): void
             <!-- Tarjeta 3: 1 mes -->
             <div class="rent-card card-pos-3">
                 <div class="card-icon-container">
-                    <div class="card-icon-box"></div>
+                    <img src="./imgs/icons/iconofecha.svg" alt="fecha">
                 </div>
                 <div class="card-duration-text">1 mes</div>
                 <div class="card-price-row">
@@ -73,8 +72,8 @@ function renderdisponible(): void
     <!-- Botón de Rentar Película -->
     <div class="rent-button">
         <div class="button-icon-container">
-            <!-- Icono placeholder -->
-            <div class="button-icon-box"></div>
+            <img src="./imgs/icons/movieIcon.svg" alt="fecha">
+           
         </div>
         <div class="button-text">Rentar película</div>
     </div>

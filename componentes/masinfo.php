@@ -44,7 +44,7 @@ function renderMasInfo(string $generos, string $es, string $elenco): void {
         <div class="div-audio-subtitulos-child"></div>
         <div class="informacion2">
             <div class="tags-de-peliculas">
-                <strong class="elenco">Elenco</strong>
+                <strong class="elenco">Elenco:</strong>
                 <span class="winona-ryder-david"><?= $elenco ?></span>
             </div>
         </div>

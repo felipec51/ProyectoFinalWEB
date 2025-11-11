@@ -1,11 +1,8 @@
 <?php
-include 'componentes/infoprincipal.php';
 function rendernodisponible(string $nombre_serie, string $ncopia, string $ncopiastotales, string $nfila, string $duracion_tag, string $anio): void
 {
 ?>
   <link rel="stylesheet" href="./styles/nodisponible.css" />
-
-
 
   <div class="container">
     <div class="info-principal">

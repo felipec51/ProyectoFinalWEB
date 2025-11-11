@@ -1,7 +1,8 @@
 .barra-nav-en-peliculas {
-    position: absolute;
+    position: fixed;
     top: 36px;
     left: 862px;
+    z-index: 1000;
     width: 515px;
     height: 45px;
     text-align: center;
