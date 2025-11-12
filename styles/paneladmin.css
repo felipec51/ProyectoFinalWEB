@@ -185,7 +185,7 @@ body {
 
 .app2 {
     width: 100%;
-    height: 1353px;
+    height: auto;
     background-color: #141414;
     overflow: hidden;
     flex-shrink: 0;
@@ -194,7 +194,7 @@ body {
     align-items: flex-start;
     padding: 8px 24px 0 33px;
     box-sizing: border-box;
-    gap: 32px;
+    gap: 19px;
 }
 
 .app3 {
@@ -466,7 +466,7 @@ body {
 
 .container12 {
     width: 100%;
-    height: 70px;
+    height: 50px;
     overflow-y: auto;
     position: relative;
     font-size: 16px;
@@ -485,8 +485,8 @@ body {
 }
 .container14 {
    width: 100%;
-    height: 100vh;
-    overflow-y: auto;
+    height: auto;
+    overflow-y: hidden;
     position: relative;
     font-size: 16px;
 
