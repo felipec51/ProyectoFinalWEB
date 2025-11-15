@@ -2,7 +2,7 @@
 
 include 'componentes/adminpeliculas.php';
 include 'componentes/sidebar.php';
-include 'data_peliculas.php';
+include 'listado_peliculas.php';//include 'data_peliculas.php'; --- ignorar eso lo comentan y colocan el crud correspondiente ---
 
 ?>
 
