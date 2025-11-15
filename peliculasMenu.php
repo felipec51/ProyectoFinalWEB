@@ -49,6 +49,15 @@
                 <img src="imgs/vista-previa-18.png" alt="Vista Previa 18" />
                 <div class="text-wrapper-5 text-section-title">Peliculas de Accion</div>
             </div>
+            <div class="vtp-peliculas">
+                <img src="imgs/vista-previa-13.png" alt="Vista Previa 13" />
+                <img src="imgs/vista-previa-14.png" alt="Vista Previa 14" />
+                <img src="imgs/vista-previa-15.png" alt="Vista Previa 15" />
+                <img src="imgs/vista-previa-16.png" alt="Vista Previa 16" />
+                <img src="imgs/vista-previa-17.png" alt="Vista Previa 17" />
+                <img src="imgs/vista-previa-18.png" alt="Vista Previa 18" />
+                <div class="text-wrapper-5 text-section-title">Peliculas de Accion</div>
+            </div>
             
         </div>
     </body>
