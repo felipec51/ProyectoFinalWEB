@@ -1,45 +1,45 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 session_start();
-require_once __DIR__ . '/inc/db.php'; // AJUSTA A TU RUTA REAL
+require_once __DIR__ . '/inc/db.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    $email = trim($_POST["email"]);
-    $password = trim($_POST["password"]);
+    $username = trim($_POST["username"] ?? "");
+    $password = trim($_POST["password"] ?? "");
 
-    // Conexión
-    $db = new Conexion();
-    $conn = $db->conectar();
+    // CONSULTAR usuario
+    $stmt = $conn->prepare("SELECT * FROM Usuario WHERE username = :u LIMIT 1");
+    $stmt->execute([":u" => $username]);
+    $row = $stmt->fetch();
+   // echo '<pre>'; var_dump($row); echo '</pre>';
+    //exit;
 
-    $sql = "SELECT idUsuario, nombre, email, password, rol FROM usuarios WHERE email = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
 
-    $resultado = $stmt->get_result();
+    if ($row) {
 
-    if ($resultado->num_rows === 1) {
+        // CONTRASEÑA SIN HASH
+        if ($password === $row["password"]) {
 
-        $row = $resultado->fetch_assoc();
+            $_SESSION["id_usuario"] = $row["id_usuario"];
+            $_SESSION["nombre"]     = $row["nombre"];
+            $_SESSION["rol_id_rol"] = $row["rol_id_rol"];
 
-        if (password_verify($password, $row["password"])) {
-
-            $_SESSION["idUsuario"] = $row["idUsuario"];
-            $_SESSION["nombre"]    = $row["nombre"];
-            $_SESSION["rol"]       = $row["rol"];
-
-            // Redirección según rol
-            if ($row["rol"] === "admin") {
+            // 1 = admin
+            if ($row["rol_id_rol"] == 1) {
                 header("Location: paneladmin.php");
             } else {
                 header("Location: peliculasMenu.php");
             }
             exit;
         }
+
     }
 
-    // Error si falla
-    $_SESSION["error"] = "Correo o contraseña incorrectos.";
+    $_SESSION["error"] = "Usuario o contraseña incorrectos.";
     header("Location: iniciarsesion.php");
     exit;
 }

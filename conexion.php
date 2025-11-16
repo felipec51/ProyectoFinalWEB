@@ -5,9 +5,9 @@ class Conexion
     public static function Conectar()
     {
         define('servidor', 'localhost'); 
-        define('nombre_bd', 'mydb'); // Ajustar según configuración local colocan el nombre de la bd
+        define('nombre_bd', 'FinWeb'); // Ajustar según configuración local colocan el nombre de la bd
         define('usuario', 'root'); // Ajustar según configuración local colocan su usuario
-        define('passw', '2005Fe123'); // Ajustar según configuración local en mi caso era esa porque estoy en linux y
+        define('passw', ''); // Ajustar según configuración local en mi caso era esa porque estoy en linux y
         // pide contraseña en windows si configuraron xampp sin contraseña poner '' 
         $opces = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8');
         try {

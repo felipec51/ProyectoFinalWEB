@@ -66,7 +66,7 @@
                     <div class="loginscreen">
                         <div class="input estilo-input-base">
                             <input class="estilo-input-basico tuemailcom" 
-                                   type="text" name="correo"
+                                   type="text" name="username"
                                    placeholder="Ingresa tu dirección" required>
                         </div>
                         <img src="./imgs/icons/Icon-1.svg" class="icon" alt="icon correo">
