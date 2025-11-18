@@ -65,7 +65,6 @@ function renderpeliculas(array $peliculas): void
 <?php endforeach; ?>
 </div>
 
-<!-- ------------- SCRIPT PARA HACER FUNCIONAR LOS BOTONES ------------- -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -80,7 +79,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // BOTÓN ELIMINAR
     document.querySelectorAll(".btnEliminar").forEach(btn => {
         btn.addEventListener("click", () => {
             const id = btn.dataset.id;

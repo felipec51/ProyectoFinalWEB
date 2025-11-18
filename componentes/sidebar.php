@@ -30,9 +30,12 @@ function rendersidebar(): void
                     <div class="sidebargrouplabel padding-1 flex-row-center text-secundario">Navegación</div>
                     <div class="sidebarmenu">
                         <div class="sidebarmenuitem">
+                            
                             <div class="slotclone flex-row-center">
+                                <a href="paneladmin.php" class="sidebarmenuitem" style="text-decoration:none;">
                                 <img src="./imgs/icons/icono-10-(6).svg" class="icon18" alt="icono de inicio">
-                                <div class="appsidebar2 text-base">Inicio</div>
+                                <div class="appsidebar2 text-base" onclick="location.href='paneladmin.php'">Inicio</div>
+                                </a>
                             </div>
                         </div>
                         <div class="sidebarmenuitem2">
@@ -67,8 +70,10 @@ function rendersidebar(): void
                         <a href="adminusuarios.php" style="text-decoration:none; color:inherit;">
                         <div class="sidebarmenuitem2">
                             <div class="slotclone2 flex-row-center">
+                                <a href="adminusuarios.php" style="text-decoration:none; color:inherit;">
                                 <img src="./imgs/icons/icono-10-(5).svg" class="icon18" alt="icono de usuarios">
                                 <div class="appsidebar7">Usuarios</div>
+                                </a>
                             </div>
                         </div>
                         </a>

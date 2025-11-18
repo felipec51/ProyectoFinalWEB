@@ -1,26 +1,22 @@
 <?php
-class Conexion {
-    private $host = "localhost";
-    private $db   = "FinWeb";
-    private $user = "root";
-    private $pass = "";
-    private $charset = "utf8";
-
-    public function Conectar() {
+// Archivo: conexion.php
+class Conexion
+{
+    public static function Conectar()
+    {
+        define('servidor', 'localhost'); 
+        define('nombre_bd', 'mydb'); // Ajustar según configuración local colocan el nombre de la bd
+        define('usuario', 'root'); // Ajustar según configuración local colocan su usuario
+        define('passw', '2005Fe123'); // Ajustar según configuración local en mi caso era esa porque estoy en linux y
+        // pide contraseña en windows si configuraron xampp sin contraseña poner '' 
+        $opces = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8');
         try {
-            $conexion = "mysql:host=".$this->host.";dbname=".$this->db.";charset=".$this->charset;
-            $options = [
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                PDO::ATTR_EMULATE_PREPARES => false,
-                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-            ];
-
-            $pdo = new PDO($conexion, $this->user, $this->pass, $options);
-            return $pdo;
-
-        } catch (PDOException $e) {
-            echo "Error de conexión: " . $e->getMessage();
-            exit;
+            $conexion = new PDO("mysql:host=" . servidor . "; dbname=" . nombre_bd, usuario, passw, $opces);
+            // Configuración de errores CRUCIAL para depuración
+            $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
+            return $conexion;
+        } catch (Exception $e) {
+            die("El error de Conexión es: " . $e->getMessage());
         }
     }
 }
