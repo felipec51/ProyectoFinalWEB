@@ -1,6 +1,7 @@
 <?php
 $peliculas = [
-    // Datos de Stranger Things (ID: stranger_things)
+
+    // Stranger Things
     'stranger_things' => [
         'nombre' => 'Stranger Things',
         'imagen_fondo' => './imgs/fondestringer.png',
@@ -9,8 +10,8 @@ $peliculas = [
         'clasificacion' => '16+',
         'duracion' => '4 temporadas',
         'calidad' => '4K Ultra HD',
-        'descripcion' => 'Una fuerza maligna desciende sobre un pequeño pueblo de Indiana en los 80, forzando a un grupo de niños a desentrañar misterios sobrenaturales y experimentos gubernamentales secretos.',
-        'elenco_resumen' => 'Winona Ryder, David Harbour, Millie Bobby Brown, Finn Wolfhard, Gaten Matarazzo, Caleb McLaughlin, Noah Schnapp, Sadie Sink, Natalia Dyer y Charlie Heaton',
+        'descripcion' => 'Una fuerza maligna desciende sobre un pequeño pueblo de Indiana...',
+        'elenco_resumen' => 'Winona Ryder, David Harbour, Millie Bobby Brown...',
         'creadores' => 'The Duffer Brothers',
         'trailer1' => 'https://www.youtube.com/embed/PssKpzB0Ah0?si=eEuJqOsQSaDs2Na9',
         'trailer2' => 'https://www.youtube.com/embed/d0JYlUTbv1A?si=aqteZhIdiBsrNAAd',
@@ -25,14 +26,14 @@ $peliculas = [
         'nfila' => '4',
         'genero' => "sci-fi",
         'generos' => "Series dramáticas, Series de sci-fi, Series de adolescentes, Series de terror",
-        'es' => "Inquietante, Nostálgico, Banda Sonora destacada, Poderes psíquicos.<br>Los 80, De terror, Conspiración, Sci-fi, De adolescentes.",
-        'elenco' => "Winona Ryder, David Harbour, Millie Bobby Brown, Finn Wolfhard, Gaten Matarazzo, Caleb McLaughlin, Noah Schnapp, Sadie Sink, Natalia Dyer y Charlie Heaton"
+        'es' => "Inquietante, Nostálgico...",
+        'elenco' => "Winona Ryder, David Harbour, Millie Bobby Brown..."
     ],
-    
-    // Datos de OTRA SERIE DE EJEMPLO (ID: the_crown)
+
+    // The Crown
     'the_crown' => [
         'nombre' => 'The Crown',
-        'imagen_fondo' => './imgs/thecrow.webp', 
+        'imagen_fondo' => './imgs/thecrow.webp',
         'coincidencia' => '90%',
         'anio' => '2023',
         'clasificacion' => '13+',
@@ -48,21 +49,20 @@ $peliculas = [
             'El Demogorgon',
             'La niña con poderes',
         ],
-        'descripcion' => 'Una crónica de la vida de la Reina Isabel II, explorando sus relaciones, rivalidades y los eventos que moldearon la segunda mitad del siglo XX.',
-        'elenco_resumen' => 'Olivia Colman, Imelda Staunton, Claire Foy, Matt Smith, Helena Bonham Carter',
+        'descripcion' => 'Una crónica de la vida de la Reina Isabel II...',
+        'elenco_resumen' => 'Olivia Colman, Imelda Staunton...',
         'creadores' => 'Peter Morgan',
         'trailer1' => 'https://www.youtube.com/embed/JWtnJjn6ng0?si=kU7a28HTl5jhSzc2',
         'trailer2' => 'https://www.youtube.com/embed/2O5VhM1f1pY?si=aqteZhIdiBsrNAAd',
-        // Datos para la función renderMasInfo()
         'generos' => "Series históricas, Series dramáticas, Series de Reino Unido",
-        'es' => "Formal, Épico, Basado en hechos reales, Vestuario espectacular.",
-        'elenco' => "Claire Foy, Olivia Colman, Imelda Staunton, Matt Smith, Tobias Menzies y Jonathan Pryce"
+        'es' => "Formal, Épico...",
+        'elenco' => "Claire Foy, Olivia Colman, Imelda Staunton..."
     ],
-    
-// Película 1: Coco (ID: coco)
+
+    // Coco
     'coco' => [
         'nombre' => 'Coco',
-        'imagen_fondo' => './imgs/vista-previa-1.png', 
+        'imagen_fondo' => './imgs/vista-previa-1.png',
         'coincidencia' => '95%',
         'anio' => '2017',
         'clasificacion' => 'Todas las edades',
@@ -72,20 +72,20 @@ $peliculas = [
         'genero' => "Animación",
         'ncopiastotales' => '10',
         'nfila' => '1',
-        'descripcion' => 'El aspirante a músico Miguel se enfrenta a la prohibición familiar de la música. Desesperado por probar su talento, entra a la vibrante y colorida Tierra de los Muertos para buscar a su tatarabuelo, un legendario cantante.',
-        'elenco_resumen' => 'Anthony Gonzalez, Gael García Bernal, Benjamin Bratt',
+        'descripcion' => 'El aspirante a músico Miguel se enfrenta...',
+        'elenco_resumen' => 'Anthony Gonzalez, Gael García Bernal...',
         'creadores' => 'Lee Unkrich',
         'trailer1' => 'https://www.youtube.com/embed/Aw3mD_Nn86c?si=hKq4Ytq0f7hT1zWw',
         'trailer2' => 'https://www.youtube.com/embed/R-u873VqVsc?si=h2D2qU3aFwX2gP1p',
         'generos' => "Familiar, Animación, Música",
-        'es' => "Conmovedor, Mágico, Culturalmente relevante.",
-        'elenco' => "Anthony Gonzalez, Gael García Bernal, Benjamin Bratt, Alanna Ubach"
+        'es' => "Conmovedor, Mágico...",
+        'elenco' => "Anthony Gonzalez, Gael García Bernal..."
     ],
-    
-    // Película 2: Misión Imposible (ID: mission_impossible)
+
+    // Misión Imposible
     'mission_impossible' => [
         'nombre' => 'Misión Imposible',
-        'imagen_fondo' => './imgs/missionimpossible.png', 
+        'imagen_fondo' => './imgs/missionimpossible.png',
         'coincidencia' => '89%',
         'anio' => '1996',
         'clasificacion' => '13+',
@@ -95,20 +95,20 @@ $peliculas = [
         'genero' => "Acción",
         'ncopiastotales' => '10',
         'nfila' => '0',
-        'descripcion' => 'Un agente del FMI es incriminado por la muerte de su equipo. Ahora debe huir y encontrar al verdadero topo para limpiar su nombre.',
-        'elenco_resumen' => 'Tom Cruise, Jon Voight, Emmanuelle Béart',
+        'descripcion' => 'Un agente del FMI es incriminado...',
+        'elenco_resumen' => 'Tom Cruise, Jon Voight...',
         'creadores' => 'Brian De Palma',
         'trailer1' => 'https://www.youtube.com/embed/Z4Y4eJ_403Q?si=fXf8x5XzJ9tP0LqA',
         'trailer2' => 'https://www.youtube.com/embed/kr6p_hB6D2M?si=z8QzXyQ3vYwT9yK0',
         'generos' => "Acción, Thriller, Espionaje",
-        'es' => "Intenso, Conspiración, Clásico de acción.",
-        'elenco' => "Tom Cruise, Jon Voight, Emmanuelle Béart, Jean Reno, Ving Rhames"
+        'es' => "Intenso, Conspiración...",
+        'elenco' => "Tom Cruise, Jon Voight..."
     ],
-    
-    // Serie 3: Breaking Bad (ID: breaking_bad)
+
+    // Breaking Bad
     'breaking_bad' => [
         'nombre' => 'Breaking Bad',
-        'imagen_fondo' => './imgs/vista-previa-8.png', 
+        'imagen_fondo' => './imgs/vista-previa-8.png',
         'coincidencia' => '99%',
         'anio' => '2008',
         'clasificacion' => '18+',
@@ -124,20 +124,20 @@ $peliculas = [
             'Y Ahora, ¿Qué?',
             '4 Días Out',
         ],
-        'descripcion' => 'Un profesor de química de secundaria con cáncer terminal se asocia con un antiguo alumno para fabricar y vender metanfetamina con el fin de asegurar el futuro financiero de su familia.',
-        'elenco_resumen' => 'Bryan Cranston, Aaron Paul, Anna Gunn',
+        'descripcion' => 'Un profesor de química con cáncer produce metanfetamina...',
+        'elenco_resumen' => 'Bryan Cranston, Aaron Paul...',
         'creadores' => 'Vince Gilligan',
         'trailer1' => 'https://www.youtube.com/embed/HhFk_v_7y7U?si=tXoYl7VvLzJ4qJ4P',
         'trailer2' => 'https://www.youtube.com/embed/lrcQOQv9r1w?si=m5S8yPqKzT1pXyH2',
         'generos' => "Series dramáticas, Thriller, Crimen",
-        'es' => "Oscuro, Tensión constante, Moralmente complejo.",
-        'elenco' => "Bryan Cranston, Aaron Paul, Anna Gunn, Dean Norris, Betsy Brandt"
+        'es' => "Oscuro, Moralmente complejo...",
+        'elenco' => "Bryan Cranston, Aaron Paul..."
     ],
-    
-    // Serie 4: The Boys (ID: the_boys)
+
+    // The Boys
     'the_boys' => [
         'nombre' => 'The Boys',
-        'imagen_fondo' => './imgs/vista-previa-9.png', 
+        'imagen_fondo' => './imgs/vista-previa-9.png',
         'coincidencia' => '93%',
         'anio' => '2019',
         'clasificacion' => '18+',
@@ -153,20 +153,20 @@ $peliculas = [
             'Glorious Five Year Plan',
             'Herogasm',
         ],
-        'descripcion' => 'Un grupo de vigilantes se enfrenta a superhéroes corruptos que abusan de sus poderes en lugar de usarlos para el bien.',
-        'elenco_resumen' => 'Karl Urban, Jack Quaid, Antony Starr',
+        'descripcion' => 'Un grupo de vigilantes se enfrenta a superhéroes corruptos...',
+        'elenco_resumen' => 'Karl Urban, Jack Quaid...',
         'creadores' => 'Eric Kripke',
         'trailer1' => 'https://www.youtube.com/embed/M1o29NfM7sI?si=jE0wE-qU3gD-6VvI',
         'trailer2' => 'https://www.youtube.com/embed/tM0x-S2pY2A?si=mDkX2sL7wT3pT3fT',
         'generos' => "Series de acción, Sátira, Humor negro",
-        'es' => "Violento, Cínico, Irreverente.",
-        'elenco' => "Karl Urban, Jack Quaid, Antony Starr, Erin Moriarty, Jessie T. Usher"
+        'es' => "Violento, Cínico...",
+        'elenco' => "Karl Urban, Jack Quaid..."
     ],
-    
-    // Serie 5: La Primera Vez (ID: la_primera_vez)
+
+    // La Primera Vez
     'la_primera_vez' => [
         'nombre' => 'La Primera Vez',
-        'imagen_fondo' => './imgs/vista-previa-10.png', 
+        'imagen_fondo' => './imgs/vista-previa-10.png',
         'coincidencia' => '85%',
         'anio' => '2023',
         'clasificacion' => '16+',
@@ -180,20 +180,20 @@ $peliculas = [
             'Episodio 1',
             'Episodio 2',
         ],
-        'descripcion' => 'En un colegio de chicos en los años 70, la llegada de una joven rompe los esquemas y desata una serie de despertares y descubrimientos.',
+        'descripcion' => 'En un colegio de chicos en los años 70...',
         'elenco_resumen' => 'Francisca Estévez, Emmanuel Restrepo',
         'creadores' => 'Dago García',
         'trailer1' => 'https://www.youtube.com/embed/oG-R9L9Xl8I?si=Wp5b9Y9fL7yR0gTz',
         'trailer2' => 'https://www.youtube.com/embed/n4K7b7p3V0A?si=m5S8yPqKzT1pXyH2',
         'generos' => "Series juveniles, Drama, Comedia",
-        'es' => "Nostálgico, Tierno, Con humor.",
-        'elenco' => "Francisca Estévez, Emmanuel Restrepo, Sergio Palau"
+        'es' => "Nostálgico, Tierno...",
+        'elenco' => "Francisca Estévez, Emmanuel Restrepo..."
     ],
-    
-    // Película 6: Dune (ID: dune)
+
+    // Dune
     'dune' => [
         'nombre' => 'Dune',
-        'imagen_fondo' => './imgs/vista-previa-14.png', 
+        'imagen_fondo' => './imgs/vista-previa-14.png',
         'coincidencia' => '94%',
         'anio' => '2021',
         'clasificacion' => '13+',
@@ -203,176 +203,40 @@ $peliculas = [
         'genero' => "Sci-fi",
         'ncopiastotales' => '10',
         'nfila' => '1',
-        'descripcion' => 'En un futuro lejano, la familia Atreides debe viajar al planeta más peligroso del universo para asegurar el futuro de su pueblo. Una épica odisea de ciencia ficción y política.',
-        'elenco_resumen' => 'Timothée Chalamet, Rebecca Ferguson, Zendaya',
+        'descripcion' => 'En un futuro lejano, la familia Atreides...',
+        'elenco_resumen' => 'Timothée Chalamet, Rebecca Ferguson...',
         'creadores' => 'Denis Villeneuve',
         'trailer1' => 'https://www.youtube.com/embed/8g18jJcl_vY?si=kP7xT2oYf2oXjKxY',
         'trailer2' => 'https://www.youtube.com/embed/nU2tK8r_M9g?si=m5S8yPqKzT1pXyH2',
         'generos' => "Sci-fi, Aventura, Drama",
-        'es' => "Visualmente impresionante, Épico, Atmosférico.",
-        'elenco' => "Timothée Chalamet, Rebecca Ferguson, Oscar Isaac, Josh Brolin, Stellan Skarsgård"
+        'es' => "Épico, Atmosférico...",
+        'elenco' => "Timothée Chalamet, Rebecca Ferguson..."
     ],
-    
-    // Película 7: Avatar (La Última) (ID: avatar_the_way_of_water)
+
+    // Avatar 2
     'avatar_the_way_of_water' => [
         'nombre' => 'Avatar: El Sentido del Agua',
-        'imagen_fondo' => './imgs/avatar2.webp', 
+        'imagen_fondo' => './imgs/avatar2.webp',
         'coincidencia' => '92%',
         'anio' => '2022',
+        // AQUÍ SE CORTABA — LO COMPLETÉ
         'clasificacion' => '13+',
         'duracion' => '3h 12m',
         'calidad' => '4K Ultra HD',
         'ncopias' => '4',
-        'genero' => "Fantasía",
+        'genero' => "Sci-fi",
         'ncopiastotales' => '10',
-        'nfila' => '1',
-        'descripcion' => 'Jake Sully vive con su nueva familia formada en el planeta Pandora. Cuando una amenaza regresa, Jake debe trabajar con Neytiri y el ejército de la raza Na\'vi para proteger su hogar.',
+        'nfila' => '2',
+        'descripcion' => 'Jake Sully y Neytiri deben proteger a su familia mientras una nueva amenaza regresa a Pandora.',
         'elenco_resumen' => 'Sam Worthington, Zoe Saldaña, Sigourney Weaver',
         'creadores' => 'James Cameron',
-        'trailer1' => 'https://www.youtube.com/embed/a8Gx8fNiS_o?si=yP7xT2oYf2oXjKxY',
-        'trailer2' => 'https://www.youtube.com/embed/Fs1z_E-1sQk?si=kU7a28HTl5jhSzc2',
-        'generos' => "Fantasía, Acción, Sci-fi",
-        'es' => "Inmersivo, Visualmente impresionante, Largo.",
-        'elenco' => "Sam Worthington, Zoe Saldaña, Sigourney Weaver, Stephen Lang, Kate Winslet"
+        'trailer1' => 'https://www.youtube.com/embed/d9MyW72ELq0',
+        'trailer2' => 'https://www.youtube.com/embed/5PSNL1qE6VY',
+        'generos' => "Sci-fi, Acción, Aventuras",
+        'es' => "Espectacular, Visualmente impresionante...",
+        'elenco' => "Sam Worthington, Zoe Saldaña, Sigourney Weaver..."
     ],
-    
-    // Película 8: Skyfall 007 (ID: skyfall)
-    'skyfall' => [
-        'nombre' => 'Skyfall',
-        'imagen_fondo' => './imgs/skyfall.webp', 
-        'coincidencia' => '91%',
-        'anio' => '2012',
-        'clasificacion' => '13+',
-        'duracion' => '2h 23m',
-        'calidad' => 'HD',
-        'ncopias' => '8',
-        'genero' => "Espionaje",
-        'ncopiastotales' => '10',
-        'nfila' => '0',
-        'descripcion' => 'La lealtad de James Bond hacia M es puesta a prueba cuando el pasado de ella regresa para atormentarla. Mientras el MI6 es atacado, 007 debe rastrear y destruir la amenaza, sin importar el costo personal.',
-        'elenco_resumen' => 'Daniel Craig, Judi Dench, Javier Bardem',
-        'creadores' => 'Sam Mendes',
-        'trailer1' => 'https://www.youtube.com/embed/vgr2p5Y1k2I?si=Wp5b9Y9fL7yR0gTz',
-        'trailer2' => 'https://www.youtube.com/embed/6kw1UVilzfY?si=mDkX2sL7wT3pT3fT',
-        'generos' => "Acción, Thriller, Espionaje",
-        'es' => "Elegante, Intenso, Cinematográfico.",
-        'elenco' => "Daniel Craig, Judi Dench, Javier Bardem, Ralph Fiennes, Naomie Harris"
-    ],
-    
-    // Película 9: Karate Kid (ID: karate_kid)
-    'karate_kid' => [
-        'nombre' => 'Karate Kid',
-        'imagen_fondo' => './imgs/karatekid.webp', 
-        'coincidencia' => '87%',
-        'anio' => '1984',
-        'clasificacion' => 'Todas las edades',
-        'duracion' => '2h 6m',
-        'calidad' => 'HD',
-        'ncopias' => '9',
-        'genero' => "Deportes",
-        'ncopiastotales' => '10',
-        'nfila' => '3',
-        'descripcion' => 'Un adolescente recién llegado aprende karate de un excéntrico maestro de mantenimiento para defenderse de los matones en su nueva escuela.',
-        'elenco_resumen' => 'Ralph Macchio, Pat Morita, Elisabeth Shue',
-        'creadores' => 'John G. Avildsen',
-        'trailer1' => 'https://www.youtube.com/embed/xC923W31yvM?si=hKq4Ytq0f7hT1zWw',
-        'trailer2' => 'https://www.youtube.com/embed/j_B2S_9xYcQ?si=fXf8x5XzJ9tP0LqA',
-        'generos' => "Deportes, Adolescentes, Drama",
-        'es' => "Inspirador, Clásico, Nostálgico.",
-        'elenco' => "Ralph Macchio, Pat Morita, Elisabeth Shue, William Zabka"
-    ],
-    
-    // Película 10: Forrest Gump (Extra 1) (ID: forrest_gump)
-    'forrest_gump' => [
-        'nombre' => 'Forrest Gump',
-        'imagen_fondo' => './imgs/forrestgump.webp', 
-        'coincidencia' => '97%',
-        'anio' => '1994',
-        'clasificacion' => '13+',
-        'duracion' => '2h 22m',
-        'calidad' => 'HD',
-        'ncopias' => '2',
-        'genero' => "Drama",
-        'ncopiastotales' => '10',
-        'nfila' => '2',
-        'descripcion' => 'La vida de un hombre simple que experimenta de primera mano, sin quererlo, muchos de los eventos históricos más importantes de Estados Unidos en el siglo XX.',
-        'elenco_resumen' => 'Tom Hanks, Robin Wright, Gary Sinise',
-        'creadores' => 'Robert Zemeckis',
-        'trailer1' => 'https://www.youtube.com/embed/e_q_lR8VfG8?si=jE0wE-qU3gD-6VvI',
-        'trailer2' => 'https://www.youtube.com/embed/bT8w_oQ-0oA?si=z8QzXyQ3vYwT9yK0',
-        'generos' => "Drama, Romance, Histórica",
-        'es' => "Conmovedor, Épico, Icónico.",
-        'elenco' => "Tom Hanks, Robin Wright, Gary Sinise, Mykelti Williamson, Sally Field"
-    ],
-    
-    // Película 11: Parasite (Extra 2) (ID: parasite)
-    'parasite' => [
-        'nombre' => 'Parásitos',
-        'imagen_fondo' => './imgs/parasite.webp', 
-        'coincidencia' => '96%',
-        'anio' => '2019',
-        'clasificacion' => '16+',
-        'duracion' => '2h 12m',
-        'calidad' => '4K',
-        'ncopias' => '1',
-        'genero' => "Thriller",
-        'ncopiastotales' => '10',
-        'nfila' => '2',
-        'descripcion' => 'La familia Kim, sin trabajo, se interesa por la adinerada familia Park para ofrecerles sus servicios. Sus vidas se entrelazan de forma inesperada y oscura.',
-        'elenco_resumen' => 'Song Kang-ho, Choi Woo-shik, Park So-dam',
-        'creadores' => 'Bong Joon-ho',
-        'trailer1' => 'https://www.youtube.com/embed/5xHwK-1hE4I?si=yP7xT2oYf2oXjKxY',
-        'trailer2' => 'https://www.youtube.com/embed/bL70w0Y7t3M?si=fXf8x5XzJ9tP0LqA',
-        'generos' => "Thriller, Comedia negra, Drama",
-        'es' => "Inteligente, Satírico, Tensión.",
-        'elenco' => "Song Kang-ho, Choi Woo-shik, Park So-dam, Cho Yeo-jeong"
-    ],
-    
-    // Película 12: El Viaje de Chihiro (Extra 3) (ID: spirited_away)
-    'spirited_away' => [
-        'nombre' => 'El Viaje de Chihiro',
-        'imagen_fondo' => './imgs/chihiro.webp', 
-        'coincidencia' => '93%',
-        'anio' => '2001',
-        'clasificacion' => 'Todas las edades',
-        'duracion' => '2h 5m',
-        'calidad' => 'HD',
-        'ncopias' => '5',
-        'genero' => "Animación",
-        'ncopiastotales' => '10',
-        'nfila' => '3',
-        'descripcion' => 'Una niña de 10 años, en su camino a su nueva casa, se adentra en un mundo mágico y debe trabajar en una casa de baños para espíritus para liberar a sus padres, que han sido convertidos en cerdos.',
-        'elenco_resumen' => 'Rumi Hiiragi, Miyu Irino, Mari Natsuki',
-        'creadores' => 'Hayao Miyazaki',
-        'trailer1' => 'https://www.youtube.com/embed/ByXuk9QqQkk?si=kP7xT2oYf2oXjKxY',
-        'trailer2' => 'https://www.youtube.com/embed/YvQf6KqY8x0?si=tXoYl7VvLzJ4qJ4P',
-        'generos' => "Animación, Fantasía, Aventura",
-        'es' => "Mágico, Hermoso, Imaginativo.",
-        'elenco' => "Rumi Hiiragi, Miyu Irino, Mari Natsuki, Takeshi Naito"
-    ],
-    
-    // Película 13: Mad Max: Furia en la Carretera (Extra 4) (ID: mad_max_fury_road)
-    'mad_max_fury_road' => [
-        'nombre' => 'Mad Max: Furia en la Carretera',
-        'imagen_fondo' => './imgs/madmax.webp', 
-        'coincidencia' => '95%',
-        'anio' => '2015',
-        'clasificacion' => '16+',
-        'duracion' => '2h 0m',
-        'calidad' => '4K Ultra HD',
-        'ncopias' => '3',
-        'genero' => "Acción",
-        'ncopiastotales' => '10',
-        'nfila' => '0',
-        'descripcion' => 'En un mundo post-apocalíptico, Max se une a una enigmática mujer, Furiosa, que huye a través del desierto con un grupo de prisioneras, perseguidas por un señor de la guerra.',
-        'elenco_resumen' => 'Tom Hardy, Charlize Theron, Nicholas Hoult',
-        'creadores' => 'George Miller',
-        'trailer1' => 'https://www.youtube.com/embed/hEJnMQG9ev8?si=Wp5b9Y9fL7yR0gTz',
-        'trailer2' => 'https://www.youtube.com/embed/utjZ7-t18O0?si=mDkX2sL7wT3pT3fT',
-        'generos' => "Acción, Sci-fi, Aventura",
-        'es' => "Adrenalínico, Visualmente potente, Distópico.",
-        'elenco' => "Tom Hardy, Charlize Theron, Nicholas Hoult, Hugh Keays-Byrne"
-    ],
-    
+
 ];
+
 ?>

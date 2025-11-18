@@ -1,0 +1,55 @@
+.usuarios-panel {
+    padding: 20px;
+    color: #fff;
+}
+
+.titulo-usuarios {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.tabla-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.tabla-usuarios {
+    width: 100%;
+    border-collapse: collapse;
+    background: #1a1a1a;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.tabla-usuarios th, 
+.tabla-usuarios td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #333;
+}
+
+.tabla-usuarios th {
+    background: #222;
+    text-align: left;
+}
+
+.tabla-usuarios tr:hover {
+    background: #2b2b2b;
+}
+
+.col-acciones {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-accion {
+    padding: 6px 12px;
+    background: #333;
+    border: 1px solid #555;
+    border-radius: 6px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.btn-accion:hover {
+    background: #444;
+}

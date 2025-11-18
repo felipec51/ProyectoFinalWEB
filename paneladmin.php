@@ -2,10 +2,9 @@
 
 include 'componentes/adminpeliculas.php';
 include 'componentes/sidebar.php';
-include 'listado_peliculas.php';//include 'data_peliculas.php'; --- ignorar eso lo comentan y colocan el crud correspondiente ---
+include 'data_peliculas.php';
 
 ?>
-
 <!DOCTYPE html>
 <html>
 
@@ -15,6 +14,8 @@ include 'listado_peliculas.php';//include 'data_peliculas.php'; --- ignorar eso 
     <link rel="stylesheet" href="styles/peliculasMenu.css" />
     <link rel="stylesheet" href="styles/config.css" />
     <link rel="stylesheet" href="./styles/paneladmin.css" />
+    <li><a href="adminusuarios.php">Usuarios</a></li>
+
 </head>
 
 <body>
@@ -22,40 +23,49 @@ include 'listado_peliculas.php';//include 'data_peliculas.php'; --- ignorar eso 
     <div class="desktop">
         <div class="admin-movie-panel-activity">
             <div class="app">
+
+                <!-- SIDEBAR -->
                 <div class="sidebar">
+                    <?php rendersidebar(); ?>
                 </div>
+
+                <!-- CONTENIDO PRINCIPAL -->
                 <div class="sidebarinset">
                     <div class="app2">
-                        <header class="app3">
-                            <img src="./imgs/icons/icono-10-(1).svg" class="button-icon" alt="">
 
+                        <!-- HEADER -->
+                        <header class="app3">
+
+                            <img src="./imgs/icons/icono-10-(1).svg" class="button-icon" alt="">
                             <div class="primitivediv"></div>
+
                             <div class="container">
+
                                 <div class="primitivebutton flex-row-center">
                                     <div class="primitivespan flex-row-center">
                                         <div class="todos text-base">Todos</div>
                                     </div>
                                     <img src="./imgs/icons/icono-10-(20).svg" class="icon" alt="icono de todos">
                                 </div>
+
                                 <div class="container2">
-                                    <div class="input flex-row-center">
-                                        <div class="buscar-pelculas-directores text-secundario">Buscar películas, directores...</div>
-                                    </div>
+                                    <input type="text" id="searchInput" class="buscar-peliculas-input" placeholder="Buscar películas, directores...">
                                     <img src="./imgs/icons/Icon-7.svg" class="icon2" alt="">
                                 </div>
                             </div>
+
+                            <!-- BOTÓN AGREGAR PELÍCULA -->
                             <div class="container3 flex-row-center">
                                 <img src="./imgs/icons/Icon-5.svg" class="button-icon2" alt="">
-                                <div class="button">
+                                <div class="button" id="btnAgregarPelicula">
                                     <img src="./imgs/icons/icono-10-(15).svg" class="icon3" alt="">
                                     <div class="agregar-pelcula text-base">Agregar Película</div>
                                 </div>
                             </div>
-                            <div class="sidebartrigger">
-                                <div class="toggle-sidebar text-base">Toggle Sidebar</div>
-                            </div>
+
                         </header>
 
+                        <!-- CARDS ESTADÍSTICAS -->
                         <div class="container4 text-secundario">
                             <div class="card card-base">
                                 <div class="statscard">
@@ -63,17 +73,20 @@ include 'listado_peliculas.php';//include 'data_peliculas.php'; --- ignorar eso 
                                         <div class="paragraph flex-row-center">
                                             <div class="total-pelculas text-secundario">Total Películas</div>
                                         </div>
-                                        <div class="heading-3 text-base">8</div>
-                                        <div class="paragraph2 ">
+
+                                        <div class="heading-3 text-base">
+                                            <?php echo count($peliculas); ?>
+                                        </div>
+
+                                        <div class="paragraph2">
                                             <div class="en-el-catlogo">En el catálogo</div>
                                         </div>
-                                        <div class="container6">
-                                            <div class="div2">↑ +12.5%</div>
-                                        </div>
-                                        <img src="./imgs/icons/Container.svg" class="container-icon" alt="icono de configuración">
+                                        <div class="container6"><div class="div2">↑ +12.5%</div></div>
+                                        <img src="./imgs/icons/Container.svg" class="container-icon">
                                     </div>
                                 </div>
                             </div>
+
                             <div class="card2 card-base">
                                 <div class="statscard2">
                                     <div class="container5">
@@ -81,68 +94,68 @@ include 'listado_peliculas.php';//include 'data_peliculas.php'; --- ignorar eso 
                                             <div class="total-pelculas text-secundario">Rating Promedio</div>
                                         </div>
                                         <div class="heading-32 text-base">8.3</div>
-                                        <div class="paragraph4 text-secundario">
-                                            <div class="en-el-catlogo">De todas las películas</div>
-                                        </div>
-                                        <div class="container8">
-                                            <div class="div4">↑ +0.3</div>
-                                        </div>
+                                        <div class="paragraph4 text-secundario"><div class="en-el-catlogo">De todas</div></div>
+                                        <div class="container8"><div class="div4">↑ +0.3</div></div>
                                     </div>
-                                    <img src="./imgs/icons/Container2.svg" class="container-icon" alt="icono de configuración">
+                                    <img src="./imgs/icons/Container2.svg" class="container-icon">
                                 </div>
                             </div>
+
                             <div class="card3 card-base">
                                 <div class="statscard3">
                                     <div class="container9">
-                                        <div class="paragraph5 flex-row-center">
-                                            <div class="total-pelculas text-secundario">Géneros</div>
-                                        </div>
+                                        <div class="paragraph5 flex-row-center"><div class="total-pelculas text-secundario">Géneros</div></div>
                                         <div class="heading-33 text-base">7</div>
                                     </div>
-                                    <img src="./imgs/icons/Container3.svg" class="container-icon" alt="icono de configuración">
+                                    <img src="./imgs/icons/Container3.svg" class="container-icon">
                                 </div>
                             </div>
+
                             <div class="card4 card-base">
                                 <div class="statscard4">
                                     <div class="container10">
-                                        <div class="paragraph flex-row-center">
-                                            <div class="total-pelculas text-secundario">Visualizaciones</div>
-                                        </div>
+                                        <div class="paragraph flex-row-center"><div class="total-pelculas text-secundario">Visualizaciones</div></div>
                                         <div class="heading-32 text-base">156K</div>
-                                        <div class="paragraph4 text-secundario">
-                                            <div class="en-el-catlogo">Este mes</div>
-                                        </div>
-                                        <div class="container11">
-                                            <div class="div6">↑ +8.2%</div>
-                                        </div>
+                                        <div class="paragraph4 text-secundario"><div class="en-el-catlogo">Este mes</div></div>
+                                        <div class="container11"><div class="div6">↑ +8.2%</div></div>
                                     </div>
-                                    <img src="./imgs/icons/Container4.svg" class="container-icon" alt="icono de configuración">
+                                    <img src="./imgs/icons/Container4.svg" class="container-icon">
                                 </div>
                             </div>
                         </div>
 
+                        <!-- CATÁLOGO -->
                         <div class="container12">
                             <div class="container13">
                                 <div class="heading-2 text-base">Catálogo de Películas</div>
                                 <div class="paragraph8 text-secundario">
-                                    <div class="pelculas-encontradas">8 películas encontradas</div>
+                                    <div class="pelculas-encontradas">
+                                        <?php echo count($peliculas); ?> películas encontradas
+                                    </div>
                                 </div>
                             </div>
-
                         </div>
-                        <div class="container14">
 
+                        <!-- GRID -->
+                        <div class="container14" id="peliculasGrid">
                             <?php renderpeliculas($peliculas); ?>
-
                         </div>
+
                     </div>
                 </div>
-
             </div>
-
-            <?php rendersidebar() ?>
         </div>
     </div>
+
 </body>
 
+<!-- SCRIPTS -->
+<script>
+document.getElementById("btnAgregarPelicula").onclick = () => {
+    window.location.href = "peliculas_crear.php";
+};
+</script>
+
 </html>
+
+

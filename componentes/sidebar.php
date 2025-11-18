@@ -64,12 +64,14 @@ function rendersidebar(): void
                                 <div class="appsidebar6">Calendario</div>
                             </div>
                         </div>
+                        <a href="adminusuarios.php" style="text-decoration:none; color:inherit;">
                         <div class="sidebarmenuitem2">
                             <div class="slotclone2 flex-row-center">
                                 <img src="./imgs/icons/icono-10-(5).svg" class="icon18" alt="icono de usuarios">
                                 <div class="appsidebar7">Usuarios</div>
                             </div>
                         </div>
+                        </a>
                         <div class="sidebarmenuitem3">
                             <div class="slotclone2 flex-row-center">
                                 <img src="./imgs/icons/icono-10-(2).svg" class="icon18" alt="icono de valoraciones">

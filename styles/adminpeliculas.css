@@ -212,3 +212,18 @@
     color: #6a7282;
     position: absolute;
 }
+
+/* Permitir que se comporten como botones sin cambiar su apariencia */
+.button2,
+.button-icon3,
+.btnEditar,
+.btnEliminar {
+    cursor: pointer;
+}
+
+/* Para que la imagen no bloquee el click */
+.btnEditar img,
+.btnEliminar img {
+    pointer-events: none;
+}
+
