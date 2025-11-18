@@ -500,6 +500,11 @@ body {
     top: 310px;
     left: calc(50% + 56.01px);
 }
+.container10 {
+    top: 410px;
+    left: 15px;
+}
+
 
 .primitivelabel {
     position: absolute;
@@ -542,7 +547,7 @@ body {
 .button {
     position: absolute;
     bottom: 52px;
-    left: 396.94px;
+    left: 614px;
     box-shadow: 0px 20px 25px -5px rgba(0, 0, 0, 0.1), 0px 8px 10px -6px rgba(0, 0, 0, 0.1);
     border-radius: 16px;
     background: linear-gradient(180deg, var(--color-accent-rojo), #c20812);

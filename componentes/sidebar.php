@@ -32,16 +32,19 @@ function rendersidebar(): void
                         <div class="sidebarmenuitem">
                             
                             <div class="slotclone flex-row-center">
-                                <a href="paneladmin.php" class="sidebarmenuitem" style="text-decoration:none;">
+                       
                                 <img src="./imgs/icons/icono-10-(6).svg" class="icon18" alt="icono de inicio">
-                                <div class="appsidebar2 text-base" onclick="location.href='paneladmin.php'">Inicio</div>
+                                <a href="paneladmin.php" style="text-decoration:none; color:inherit;">
+                                    <div class="appsidebar2 text-base">Inicio</div>
                                 </a>
                             </div>
                         </div>
                         <div class="sidebarmenuitem2">
                             <div class="slotclone2 flex-row-center">
                                 <img src="./imgs/icons/icono-10-(19).svg" class="icon18" alt="icono de películas">
-                                <div class="appsidebar3">Películas</div>
+                                <a href="adminpeliculas.php" style="text-decoration:none; color:inherit;">
+                                    <div class="appsidebar3">Películas</div>
+                                </a>
                             </div>
                         </div>
                         <div class="sidebarmenuitem3">
@@ -67,16 +70,16 @@ function rendersidebar(): void
                                 <div class="appsidebar6">Calendario</div>
                             </div>
                         </div>
-                        <a href="adminusuarios.php" style="text-decoration:none; color:inherit;">
                         <div class="sidebarmenuitem2">
                             <div class="slotclone2 flex-row-center">
-                                <a href="adminusuarios.php" style="text-decoration:none; color:inherit;">
+                                
                                 <img src="./imgs/icons/icono-10-(5).svg" class="icon18" alt="icono de usuarios">
+                                <a href="adminusuarios.php" style="text-decoration:none; color:inherit;">
                                 <div class="appsidebar7">Usuarios</div>
                                 </a>
                             </div>
                         </div>
-                        </a>
+            
                         <div class="sidebarmenuitem3">
                             <div class="slotclone2 flex-row-center">
                                 <img src="./imgs/icons/icono-10-(2).svg" class="icon18" alt="icono de valoraciones">

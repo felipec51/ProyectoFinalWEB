@@ -21,7 +21,7 @@
             </div>
             
             <div class="vtp-peliculas">
-                <img src="imgs/vista-previa-1.png" alt="Vista Previa 1" />
+                <img src="imgs/vista-previa-1.png" alt="Vista Previa 1" onclick="location.href='pelicula.php?id=stranger_things'" />
                 <img src="imgs/vista-previa-2.png" alt="Vista Previa 2" />
                 <img src="imgs/vista-previa-3.png" alt="Vista Previa 3" />
                 <img src="imgs/vista-previa-4.png" alt="Vista Previa 4" />
@@ -31,13 +31,13 @@
             </div>
             
             <div class="vtp-peliculas">
-                <img src="imgs/vista-previa-7.png" alt="Vista Previa 7" onclick="location.href='serie.php?id=stranger_things'"/>
-                <img src="imgs/vista-previa-8.png" alt="Vista Previa 8" onclick="location.href='serie.php?id=the_crown'"/>
-                <img src="imgs/vista-previa-9.png" alt="Vista Previa 9" onclick="location.href='serie.php?id=otra_serie'"/>
-                <img src="imgs/vista-previa-10.png" alt="Vista Previa 10" onclick="location.href='serie.php?id=otra_serie'"/>
-                <img src="imgs/vista-previa-11.png" alt="Vista Previa 11" onclick="location.href='serie.php?id=otra_serie'"/>
-                <img src="imgs/vista-previa-12.png" alt="Vista Previa 12" onclick="location.href='serie.php?id=otra_serie'"/>
-                <div class="text-wrapper-5 text-section-title">series</div>
+                <img src="imgs/vista-previa-7.png" alt="Vista Previa 7" onclick="location.href='pelicula.php?id=stranger_things'"/>
+                <img src="imgs/vista-previa-8.png" alt="Vista Previa 8" onclick="location.href='pelicula.php?id=the_crown'"/>
+                <img src="imgs/vista-previa-9.png" alt="Vista Previa 9" onclick="location.href='pelicula.php?id=otra_serie'"/>
+                <img src="imgs/vista-previa-10.png" alt="Vista Previa 10" onclick="location.href='pelicula.php?id=otra_serie'"/>
+                <img src="imgs/vista-previa-11.png" alt="Vista Previa 11" onclick="location.href='pelicula.php?id=otra_serie'"/>
+                <img src="imgs/vista-previa-12.png" alt="Vista Previa 12" onclick="location.href='pelicula.php?id=otra_serie'"/>
+                <div class="text-wrapper-5 text-section-title">Sci-fi</div>
             </div>
             
             <div class="vtp-peliculas">

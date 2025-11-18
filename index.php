@@ -1,11 +1,11 @@
-<?php 
-session_start(); 
+<?php
+session_start();
 
 // 1. Recuperar los datos guardados de la sesión (para el "Formulario Pegajoso")
 $data = $_SESSION['form_data'] ?? [];
 
 // 2. Limpiar los datos del formulario de la sesión después de recuperarlos
-unset($_SESSION['form_data']); 
+unset($_SESSION['form_data']);
 ?>
 
 <!DOCTYPE html>
@@ -124,85 +124,85 @@ unset($_SESSION['form_data']);
                     <div class="nete-a-rewindcodefilm">Únete a RewindCodeFilm y disfruta del mejor catálogo de películas</div>
                 </div>
             </div>
-            
-            <div class="form" style="height: 541px;"> 
+
+            <div class="form" style="height: 541px;">
                 <form action="registro.php" method="post">
-                    
+
                     <div class="home-registrar-iniciar-container" style="width: calc(100% - 33.3px); top: 0px; right: 33.3px; left: 0px; height: 433px;">
-                        
+
                         <div class="container2 input-campo-base">
                             <div class="primitivelabel">
                                 <div class="direccin">Dirección</div>
                             </div>
-                            <input class="estilo-input-basico  estilo-input" 
-                                   type="text" 
-                                   placeholder="Ingresa tu dirección" 
-                                   name="direccion"
-                                   value="<?= htmlspecialchars($data['direccion'] ?? '') ?>">
+                            <input class="estilo-input-basico  estilo-input"
+                                type="text"
+                                placeholder="Ingresa tu dirección"
+                                name="direccion"
+                                value="<?= htmlspecialchars($data['direccion'] ?? '') ?>">
                         </div>
-                        
+
                         <div class="container3 input-campo-base">
                             <div class="primitivelabel">
                                 <div class="direccin">username</div>
                             </div>
-                            <input class="estilo-input-basico  estilo-input" 
-                                   type="text" 
-                                   placeholder="Ingresa tu username" 
-                                   name="username"
-                                   value="<?= htmlspecialchars($data['username'] ?? '') ?>">
+                            <input class="estilo-input-basico  estilo-input"
+                                type="text"
+                                placeholder="Ingresa tu username"
+                                name="username"
+                                value="<?= htmlspecialchars($data['username'] ?? '') ?>">
                         </div>
 
                         <div class="container4 input-campo-base">
                             <div class="primitivelabel">
                                 <div class="direccin">Nombre</div>
                             </div>
-                            <input class="estilo-input-basico  estilo-input" 
-                                   type="text" 
-                                   placeholder="Tu nombre" 
-                                   name="nombre"
-                                   value="<?= htmlspecialchars($data['nombre'] ?? '') ?>">
+                            <input class="estilo-input-basico  estilo-input"
+                                type="text"
+                                placeholder="Tu nombre"
+                                name="nombre"
+                                value="<?= htmlspecialchars($data['nombre'] ?? '') ?>">
                         </div>
-                        
+
                         <div class="container5 input-campo-base">
                             <div class="primitivelabel">
                                 <div class="direccin">Apellido</div>
                             </div>
-                            <input class="estilo-input-basico  estilo-input" 
-                                   type="text" 
-                                   placeholder="Tu apellido" 
-                                   name="apellido"
-                                   value="<?= htmlspecialchars($data['apellido'] ?? '') ?>">
+                            <input class="estilo-input-basico  estilo-input"
+                                type="text"
+                                placeholder="Tu apellido"
+                                name="apellido"
+                                value="<?= htmlspecialchars($data['apellido'] ?? '') ?>">
                         </div>
 
                         <div class="container6 input-campo-base">
                             <div class="primitivelabel">
                                 <div class="direccin">Email</div>
                             </div>
-                            <input class="estilo-input-basico estilo-input" 
-                                   type="email" 
-                                   placeholder="ejemplo@email.com" 
-                                   name="email"
-                                   value="<?= htmlspecialchars($data['email'] ?? '') ?>">
+                            <input class="estilo-input-basico estilo-input"
+                                type="email"
+                                placeholder="ejemplo@email.com"
+                                name="email"
+                                value="<?= htmlspecialchars($data['email'] ?? '') ?>">
                         </div>
-                        
+
                         <div class="container7 input-campo-base">
                             <div class="primitivelabel">
                                 <div class="direccin">Contraseña</div>
                             </div>
-                            <input class="estilo-input-basico  estilo-input " 
-                                   type="password" 
-                                   placeholder="Ingresa tu contraseña" 
-                                   name="password">
+                            <input class="estilo-input-basico  estilo-input "
+                                type="password"
+                                placeholder="Ingresa tu contraseña"
+                                name="password">
                         </div>
-                        
+
                         <div class="container8 input-campo-base">
                             <div class="primitivelabel">
                                 <div class="direccin">Pregunta de Seguridad</div>
                             </div>
                             <?php $selected_question = $data['pregunta_seguridad'] ?? ''; ?>
-                            <select class="estilo-input-basico  estilo-input" 
-                                   name="pregunta_seguridad"
-                                   required>
+                            <select class="estilo-input-basico  estilo-input"
+                                name="pregunta_seguridad"
+                                required>
                                 <option value="" disabled <?= empty($selected_question) ? 'selected' : '' ?>>Selecciona una pregunta...</option>
                                 <option value="mascota" <?= $selected_question == 'mascota' ? 'selected' : '' ?>>Nombre de tu primera mascota?</option>
                                 <option value="madre" <?= $selected_question == 'madre' ? 'selected' : '' ?>>apodo de la infancia?</option>
@@ -215,21 +215,32 @@ unset($_SESSION['form_data']);
                             <div class="primitivelabel">
                                 <div class="direccin">Respuesta</div>
                             </div>
-                            <input class="estilo-input-basico  estilo-input" 
-                                   type="text" 
-                                   name="respuesta_seguridad"
-                                   placeholder="Tu respuesta" 
-                                   required
-                                   value="<?= htmlspecialchars($data['respuesta_seguridad'] ?? '') ?>">
+                            <input class="estilo-input-basico  estilo-input"
+                                type="text"
+                                name="respuesta_seguridad"
+                                placeholder="Tu respuesta"
+                                required
+                                value="<?= htmlspecialchars($data['respuesta_seguridad'] ?? '') ?>">
+                        </div>
+                        <div class="container10 input-campo-base">
+                            <div class="primitivelabel">
+                                <div class="direccin">Telefono</div>
+                            </div>
+                            <input class="estilo-input-basico  estilo-input"
+                                type="text"
+                                name="telefono"
+                                placeholder="Telefono de contacto"
+                                required
+                                value="<?= htmlspecialchars($data['telefono'] ?? '') ?>">
                         </div>
 
                     </div>
-                    
+
                     <div class="button">
                         <input class="estilo-input-basico  registrarse-registro-grande " type="submit" value="Registrarse">
                     </div>
                 </form>
-                
+
                 <div class="home-registrar-iniciar-button" style="position: absolute; top: 520px; left: 454px;">
                     <div class="obtener-ayuda">Obtener ayuda</div>
                 </div>
@@ -252,14 +263,20 @@ unset($_SESSION['form_data']);
             transition: opacity 0.5s, transform 0.5s;
             transform: translateY(100%);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            font-family: Arial, sans-serif; /* Asegurando que el texto se vea bien */
+            font-family: Arial, sans-serif;
+            /* Asegurando que el texto se vea bien */
         }
+
         .notification-box.success {
-            background-color: #4CAF50; /* Verde */
+            background-color: #4CAF50;
+            /* Verde */
         }
+
         .notification-box.error {
-            background-color: #f44336; /* Rojo */
+            background-color: #f44336;
+            /* Rojo */
         }
+
         .notification-box.show {
             opacity: 1;
             transform: translateY(0);
@@ -269,44 +286,45 @@ unset($_SESSION['form_data']);
     <div id="notification-area" class="notification-box"></div>
 
     <script>
-    <?php
-    // Lógica PHP para manejar la sesión de notificación
-    if (isset($_SESSION['notification'])) {
-        $type = $_SESSION['notification']['type'];
-        $message = $_SESSION['notification']['message'];
-        
-        // Limpiar la sesión para que el mensaje no se muestre de nuevo
-        unset($_SESSION['notification']);
-    ?>
-        
-        // Lógica JavaScript para mostrar la notificación
-        const notifBox = document.getElementById('notification-area');
-        // Usamos JSON.parse para decodificar el mensaje y evitar problemas con comillas
-        try {
-            notifBox.textContent = "<?php echo htmlspecialchars($message, ENT_QUOTES, 'UTF-8'); ?>";
-        } catch (e) {
-            notifBox.textContent = "Mensaje de notificación.";
-        }
-        
-        notifBox.classList.add("<?php echo $type; ?>");
-        
-        // Usar un pequeño timeout para aplicar la transición
-        setTimeout(() => {
-            notifBox.classList.add('show');
-        }, 100);
+        <?php
+        // Lógica PHP para manejar la sesión de notificación
+        if (isset($_SESSION['notification'])) {
+            $type = $_SESSION['notification']['type'];
+            $message = $_SESSION['notification']['message'];
 
-        // Ocultar la notificación después de 5 segundos
-        setTimeout(() => {
-            notifBox.classList.remove('show');
-            // Eliminar completamente el elemento del DOM después de la transición
+            // Limpiar la sesión para que el mensaje no se muestre de nuevo
+            unset($_SESSION['notification']);
+        ?>
+
+            // Lógica JavaScript para mostrar la notificación
+            const notifBox = document.getElementById('notification-area');
+            // Usamos JSON.parse para decodificar el mensaje y evitar problemas con comillas
+            try {
+                notifBox.textContent = "<?php echo htmlspecialchars($message, ENT_QUOTES, 'UTF-8'); ?>";
+            } catch (e) {
+                notifBox.textContent = "Mensaje de notificación.";
+            }
+
+            notifBox.classList.add("<?php echo $type; ?>");
+
+            // Usar un pequeño timeout para aplicar la transición
             setTimeout(() => {
-                notifBox.remove();
-            }, 500);
-        }, 5000);
+                notifBox.classList.add('show');
+            }, 100);
 
-    <?php
-    }
-    ?>
+            // Ocultar la notificación después de 5 segundos
+            setTimeout(() => {
+                notifBox.classList.remove('show');
+                // Eliminar completamente el elemento del DOM después de la transición
+                setTimeout(() => {
+                    notifBox.remove();
+                }, 500);
+            }, 5000);
+
+        <?php
+        }
+        ?>
     </script>
 </body>
+
 </html>
