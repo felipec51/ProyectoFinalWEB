@@ -1,0 +1,307 @@
+:root {
+    /* Paleta de Colores Principal */
+    --color-bg-principal: #000000;
+    --color-bg-secundario: #131313;
+    --color-accent-rojo: #e50914;
+    --color-accent-rojo-oscuro: #c20812;
+    --color-texto-principal: #ffffff;
+    --color-texto-secundario: #99a1af;
+    --color-transparencia-3: rgba(255, 255, 255, 0.1);
+
+    /* Tipografía */
+    --font-family-titulo: "DM Sans";
+    --font-family-interfaz: "Inter";
+    --font-size-xl: 40px;
+    --font-size-sm: 14px;
+    --font-size-2xl: 20px;
+}
+
+body {
+    margin: 0;
+    line-height: normal;
+    font-family: var(--font-family-titulo);
+    background-color: var(--color-bg-secundario);
+    width: 100%;
+    height: 100vh;
+}
+
+/* ---------------------------------------------------- */
+/* --- 2. LAYOUT PRINCIPAL (TOMADO DE INICIARSESION) --- */
+/* ---------------------------------------------------- */
+
+.desktop {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    text-align: left;
+    font-size: var(--font-size-xl);
+    color: var(--color-texto-principal);
+}
+
+.cofondo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.4);
+}
+
+/* Contenedor principal del formulario (Caja oscura central) - AUMENTADA LA ALTURA */
+.iniciar-sesion-pc {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 440px;
+    height: 800px;
+    /* **AUMENTADO** Altura para 4 campos + botón + enlace */
+    padding: 60px 68px 40px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 4px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+    box-sizing: border-box;
+    font-family: var(--font-family-interfaz);
+}
+
+/* Logo Superior */
+.rewindcodefilm {
+    position: absolute;
+    top: 30px;
+    left: 4%;
+    font-size: var(--font-size-xl);
+    color: var(--color-accent-rojo);
+    font-family: var(--font-family-titulo);
+}
+
+.rewindcodefilm2 {
+    position: relative;
+}
+
+/* ---------------------------------------------------- */
+/* --- 3. ESTILOS DE ELEMENTOS BASE (INPUTS Y BOTONES) --- */
+/* ---------------------------------------------------- */
+
+.formulario-recuperar {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.iniciar-sesion {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--color-texto-principal);
+}
+
+/* Contenedor del campo (posición relativa para elementos internos) */
+.campo-input-contenedor {
+    position: absolute;
+    width: 310px;
+    /* Ancho de los campos */
+    height: 86px;
+}
+
+.primitivelabel {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    font-size: var(--font-size-sm);
+    color: var(--color-texto-principal);
+}
+
+.correo-electrnico {
+    position: relative;
+}
+
+.loginscreen {
+    position: absolute;
+    top: 27.98px;
+    left: 0;
+    width: 100%;
+    height: 56px;
+    box-sizing: border-box;
+    display: flex;
+}
+
+.input {
+    width: 100%;
+    height: 56px;
+    position: relative;
+}
+
+/* Estilo Básico del INPUT (BASE) */
+.estilo-input-basico {
+    box-sizing: border-box;
+    overflow: hidden;
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+
+    /* Propiedades para hacerlo un campo de texto funcional */
+    width: 100%;
+    height: 100%;
+    padding: 0px 16px;
+    /* Padding interno */
+    border-radius: 16px;
+    border: 0.8px solid rgba(255, 255, 255, 0.2);
+    background-color: var(--color-transparencia-3);
+    color: var(--color-texto-principal);
+
+    /* Corrección del input/placeholder */
+    display: block !important;
+    border: none;
+    outline: none;
+}
+
+/* Estilo específico para el input text/password */
+.tuemailcom {
+    background: transparent;
+    border-color: transparent;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Estilo para el SELECT (Pregunta de Seguridad) */
+.select-recuperar {
+    position: absolute;
+    width: 100%;
+    height: 56px;
+    top: 27.98px;
+    left: 0;
+    color: var(--color-texto-principal) !important;
+    background-color: var(--color-transparencia-3) !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: none !important;
+    border-radius: 16px;
+    border: 0.8px solid rgba(255, 255, 255, 0.2);
+    padding: 0px 16px;
+}
+
+/* Estilo de las opciones del select (para que el menú sea oscuro) */
+.select-recuperar option {
+    background-color: var(--color-bg-principal) !important;
+    color: var(--color-texto-principal) !important;
+}
+
+
+/* Placeholder Styling */
+.estilo-input-basico::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* Botón de Continuar */
+.btn-continuar {
+    position: absolute;
+    width: 310px;
+    height: 56px;
+    border-radius: 16px;
+    cursor: pointer;
+    text-align: center;
+    background: linear-gradient(180deg, var(--color-accent-rojo), var(--color-accent-rojo-oscuro));
+    box-shadow: 0px 10px 15px -3px rgba(229, 9, 20, 0.4), 0px 4px 6px -4px rgba(229, 9, 20, 0.4);
+}
+
+.iniciar-sesion2 {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 56px;
+    width: 100%;
+    height: 100%;
+    display: block;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Enlaces */
+.olvidaste-contrasea {
+    position: relative;
+    font-size: var(--font-size-sm);
+    color: var(--color-texto-secundario);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+/* ---------------------------------------------------- */
+/* --- 4. POSICIONAMIENTO DEL FORMULARIO RECUPERAR.PHP --- */
+/* ---------------------------------------------------- */
+
+/* Ajuste del Título "Recuperar Contraseña" */
+.iniciar-sesion {
+    top: 30px !important;
+}
+
+/* Posición base de los campos (separados por ~115px) */
+/* Campo 1: Usuario/Correo */
+.campo-usuario {
+    top: 130px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Campo 2: Pregunta de Seguridad (SELECT) */
+.campo-pregunta {
+    top: 245px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Campo 3: Respuesta de Seguridad */
+.campo-respuesta {
+    top: 360px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* NUEVO CAMPO 4: Nueva Contraseña */
+.campo-nueva-password {
+    top: 475px;
+    /* 360 + 115 */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Botón Final "Cambiar Contraseña" */
+.btn-recuperar-final {
+    top: 600px !important;
+    /* 475 + 86 (altura campo) + 39 (margen) */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Enlace de vuelta al login */
+.enlace-volver {
+    position: absolute;
+    top: 685px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 310px;
+    text-align: center;
+}
+
+/* Ocultar elementos no necesarios */
+.obtener-ayuda,
+.primera-vez-en,
+.registrarse,
+.login-with-wrapper,
+.facebook-ic-parent {
+    display: none !important;
+}
+
+/* Ocultar el texto de ayuda original */
+.olvidaste-contrasea:not(.enlace-volver .olvidaste-contrasea) {
+    display: none;
+}
