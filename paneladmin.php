@@ -44,16 +44,7 @@ include 'listado_peliculas.php';//include 'data_peliculas.php'; --- ignorar eso 
                                     <img src="./imgs/icons/Icon-7.svg" class="icon2" alt="">
                                 </div>
                             </div>
-                            <div class="container3 flex-row-center">
-                                <img src="./imgs/icons/Icon-5.svg" class="button-icon2" alt="">
-                                <div class="button">
-                                    <img src="./imgs/icons/icono-10-(15).svg" class="icon3" alt="">
-                                    <div class="agregar-pelcula text-base">Agregar Película</div>
-                                </div>
-                            </div>
-                            <div class="sidebartrigger">
-                                <div class="toggle-sidebar text-base">Toggle Sidebar</div>
-                            </div>
+                            
                         </header>
 
                         <div class="container4 text-secundario">

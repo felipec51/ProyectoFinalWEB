@@ -1,0 +1,182 @@
+  @import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+            @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+            * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+
+            body {
+                margin: 0;
+                min-height: 100vh;
+                background-color: #0f0f0f;
+                /* Fondo sutil con degradado para dar profundidad */
+                background-image: radial-gradient(circle at 10% 20%, rgba(229, 9, 20, 0.15) 0%, transparent 40%),
+                                  radial-gradient(circle at 90% 80%, rgba(30, 30, 30, 0.5) 0%, transparent 40%);
+                font-family: 'Inter', sans-serif;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 20px;
+            }
+
+            /* --- EFECTO GLASSMORPHISM (CRISTAL) --- */
+            .glass-container {
+                width: 100%;
+                max-width: 900px;
+                background: rgba(30, 30, 30, 0.65); /* Semi-transparente */
+                backdrop-filter: blur(20px); /* El efecto borroso detrás */
+                -webkit-backdrop-filter: blur(20px);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+                border-radius: 24px;
+                padding: 40px;
+                position: relative;
+                overflow: hidden;
+            }
+
+            /* Brillo superior estético */
+            .glass-container::before {
+                content: '';
+                position: absolute;
+                top: 0; left: 0; right: 0;
+                height: 1px;
+                background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            }
+
+            .header {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                margin-bottom: 35px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                padding-bottom: 20px;
+            }
+
+            .header h1 {
+                color: #ffffff;
+                font-size: 28px;
+                font-weight: 700;
+                margin: 0 0 5px 0;
+                letter-spacing: -0.5px;
+            }
+
+            .header p {
+                color: #9ca3af;
+                font-size: 14px;
+                margin: 0;
+            }
+
+            .id-badge {
+                background: rgba(229, 9, 20, 0.2);
+                color: #ff4d4d;
+                padding: 5px 12px;
+                border-radius: 20px;
+                font-size: 12px;
+                font-weight: 600;
+                border: 1px solid rgba(229, 9, 20, 0.3);
+            }
+
+            /* GRID DEL FORMULARIO */
+            .form-grid {
+                display: grid;
+                grid-template-columns: repeat(12, 1fr); /* Grid de 12 columnas para flexibilidad */
+                gap: 24px;
+            }
+
+            .col-12 { grid-column: span 12; }
+            .col-6 { grid-column: span 6; }
+            .col-4 { grid-column: span 4; }
+            .col-3 { grid-column: span 3; }
+
+            .input-group {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .label {
+                color: #d1d5db;
+                font-size: 13px;
+                font-weight: 600;
+                letter-spacing: 0.5px;
+            }
+
+            .input-field {
+                background: rgba(0, 0, 0, 0.3);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 12px;
+                padding: 14px 16px;
+                color: #ffffff;
+                font-size: 15px;
+                font-family: 'Inter', sans-serif;
+                transition: all 0.3s ease;
+                outline: none;
+            }
+
+            .input-field:focus {
+                border-color: #e50914; /* Rojo Netflix */
+                background: rgba(0, 0, 0, 0.5);
+                box-shadow: 0 0 0 4px rgba(229, 9, 20, 0.15);
+            }
+
+            /* Estilo especial para campos de solo lectura o bloqueados si quisieras */
+            .input-field:disabled {
+                opacity: 0.5;
+                cursor: not-allowed;
+            }
+
+            /* Footer de botones */
+            .footer {
+                margin-top: 40px;
+                display: flex;
+                justify-content: flex-end;
+                gap: 16px;
+                align-items: center;
+            }
+
+            .btn {
+                padding: 12px 24px;
+                border-radius: 12px;
+                font-weight: 600;
+                font-size: 15px;
+                cursor: pointer;
+                transition: transform 0.2s, box-shadow 0.2s;
+                border: none;
+                text-decoration: none;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .btn:active { transform: scale(0.98); }
+
+            .btn-cancel {
+                background: transparent;
+                color: #9ca3af;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            .btn-cancel:hover {
+                background: rgba(255, 255, 255, 0.05);
+                color: #ffffff;
+            }
+
+            .btn-save {
+                background: linear-gradient(135deg, #e50914 0%, #b20710 100%);
+                color: white;
+                box-shadow: 0 4px 15px rgba(229, 9, 20, 0.4);
+            }
+            .btn-save:hover {
+                box-shadow: 0 6px 20px rgba(229, 9, 20, 0.6);
+                filter: brightness(1.1);
+            }
+
+            /* Responsive adjustments */
+            @media (max-width: 768px) {
+                .col-6, .col-4, .col-3 { grid-column: span 12; }
+                .glass-container { padding: 25px; }
+            }
+
+            /* Tooltip para el precio y copias */
+            .helper-text {
+                font-size: 11px;
+                color: #6b7280;
+                margin-top: 2px;
+            }

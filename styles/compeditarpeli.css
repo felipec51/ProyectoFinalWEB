@@ -9,10 +9,9 @@ body {
     height: 1359px;
     position: relative;
     text-align: left;
-    /* Variables de Estilo */
-    font-size: var(--font-size-sm); 
+    font-size: var(--font-size-sm);
     color: var(--color-texto-principal);
-    font-family: var(--font-family-interfaz); 
+    font-family: var(--font-family-interfaz);
 }
 
 .fondo-negro-div {
@@ -23,8 +22,7 @@ body {
     right: 0%;
     bottom: 0%;
     left: 0%;
-    /* Variable para el fondo oscuro/overlay */
-    background-color: var(--color-transparencia-1); 
+    background-color: var(--color-transparencia-1);
 }
 
 .editar-pelicula-child {
@@ -35,8 +33,7 @@ body {
     right: 36.52%;
     bottom: 33.85%;
     left: 36.57%;
-    /* Variables para el radio grande y el fondo semi-transparente */
-    border-radius: var(--border-radius-xl); 
+    border-radius: var(--border-radius-xl);
     background-color: var(--color-transparencia-2);
 }
 
@@ -58,8 +55,7 @@ body {
     width: 462.3px;
     height: 20px;
     position: relative;
-    /* Variables de Estilo */
-    font-size: var(--font-size-xs); 
+    font-size: var(--font-size-xs);
     color: var(--color-texto-secundario);
 }
 
@@ -75,7 +71,7 @@ body {
     flex-direction: column;
     align-items: flex-start;
     font-size: var(--font-size-xs);
-    color: #d1d5dc; /* Color específico. Podrías añadirlo a las variables si se repite. */
+    color: #d1d5dc;
 }
 
 
@@ -102,7 +98,7 @@ body {
     align-items: center;
     padding: 4px 12px;
 
-    color: var(--color-input-texto); 
+    color: var(--color-input-texto);
 }
 
 
@@ -119,7 +115,6 @@ body {
 .button {
     height: 36px;
     width: 88px;
-    /* Variables para el estilo del botón 'Cancelar' */
     border-radius: var(--border-radius-base);
     background-color: var(--color-caja-gris-oscuro);
     border: 0.8px solid var(--color-caja-gris-oscuro);
@@ -133,9 +128,8 @@ body {
 .editar-pelicula-button {
     height: 36px;
     width: 142px;
-    /* Variable para el botón principal (rojo) */
+    background-color: var(--color-accent-rojo);
     border-radius: var(--border-radius-base);
-    background-color: var(--color-accent-rojo); 
     display: flex;
     align-items: center;
     justify-content: center;

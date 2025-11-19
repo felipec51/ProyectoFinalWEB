@@ -1,10 +1,10 @@
 <?php
 
-function renderMasInfo(string $generos, string $es, string $elenco): void {
+function renderMasInfo(string $generos, string $es, string $elenco, string $director): void {
 ?>
 
 <link rel="stylesheet" href="./styles/masinfo.css" /></section>
-<section class="mas-info-div">
+<section class="mas-info-div" id="mas-info-div">
     <h2 class="ms-info">Más info</h2>
 
     <div class="info-box info-box-1">
@@ -46,6 +46,10 @@ function renderMasInfo(string $generos, string $es, string $elenco): void {
             <div class="tags-de-peliculas">
                 <strong class="elenco">Elenco:</strong>
                 <span class="winona-ryder-david"><?= $elenco ?></span>
+            </div>
+            <div class="tags-de-peliculas">
+                <strong class="Director">Director:</strong>
+                <span class="winona-ryder-david"><?= $director ?></span>
             </div>
         </div>
     </div>

@@ -2,19 +2,13 @@
 // Archivo: adminusuarios.php
 session_start();
 
-// Habilitar la visualización de errores solo durante el desarrollo
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 
-// Incluimos la clase CRUD para interactuar con la BD
 require_once 'crud_usuarios.php';
 $crud = new CrudUsuarios();
 
-// 1. MANEJO DE ACCIONES (ELIMINAR Y EDITAR/GUARDAR)
-$message = null; // Para mostrar mensajes de éxito o error
+$message = null; 
 
-// A. Lógica para ELIMINAR un usuario
+
 if (isset($_GET['action']) && $_GET['action'] == 'delete' && isset($_GET['id'])) {
     $id_usuario_delete = intval($_GET['id']);
     if ($crud->eliminarUsuario($id_usuario_delete)) {
@@ -30,7 +24,6 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete' && isset($_GET['id']))
     }
 }
 
-// B. Lógica para GUARDAR la edición de un usuario
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['action'] == 'save_edit') {
     $datos = [
         'id_usuario'    => intval($_POST['id_usuario']),
@@ -39,13 +32,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['a
         'direccion'     => trim($_POST['direccion']),
         'telefono'      => trim($_POST['telefono']),
         'email'         => trim($_POST['email']),
-        'password'      => $_POST['password'], // Sin encriptar, siguiendo el esquema de tu BD
+        'password'      => $_POST['password'],
         'rol_id_rol'    => intval($_POST['rol_id_rol'])
     ];
 
     if ($crud->editarUsuario($datos)) {
         $message = ['type' => 'success', 'text' => 'Usuario actualizado con éxito.'];
-        // Limpiamos el ID de edición para que no se muestre el formulario después de guardar
         unset($_GET['id']); 
         unset($_GET['action']);
     } else {
@@ -54,7 +46,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['a
 }
 
 
-// 2. Lógica para CARGAR DATOS DE EDICIÓN
 $usuario_a_editar = null;
 $roles = $crud->obtenerRoles();
 
@@ -67,7 +58,6 @@ if (isset($_GET['action']) && $_GET['action'] == 'edit' && isset($_GET['id'])) {
     }
 }
 
-// 3. Obtener la lista de usuarios para la tabla
 $usuarios = $crud->obtenerUsuarios();
 
 ?>

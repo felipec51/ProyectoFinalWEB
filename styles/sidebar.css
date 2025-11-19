@@ -1,16 +1,3 @@
-/* Variables de Estilo (Opcional: Si no tienes un archivo de variables) */
-/*
-:root {
-    --color-principal: #e50914; 
-    --color-fondo-oscuro: #141414;
-    --color-texto-base: #ffffff;
-    --color-texto-secundario: #a0a0a0;
-    --color-interaccion: #333333; 
-    --ancho-sidebar: 260px;
-}
-*/
-
-/* --- Estilos Generales y Contenedor Principal --- */
 
 .flex-row-center {
     display: flex;
@@ -28,11 +15,11 @@
 }
 
 .sidebar2 {
-    /* Estilo principal de la barra lateral */
+
     width: var(--ancho-sidebar, 260px);
     height: 100vh;
     background-color: var(--color-fondo-oscuro, #141414); 
-    position: fixed; /* Asegura que permanezca al lado izquierdo */
+    position: fixed; 
     top: 0;
     left: 0;
     padding: 20px 0;
@@ -42,7 +29,7 @@
 }
 
 .container43 {
-    /* Contenedor interno para asegurar el padding y el scroll si es necesario */
+   
     width: 100%;
     height: 100%;
     display: flex;
@@ -51,7 +38,6 @@
     box-sizing: border-box;
 }
 
-/* --- Encabezado (Logo y Título) --- */
 
 .sidebarheader {
     padding-bottom: 20px;
@@ -64,7 +50,6 @@
 }
 
 .container44 {
-    /* Estilo del logo o inicial */
     width: 32px;
     height: 32px;
     border-radius: 6px;
@@ -85,10 +70,9 @@
     line-height: 1;
 }
 
-/* --- Contenido de Navegación (Enlaces) --- */
 
 .sidebarcontent {
-    flex-grow: 1; /* Permite que el contenido tome el espacio disponible */
+    flex-grow: 1; 
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -114,7 +98,6 @@
     gap: 5px;
 }
 
-/* Estilo para un item de menú (No activo) */
 .sidebarmenuitem2, 
 .sidebarmenuitem3,
 .sidebarmenuitem4,
@@ -132,33 +115,26 @@
     background-color: var(--color-interaccion, #333333);
 }
 
-/* Estilo para el item de menú ACTIVO (Ej: Películas) */
 .sidebarmenuitem {
-    background-color: var(--color-principal, #e50914); /* Color de fondo activo */
+    background-color: var(--color-principal, #e50914); 
     color: white; 
     padding: 10px 12px;
     border-radius: 6px;
     cursor: default;
 }
 
-/* Estilo de los clones de slot */
 .slotclone,
 .slotclone2 {
     gap: 10px;
 }
 
-/* Estilos de los iconos */
 .icon18 {
-    /* Asumiendo que los iconos son imágenes o SVG */
     width: 20px;
     height: 20px;
-    filter: invert(100%); /* Hace que los iconos oscuros sean blancos si son SVG/PNG */
+    filter: invert(100%); 
 }
 
-/* Ajuste específico para el item activo */
-.sidebarmenuitem .icon18 {
-    /* No se aplica filtro de inversión si el color de fondo es principal */
-}
+
 
 .appsidebar2,
 .appsidebar3,
@@ -171,7 +147,6 @@
     font-size: 14px;
 }
 
-/* --- Pie de Página (Usuario y Configuración) --- */
 
 .sidebarfooter {
     padding-top: 20px;
@@ -198,11 +173,10 @@
 }
 
 .primitivespan2 {
-    /* Avatar/Iniciales del Usuario */
     width: 38px;
     height: 38px;
     border-radius: 50%;
-    background-color: #646464; /* Color de fondo del avatar */
+    background-color: #646464; 
     color: white;
     font-weight: bold;
     font-size: 14px;
@@ -224,6 +198,6 @@
     font-size: 12px;
     line-height: 1;
     overflow: hidden;
-    text-overflow: ellipsis; /* Para emails largos */
+    text-overflow: ellipsis; 
     white-space: nowrap;
 }

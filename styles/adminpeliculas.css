@@ -1,229 +1,136 @@
-.peliculas-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    overflow-y: auto;
+:root {
+    --bg-color: #141414;
+    --card-bg: #1f1f1f;
+    --text-main: #ffffff;
+    --text-sec: #b3b3b3;
+    --netflix-red: #e50914;
+    --netflix-red-hover: #b20710;
+    --border-color: #404040;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: var(--netflix-red);
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.success {
+    background-color: #2e7d32;
+    color: white;
+}
+
+.error {
+    background-color: #c62828;
+    color: white;
+}
+
+.table-container {
+    overflow-x: auto;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 10px;
+}
+
+table {
     width: 100%;
-    height: 739px;
+    border-collapse: collapse;
+    min-width: 800px;
 }
 
-.heading-35 {
-    font-size: 16px;
-    top: 120px;
-    left: 7px;
-    color: #fff;
-    position: absolute;
+thead tr {
+    background-color: #000;
+    border-bottom: 2px solid var(--netflix-red);
 }
 
-.container-icon2,
-.container-icon3,
-.container-icon4 {
-    height: 48px;
-    width: 48px;
-    border-radius: 10px;
-    left: 355px;
+th {
+    padding: 15px;
+    text-align: left;
+    font-weight: bold;
+    color: var(--text-sec);
+    text-transform: uppercase;
+    font-size: 0.85rem;
 }
 
-.container-icon,
-.container-icon2 {
-    position: absolute;
-    max-height: 100%;
-    top: 19.9px;
+td {
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
 }
 
-.container-icon .container-icon2 .container-icon3,
-.container-icon4 {
-    margin: 0 !important;
-    position: absolute;
-    top: 19.9px;
-    z-index: 1;
+tr:hover {
+    background-color: #2a2a2a;
 }
 
-.netflixmoviecard {
-    position: relative;
-    border-radius: 8px;
-    background-color: #141414;
-    width: 411px;
-    overflow: hidden;
-    height: 275px;
-}
-
-.netflixmoviecard {
-    left: 10px;
-    height: 276px;
-}
-
-.netflixmoviecard2 {
-    left: 430px;
-}
-
-.container15 {
-    position: absolute;
-    width: calc(100% + 12px);
-    top: 0;
-    left: 0;
-    background: linear-gradient(0deg, #000, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0));
-    height: calc(100% + 4px);
-    right: -12px;
-    bottom: -4px;
-}
-
-.container18 {
-    position: absolute;
-    width: calc(100% - 24px);
-    height: 28px;
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-    color: #000;
-    left: 7px;
-    bottom: 17px;
-}
-
-.button2 {
-    height: 28px;
-    flex: 1;
-    position: relative;
-    border-radius: 8px;
-    background-color: #fff;
-}
-
-.button-icon3 {
-    height: 31px;
-    background-color: #e50914;
-    width: 36px;
-    border-radius: 8px;
-}
-
-.icon5 {
-    position: absolute;
-    top: 6px;
-    left: 111.08px;
-    width: 16px;
-    height: 16px;
-}
-
-.editar {
-    position: absolute;
-    top: 3.66px;
-    left: 137.04px;
-    line-height: 18.67px;
-}
-
-.badge {
-    position: absolute;
-    border-radius: 8px;
-    background-color: #2f2f2f;
-    height: 22.7px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2px 8px;
-    box-sizing: border-box;
-    left: 7px;
-    width: 154px;
-    bottom: 63.65px;
-}
-
-.div {
-    position: absolute;
-    top: -1.88px;
-    left: 0;
-    line-height: 24px;
-}
-
-.image-inception-icon {
-    position: absolute;
-    height: 100%;
-    width: calc(100% + 12px);
-    top: 0;
-    right: -12px;
-    bottom: 0;
-    left: 0;
-    max-width: 100%;
-    overflow: hidden;
-    max-height: 100%;
+.poster-mini {
+    width: 50px;
+    height: 75px;
     object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
-.container16 {
-    position: absolute;
-    width: calc(100% - 24px);
-    right: 17px;
-    height: 18.7px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: #d1d5dc;
-    left: 7px;
-    bottom: 94.3px;
-}
-
-.text,
-.text2,
-.text3 {
-    height: 18.7px;
-    display: flex;
-    align-items: flex-start;
-}
-
-.text {
-    width: 30.2px;
-}
-
-.text2 {
-    width: 5.7px;
-}
-
-.container17 {
-    height: 18.7px;
-    width: 34.1px;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-}
-
-.icon4 {
-    height: 12px;
-    width: 12px;
-    position: relative;
-}
-
-.ciencia-ficcin {
-    position: relative;
-    line-height: 18.67px;
-}
-
-.en-el-catlogo {
-    flex: 1;
-    position: relative;
-
-    line-height: 18.67px;
-}
-
-.paragra {
-    height: 18.7px;
-    overflow: hidden;
-    top: 145px;
-    left: 7px;
-    display: flex;
-    align-items: flex-start;
-    color: #6a7282;
-    position: absolute;
-}
-
-/* Permitir que se comporten como botones sin cambiar su apariencia */
-.button2,
-.button-icon3,
-.btnEditar,
-.btnEliminar {
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.9rem;
+    transition: background 0.3s;
 }
 
-/* Para que la imagen no bloquee el click */
-.btnEditar img,
-.btnEliminar img {
-    pointer-events: none;
+.btn-edit {
+    background-color: white;
+    color: black;
+    margin-right: 5px;
 }
 
+.btn-edit:hover {
+    background-color: #cccccc;
+}
+
+.btn-delete {
+    background-color: var(--netflix-red);
+    color: white;
+}
+
+.btn-delete:hover {
+    background-color: var(--netflix-red-hover);
+}
+
+.actions-cell {
+    display: flex;
+    gap: 5px;
+}
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+.btn-add {
+    background-color: #2e7d32;
+    color: white;
+}

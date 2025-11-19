@@ -1,71 +1,33 @@
 <?php
-// Incluye el archivo de conexión a la base de datos
-require_once 'conexion.php'; 
+// 1. Incluimos el archivo de conexión proporcionado
+require_once 'conexion.php';
 
-// 1. Función para obtener las películas y agruparlas por género
-function obtenerPeliculasPorGenero() {
-    try {
-        // Establecer conexión usando la clase que ya tienes
-        $conexion = Conexion::Conectar();
-        
-        // Consulta SQL para obtener título, ID, URL del póster y nombre del género
-        // Usamos JOIN para relacionar Pelicula con Genero a través de Pelicula_Genero
-        $sql = "SELECT 
-                    p.id_pelicula, 
-                    p.titulo, 
-                    p.poster_path, 
-                    g.nombre AS nombre_genero
-                FROM 
-                    pelicula p
-                JOIN 
-                    pelicula_genero pg ON p.id_pelicula = pg.pelicula_id_pelicula
-                JOIN 
-                    genero g ON pg.genero_id_genero = g.id_genero
-                ORDER BY 
-                    g.nombre, p.titulo";
-        
-        $consulta = $conexion->prepare($sql);
-        $consulta->execute();
-        $resultados = $consulta->fetchAll(PDO::FETCH_ASSOC);
+// 2. Obtenemos las películas de la base de datos
+try {
+    $objetoConexion = Conexion::Conectar();
+    // Seleccionamos ID, título y el poster (imagen) de la tabla pelicula
+    $sql = "SELECT id_pelicula, titulo, poster_path FROM pelicula"; 
+    $sentencia = $objetoConexion->prepare($sql);
+    $sentencia->execute();
+    $listaPeliculas = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+    
+    // 3. Dividimos el array de películas en grupos de 6 para el diseño
+    $gruposPeliculas = array_chunk($listaPeliculas, 6);
 
-        // Array para almacenar las películas agrupadas
-        $peliculas_por_genero = [];
-        
-        // Agrupar los resultados en PHP
-        foreach ($resultados as $pelicula) {
-            $genero = $pelicula['nombre_genero'];
-            
-            // Si el género aún no existe en el array, lo inicializamos
-            if (!isset($peliculas_por_genero[$genero])) {
-                $peliculas_por_genero[$genero] = [];
-            }
-            
-            // Añadir la película al grupo de su género
-            $peliculas_por_genero[$genero][] = $pelicula;
-        }
-        
-        return $peliculas_por_genero;
-
-    } catch (Exception $e) {
-        // Manejo de errores
-        error_log("Error al obtener películas: " . $e->getMessage());
-        return []; // Retorna un array vacío si hay un error
-    } finally {
-        // Cerrar la conexión
-        $conexion = null;
-    }
+} catch (Exception $e) {
+    echo "Error al cargar películas: " . $e->getMessage();
+    $gruposPeliculas = []; // Array vacío en caso de error para no romper el HTML
 }
-
-$peliculas_agrupadas = obtenerPeliculasPorGenero();
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charset="utf-8" />
-        <title>Menú de Películas - RewindCodeFilm</title>
         <link rel="stylesheet" href="styles/peliculasMenu.css" />
         <link rel="stylesheet" href="styles/config.css" />
+        <title>RewindCodeFilm</title>
     </head>
     <body>
         <div class="desktop">
@@ -74,41 +36,44 @@ $peliculas_agrupadas = obtenerPeliculasPorGenero();
             </div>
             
             <div class="conten-div">
-                <div class="text-wrapper-4 text-main-title">Catálogo Completo</div>
+                <div class="text-wrapper-4 text-main-title">Solo en RewindCodeFilm</div>
                 <p class="p text-body">
-                    En RewindCodeFilm tenemos las mejores películas y series, Disfruta de todo nuestro catálogo elegido solo para ti.
+                    En RewindCodeFilm tenemos las mejores películas, que no hay en otro lugar. 
+                    Disfruta tus Películas, Series, especiales, etc. Y todos elegidos solo para ti.
                 </p>
             </div>
             
-            <?php if (!empty($peliculas_agrupadas)): ?>
-                <?php foreach ($peliculas_agrupadas as $genero => $peliculas): ?>
-                    
-                    <div class="vtp-peliculas">
-                        <?php foreach ($peliculas as $pelicula): 
-                            // Usamos htmlspecialchars para prevenir XSS y para manejar URLs con caracteres especiales.
-                            // id_pelicula se usa para el enlace a pelicula.php
-                            // poster_path se usa como URL de la imagen
-                            $pelicula_url = htmlspecialchars($pelicula['poster_path']);
-                            $pelicula_id = htmlspecialchars($pelicula['id_pelicula']);
-                            $pelicula_titulo = htmlspecialchars($pelicula['titulo']);
-                        ?>
-                            <img 
-                                src="<?= $pelicula_url ?>" 
-                                alt="<?= $pelicula_titulo ?>" 
-                                title="<?= $pelicula_titulo ?>"
-                                onclick="location.href='pelicula.php?id=<?= $pelicula_id ?>'" 
-                            />
-                        <?php endforeach; ?>
-                        
-                        <div class="text-wrapper-5 text-section-title"><?= htmlspecialchars($genero) ?></div>
-                    </div>
-                
-                <?php endforeach; ?>
-            <?php else: ?>
-                <div class="conten-div" style="text-align: center; margin-top: 50px;">
-                    <p class="p text-body">No hay películas cargadas en el catálogo en este momento.</p>
+            <?php 
+            // 4. Verificamos si hay películas para mostrar
+            if (count($gruposPeliculas) > 0): 
+                // Recorremos cada grupo de 6 películas (cada fila)
+                foreach ($gruposPeliculas as $grupo): 
+            ?>
+                <div class="vtp-peliculas">
+                    <?php 
+                    // Recorremos cada película DENTRO del grupo de 6
+                    foreach ($grupo as $pelicula): 
+                        // Sanitizamos los datos para evitar errores de HTML
+                        $titulo = htmlspecialchars($pelicula['titulo']);
+                        $imagen = htmlspecialchars($pelicula['poster_path']);
+                        $id = $pelicula['id_pelicula'];
+                    ?>
+                        <img 
+                            src="<?php echo $imagen; ?>" 
+                            alt="<?php echo $titulo; ?>" 
+                            title="<?php echo $titulo; ?>"
+                            onclick="location.href='pelicula.php?id=<?php echo $id; ?>'" 
+                            style="cursor: pointer;"
+                        />
+                    <?php endforeach; ?>
                 </div>
+            <?php 
+                endforeach; 
+            else: 
+            ?>
+                <p style="color: white; text-align: center;">No hay películas disponibles en este momento.</p>
             <?php endif; ?>
-            </div>
+            
+        </div>
     </body>
 </html>

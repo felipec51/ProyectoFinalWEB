@@ -1,16 +1,13 @@
-/* Archivo: styles/adminusuarios.css (Estilo Premium Netflix) */
-
-/* --- Variables de Color Netflix --- */
 :root {
-    --color-background-dark: #141414; /* Fondo principal muy oscuro */
-    --color-surface-dark: #222222;    /* Fondo de contenedores y tablas */
-    --color-text-light: #e5e5e5;     /* Texto principal claro */
-    --color-netflix-red: #e50914;    /* Rojo característico de Netflix */
-    --color-accent-gray: #444444;    /* Gris para bordes y separadores */
-    --color-input-bg: #333333;       /* Fondo de los campos de entrada */
+    --color-background-dark: #141414;
+    --color-surface-dark: #222222;
+    --color-text-light: #e5e5e5;
+    --color-netflix-red: #e50914;
+    --color-accent-gray: #444444;
+    --color-input-bg: #333333;
 }
 
-/* --- Estilos Generales --- */
+
 .netflix-admin-body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     background-color: var(--color-background-dark);
@@ -29,7 +26,6 @@ h2 {
     font-weight: 700;
 }
 
-/* Estilo para el enlace de volver */
 .back-link {
     text-decoration: none;
     display: block;
@@ -43,32 +39,28 @@ h2 {
     color: var(--color-netflix-red);
 }
 
-/* --- Estilos para mensajes de estado (Notificaciones Premium) --- */
 .message {
     padding: 15px;
     margin-bottom: 20px;
-    border-radius: 6px; /* Ligeramente más redondeado */
+    border-radius: 6px;
     font-weight: bold;
     text-align: center;
-    border-left: 5px solid; /* Borde de acento para estilo moderno */
+    border-left: 5px solid;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Notificación de Éxito (Success) */
 .message.success {
-    background-color: #0c380c; /* Verde oscuro para éxito */
+    background-color: #0c380c;
     color: #e5e5e5;
-    border-left-color: #4CAF50; /* Acento verde claro */
+    border-left-color: #4CAF50;
 }
 
-/* Notificación de Error */
 .message.error {
-    background-color: #3f0f12; /* Rojo oscuro (Netflix error look) */
+    background-color: #3f0f12;
     color: #e5e5e5;
-    border-left-color: var(--color-netflix-red); /* Acento rojo Netflix */
+    border-left-color: var(--color-netflix-red);
 }
 
-/* --- Estilos del Formulario de Edición --- */
 .edit-form-container {
     background-color: var(--color-surface-dark);
     padding: 30px;
@@ -77,7 +69,7 @@ h2 {
     max-width: 700px;
     margin: 20px auto;
     border-top: 5px solid var(--color-netflix-red);
-    margin-bottom: 50px; /* Espacio extra antes de la tabla */
+    margin-bottom: 50px;
 }
 
 .edit-form-container h3 {
@@ -90,7 +82,6 @@ h2 {
 
 .form-group {
     margin-bottom: 15px;
-    /* Usamos Grid o Flex para hacer que los inputs sean más anchos en desktop */
     display: grid;
     grid-template-columns: 150px 1fr;
     align-items: center;
@@ -98,11 +89,11 @@ h2 {
 }
 
 .form-group label {
-    font-weight: 400; 
+    font-weight: 400;
     color: var(--color-text-light);
 }
 
-.form-group input, 
+.form-group input,
 .form-group select {
     width: 100%;
     padding: 12px;
@@ -110,12 +101,12 @@ h2 {
     border-radius: 4px;
     box-sizing: border-box;
     font-size: 16px;
-    background-color: var(--color-input-bg); 
+    background-color: var(--color-input-bg);
     color: var(--color-text-light);
     transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-.form-group input:focus, 
+.form-group input:focus,
 .form-group select:focus {
     border-color: var(--color-netflix-red);
     box-shadow: 0 0 5px rgba(229, 9, 20, 0.5);
@@ -142,7 +133,7 @@ h2 {
 }
 
 .form-actions .submit-btn {
-    background-color: var(--color-netflix-red); 
+    background-color: var(--color-netflix-red);
     color: white;
 }
 
@@ -151,32 +142,31 @@ h2 {
 }
 
 .form-actions .cancel-btn {
-    background-color: var(--color-accent-gray); 
+    background-color: var(--color-accent-gray);
     color: var(--color-text-light);
 }
 .form-actions .cancel-btn:hover {
     background-color: #666666;
 }
 
-/* --- Estilos de la Tabla de Usuarios --- */
 .users-table {
     width: 100%;
     border-collapse: collapse;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     background-color: var(--color-surface-dark);
     margin-bottom: 30px;
-    border-radius: 8px; /* Redondeamos las esquinas de la tabla */
-    overflow: hidden; /* Asegura que el borde redondeado se aplique a los contenidos */
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 .users-table th, .users-table td {
-    border: 1px solid #333333; /* Bordes más sutiles */
+    border: 1px solid #333333;
     padding: 12px 15px;
     text-align: left;
 }
 
 .users-table th {
-    background-color: var(--color-netflix-red); 
+    background-color: var(--color-netflix-red);
     color: white;
     text-transform: uppercase;
     font-size: 14px;
@@ -184,14 +174,13 @@ h2 {
 }
 
 .users-table tr:nth-child(even) {
-    background-color: #1a1a1a; 
+    background-color: #1a1a1a;
 }
 
 .users-table tr:hover {
-    background-color: #383838; /* Resaltado sutil al pasar el mouse */
+    background-color: #383838;
 }
 
-/* Estilos de botones de acción en la tabla */
 .action-btn {
     padding: 6px 10px;
     margin-right: 5px;
@@ -206,44 +195,42 @@ h2 {
 }
 
 .edit-btn {
-    background-color: #555; 
+    background-color: #555;
     color: var(--color-text-light);
 }
 
 .delete-btn {
-    background-color: var(--color-netflix-red); 
+    background-color: var(--color-netflix-red);
     color: white;
 }
 
 .edit-btn:hover { background-color: #777; }
 .delete-btn:hover { background-color: #ff3333; }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
     .netflix-admin-body {
         padding: 15px;
     }
-    
+
     .edit-form-container {
         padding: 20px;
         max-width: 100%;
     }
 
     .form-group {
-        grid-template-columns: 1fr; /* Stackear en móvil */
+        grid-template-columns: 1fr;
         gap: 5px;
     }
-    
+
     .form-group label {
         margin-top: 10px;
     }
 
-    /* Ocultar columnas menos importantes en móvil */
-    .users-table thead tr th:nth-child(4), /* Email */
+    .users-table thead tr th:nth-child(4),
     .users-table tbody tr td:nth-child(4),
-    .users-table thead tr th:nth-child(5), /* Dirección */
+    .users-table thead tr th:nth-child(5),
     .users-table tbody tr td:nth-child(5),
-    .users-table thead tr th:nth-child(6), /* Teléfono */
+    .users-table thead tr th:nth-child(6),
     .users-table tbody tr td:nth-child(6) {
         display: none;
     }

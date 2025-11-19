@@ -6,7 +6,6 @@
   left: 151px;
 }
 
-/* --- Información principal --- */
 .info-principal {
   width: 557px;
   height: 99px;
@@ -59,7 +58,7 @@
   font-family: Arimo;
 }
 
-/* --- Panel de información --- */
+
 .panel-informacion {
   width: 320px;
   height: 372px;
@@ -68,7 +67,6 @@
   top: 109px;
 }
 
-/* Bloques */
 .bloque {
   width: 100%;
   border-radius: 16px;

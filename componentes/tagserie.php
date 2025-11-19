@@ -1,19 +1,7 @@
 <?php
-/**
- * Función para renderizar el componente "Más Info" de una serie/película.
- *
- * @param string $nombre_serie Cadena de texto con el nombre de la serie.
- * @param string $anio Cadena de texto con el año de la serie.
- * @param string $duracion_tag Cadena de texto con la duración de la serie.
- * @param string $clasificacion Cadena de texto con la clasificación de la serie.
- * @param string $descripcion Cadena de texto con la descripción de la serie.
- * @param string $elenco_resumen Cadena de texto con el resumen del elenco.
- * @param string $creadores Cadena de texto con los creadores de la serie.
- * @return void
- */
 
 
-function rendertags(string $nombre_serie, string $anio, string $duracion_tag, string $clasificacion,string $descripcion, string $elenco_resumen, string $creadores): void {
+function rendertags(string $nombre_serie, string $anio, string $duracion_tag, string $clasificacion,string $descripcion, string $actor, string $creadores): void {
 ?>
 <link rel="stylesheet" href="./styles/tagseries.css" />
 <section class="info-pelicula">
@@ -29,7 +17,7 @@ function rendertags(string $nombre_serie, string $anio, string $duracion_tag, st
         <p class="lorem-ipsum-dolor"><?php echo $descripcion; ?></p>
         <div class="text-info-peli-child"></div>
         <p class="elenco-wilona">
-            <strong>Elenco: <?php echo $elenco_resumen; ?><br>Creadores: <?php echo $creadores; ?></strong>
+            <strong>Elenco: <?php echo $actor; ?><br>Director: <?php echo $creadores; ?></strong>
         </p>
         
     </div>

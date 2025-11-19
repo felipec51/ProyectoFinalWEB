@@ -50,13 +50,13 @@ function rendersidebar(): void
                         <div class="sidebarmenuitem3">
                             <div class="slotclone2 flex-row-center">
                                 <img src="./imgs/icons/icono-10-(7).svg" class="icon18" alt="icono de tendencias">
-                                <div class="appsidebar4">Tendencias</div>
+                                <div class="appsidebar4">Genero</div>
                             </div>
                         </div>
                         <div class="sidebarmenuitem4">
                             <div class="slotclone2 flex-row-center">
                                 <img src="./imgs/icons/icono-10-(4).svg" class="icon18" alt="icono de análisis">
-                                <div class="appsidebar5">Análisis</div>
+                                <div class="appsidebar5">Actores</div>
                             </div>
                         </div>
                     </div>
@@ -64,12 +64,7 @@ function rendersidebar(): void
                 <div class="sidebargroup2">
                     <div class="sidebargrouplabel2 padding-1 flex-row-center text-secundario">Gestión</div>
                     <div class="sidebarmenu2">
-                        <div class="sidebarmenuitem5">
-                            <div class="slotclone2 flex-row-center">
-                                <img src="./imgs/icons/icono-10-(3).svg" class="icon18" alt="">
-                                <div class="appsidebar6">Calendario</div>
-                            </div>
-                        </div>
+                        
                         <div class="sidebarmenuitem2">
                             <div class="slotclone2 flex-row-center">
                                 
@@ -80,12 +75,7 @@ function rendersidebar(): void
                             </div>
                         </div>
             
-                        <div class="sidebarmenuitem3">
-                            <div class="slotclone2 flex-row-center">
-                                <img src="./imgs/icons/icono-10-(2).svg" class="icon18" alt="icono de valoraciones">
-                                <div class="appsidebar8">Valoraciones</div>
-                            </div>
-                        </div>
+                       
                     </div>
                 </div>
             </div>

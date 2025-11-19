@@ -9,7 +9,6 @@
     top: 369px;
   left: 151px;
 }
-
 .title-group {
     width: 557px;
     height: 77.90px;
@@ -62,7 +61,7 @@
 }
 
 .match-score {
-    color: #46D369;
+    color: #aeffc2;
     font-size: 14px;
     font-family: Arimo, sans-serif;
     font-weight: 400;

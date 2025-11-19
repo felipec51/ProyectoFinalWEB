@@ -589,28 +589,21 @@ body {
     cursor: pointer;
     padding: 0px 16px;
     font-size: var(--font-size-sm);
-    /* **AÑADIR para Select:** Asegura que el texto dentro del select sea blanco */
     color: var(--color-texto-principal) !important; 
-    /* **AÑADIR para Select:** Forzar el fondo oscuro para el campo */
     background-color: var(--color-transparencia-3) !important; 
 }
 
-/* Regla específica para el SELECT */
+
 select.estilo-input-basico {
-    /* **AÑADIR:** Elimina la apariencia nativa para un mejor control de estilo */
     -webkit-appearance: none; 
     -moz-appearance: none; 
     appearance: none;
-    /* **AÑADIR:** Necesario para algunos navegadores */
     background-image: none !important; 
 }
 
-/* Regla para las Opciones del Menú (Esto es CLAVE para cuando se despliega) */
+
 select.estilo-input-basico option {
-    /* **AÑADIR:** Fondo negro para las opciones (cuando se despliegan) */
     background-color: var(--color-bg-principal) !important; 
-    /* **AÑADIR:** Texto blanco para las opciones (cuando se despliegan) */
     color: var(--color-texto-principal) !important; 
-    /* **AÑADIR:** Para asegurar el contraste en el hover de las opciones */
     -webkit-text-fill-color: var(--color-texto-principal) !important; 
 }

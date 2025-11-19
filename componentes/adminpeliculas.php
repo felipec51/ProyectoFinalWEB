@@ -2,7 +2,7 @@
 function renderpeliculas(array $peliculas): void
 {
     ?>
-    <link rel="stylesheet" href="./styles/adminpeliculas.css" />
+    <link rel="stylesheet" href="./styles/listpeliculasadmin.css" />
 <div class="peliculas-container">
 <?php foreach($peliculas as $pelicula): 
 
@@ -49,13 +49,10 @@ function renderpeliculas(array $peliculas): void
                 <!-- EDITAR -->
                 <div class="button2 btnEditar" data-id="<?php echo $id; ?>">
                     <img src="./imgs/icons/icono-10-(12).svg" class="icon5" alt="">
-                    <div class="editar">Editar</div>
+                   <a href="editar_pelicula.php?id=<?php echo $id; ?>"><div class="editar">Editar</div></a>
                 </div>
 
-                <!-- ELIMINAR -->
-                <div class="button-icon3 btnEliminar" data-id="<?php echo $id; ?>">
-                    <img src="./imgs/icons/icono-10-(8).svg" alt="">
-                </div>
+               
 
             </div>
 
@@ -64,33 +61,6 @@ function renderpeliculas(array $peliculas): void
 
 <?php endforeach; ?>
 </div>
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-
-    // BOTÓN EDITAR
-    document.querySelectorAll(".btnEditar").forEach(btn => {
-        btn.addEventListener("click", () => {
-            const id = btn.dataset.id;
-            console.log("Editar película ID:", id);
-
-            // Más adelante aquí abrimos modal o formulario
-            alert("Editar película ID: " + id);
-        });
-    });
-
-    document.querySelectorAll(".btnEliminar").forEach(btn => {
-        btn.addEventListener("click", () => {
-            const id = btn.dataset.id;
-            console.log("Eliminar película ID:", id);
-
-            // Más adelante aquí conectamos al CRUD real
-            alert("Eliminar película ID: " + id);
-        });
-    });
-
-});
-</script>
 
 <?php
 }
