@@ -7,10 +7,11 @@
     bottom: 0;
     left: 0;
 }
+
 .info-pelicula {
     position: absolute;
     top: 1194px;
-    left: calc(50% - 753px);
+    margin-left: 7%;
     width: 1506px;
     height: 170px;
 }
@@ -41,7 +42,7 @@
     margin: 0;
 }
 
-.info-pelicula .tags-de-peliculas > span {
+.info-pelicula .tags-de-peliculas>span {
     position: absolute;
     height: 17.06%;
     top: 31.18%;
@@ -51,10 +52,30 @@
     align-items: center;
 }
 
-.i { width: 3.05%; left: 1.46%; white-space: pre-wrap; }
-.temporadas { width: 7.3%; left: 4.78%; }
-.i2 { width: 2.66%; left: 12.08%; text-align: center; justify-content: center; }
-.sci-fi { width: 2.66%; left: 15.47%; text-align: center; justify-content: center; }
+.i {
+    width: 3.05%;
+    left: 1.46%;
+    white-space: pre-wrap;
+}
+
+.temporadas {
+    width: 5.3%;
+    left: 4.78%;
+}
+
+.i2 {
+    width: 6%;
+    left: 9%;
+    text-align: center;
+    justify-content: center;
+}
+
+.sci-fi {
+    width: 5%;
+    left: 15.47%;
+    text-align: center;
+    justify-content: center;
+}
 
 .text-info-peli {
     position: absolute;

@@ -14,6 +14,10 @@
     --nav-height: 124px;
 }
 
+
+
+
+
 body {
     margin: 0;
     line-height: normal;
@@ -28,7 +32,7 @@ body {
     overflow-x: hidden;
 }
 
-.text-main-title { 
+.text-main-title {
     font-family: var(--font-family-title);
     font-weight: 400;
     font-size: var(--font-size-title);
@@ -37,7 +41,7 @@ body {
     white-space: nowrap;
 }
 
-.text-section-title { 
+.text-section-title {
     font-family: var(--font-family-body);
     font-weight: 400;
     color: var(--color-text-main);
@@ -45,7 +49,7 @@ body {
     line-height: 27px;
 }
 
-.text-body { 
+.text-body {
     font-family: var(--font-family-body);
     font-weight: 400;
     color: var(--color-text-main);
@@ -68,23 +72,63 @@ body {
     border: none;
 }
 
-.desktop .nav {
-    height: var(--nav-height); 
-    position: relative;
-    background-color: var(--color-bg-nav);
-    border-radius: 20px; 
-    padding: 0 var(--padding-sides);
-    box-sizing: border-box;
+.nav {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 20px;
+    height: var(--nav-height);
+    width: 100%;
+    background-color: #6f6f6f1f;
+    border-radius: 20px;
+    min-width: 100vh;
+    margin: 40px auto;
+    padding: 0 50px;
+    box-sizing: border-box;
 }
 
-.desktop .rewind-code-film {
+.rewind-code-film {
     color: var(--color-accent-red);
+    margin-right: auto;
+    flex-shrink: 0;
+    font-size: 30px;
 }
+
+.button_perfil {
+    display: flex;
+    align-items: center;
+    padding: 5px 15px;
+    height: 35px;
+    border-radius: 17px;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.button_perfil a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    gap: 5px;
+}
+
+.icon8 {
+    position: static;
+    width: 25px;
+    height: 25px;
+    object-fit: cover;
+    background-color: transparent;
+}
+
+
+
+
+
 .desktop .conten-div {
-    width: 781px; 
+    width: 781px;
     position: relative;
     margin: var(--spacing-category) 0 0 var(--padding-sides);
 }
@@ -97,14 +141,14 @@ body {
     width: 100%;
 }
 
-.desktop .vtp-peliculas{
+.desktop .vtp-peliculas {
     width: calc(100% - 2 * var(--padding-sides));
     height: 214px;
     position: relative;
     margin: var(--spacing-category) 0 0 var(--padding-sides);
     display: flex;
     justify-content: flex-start;
-    align-items: flex-end; 
+    align-items: flex-end;
     gap: 1%;
     cursor: pointer;
 }
@@ -120,10 +164,124 @@ body {
 }
 
 .desktop .vtp-peliculas img {
-    width: calc((100% - 5 * 1%) / 6); 
+    width: calc((100% - 5 * 1%) / 6);
     height: 80%;
     object-fit: cover;
-    position: relative; 
-    flex-shrink: 0; 
+    position: relative;
+    flex-shrink: 0;
     cursor: pointer;
+}
+
+.mas-info-div {
+    position: relative;
+    margin: 40px auto 40px auto;
+    width: 90%;
+    max-width: 1600px;
+    padding-top: 20px;
+    font-size: 15px;
+}
+
+.ms-info {
+    font-size: 40px;
+    font-weight: 800;
+    margin: 0 0 20px 0;
+    line-height: 1.2;
+}
+
+.info-container-flex {
+    display: flex;
+    gap: 30px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.info-box {
+    flex: 1 1 30%;
+    min-width: 300px;
+    position: relative;
+}
+
+.div-audio-subtitulos-child {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 18px;
+    background-color: rgba(61, 64, 65, 0.7);
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    z-index: 0;
+}
+
+div[class^="informacion"] {
+    position: relative;
+    padding: 20px 25px;
+    height: 100%;
+    box-sizing: border-box;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.audio,
+.subtitulos,
+.generos,
+.esta-pelicualaseriees,
+.tags-de-peliculas {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.audio strong,
+.subtitulos strong,
+.generos strong,
+.esta-serie-es,
+.elenco,
+.Director {
+    font-weight: 700;
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.ingls-audio,
+.ingls-y-espaol,
+.series-dramaticasseries-de,
+.inquietantenostalgicobanda-s,
+.elencoCompleto,
+.DirectorCompleto {
+    font-weight: 300;
+    line-height: 1.4;
+    color: #ccc;
+}
+
+.generos span,
+.esta-pelicualaseriees span,
+.tags-de-peliculas span {
+    width: 100%;
+}
+
+.tags-de-peliculas {
+    margin-bottom: 15px;
+}
+
+.elencoCompleto,
+.DirectorCompleto {
+    display: block;
+}
+
+
+@media (max-width: 1024px) {
+    .info-container-flex {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .info-box {
+        flex: 1 1 100%;
+        min-height: 150px;
+    }
 }

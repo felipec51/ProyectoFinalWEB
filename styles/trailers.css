@@ -1,7 +1,7 @@
 .traileres2 {
     position: absolute;
     top: 1425px;
-    left: calc(50% - 770px);
+    margin-left: 7%;
     width: 1540px;
     height: 325px;
     font-size: 20px;
@@ -29,9 +29,20 @@
     bottom: 0;
 }
 
-.trailer-card.trailer-1-pos { right: 70.71%; left: 0; }
-.trailer-card.trailer-2-pos { right: 34.81%; left: 35.91%; }
-.trailer-card.trailer-3-pos { right: -1.1%; left: 71.82%; }
+.trailer-card.trailer-1-pos {
+    right: 70.71%;
+    left: 0;
+}
+
+.trailer-card.trailer-2-pos {
+    right: 34.81%;
+    left: 35.91%;
+}
+
+.trailer-card.trailer-3-pos {
+    right: -1.1%;
+    left: 71.82%;
+}
 
 .trailer-image {
     position: absolute;
@@ -48,7 +59,8 @@
     object-fit: cover;
 }
 
-.triler-name-serie-container, .name-serie {
+.triler-name-serie-container,
+.name-serie {
     position: absolute;
     height: 5.8%;
     width: 64.52%;
@@ -60,6 +72,10 @@
     margin: 0;
 }
 
-.triler-name-serie-container2 { width: 100%; }
-.tr { letter-spacing: 0.05em; }
+.triler-name-serie-container2 {
+    width: 100%;
+}
 
+.tr {
+    letter-spacing: 0.05em;
+}

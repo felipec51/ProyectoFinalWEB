@@ -1,20 +1,28 @@
 :root {
-    --color-background-dark: #141414;
-    --color-surface-dark: #222222;
-    --color-text-light: #e5e5e5;
-    --color-netflix-red: #e50914;
-    --color-accent-gray: #444444;
-    --color-input-bg: #333333;
+    --bg-color: #0f0f0f;
+    --card-bg: #1f1f1f;
+    --text-main: #ffffff;
+    --text-sec: #b3b3b3;
+    --netflix-red: #e50914;
+    --netflix-red-hover: #b20710;
+    --border-color: #404040;
+    
+    --color-netflix-red: var(--netflix-red);
+    --color-text-light: var(--text-main);
+    --color-accent-gray: var(--border-color);
+    --color-input-bg: rgba(64, 64, 64, 0.4);
 }
-
 
 .netflix-admin-body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    background-color: var(--color-background-dark);
+    background-color: var(--bg-color);
+    background-image: radial-gradient(circle at 10% 20%, rgba(229, 9, 20, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(30, 30, 30, 0.5) 0%, transparent 40%);
     margin: 0;
     padding: 30px;
     color: var(--color-text-light);
     line-height: 1.6;
+    min-height: 100vh;
 }
 
 h2 {
@@ -50,19 +58,22 @@ h2 {
 }
 
 .message.success {
-    background-color: #0c380c;
-    color: #e5e5e5;
+    background-color: #2e7d32;
+    color: var(--text-main);
     border-left-color: #4CAF50;
 }
 
 .message.error {
-    background-color: #3f0f12;
-    color: #e5e5e5;
+    background-color: #c62828;
+    color: var(--text-main);
     border-left-color: var(--color-netflix-red);
 }
 
 .edit-form-container {
-    background-color: var(--color-surface-dark);
+    background: rgba(31, 31, 31, 0.65); 
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
@@ -120,7 +131,23 @@ h2 {
     gap: 15px;
 }
 
-.form-actions .submit-btn,
+.form-actions .submit-btn {
+    padding: 10px 25px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s, opacity 0.3s;
+    text-decoration: none;
+    background-color: #007bff;
+    color: white;
+}
+
+.form-actions .submit-btn:hover {
+    background-color: #0056b3;
+}
+
 .form-actions .cancel-btn {
     padding: 10px 25px;
     border: none;
@@ -130,18 +157,6 @@ h2 {
     font-weight: bold;
     transition: background-color 0.3s, opacity 0.3s;
     text-decoration: none;
-}
-
-.form-actions .submit-btn {
-    background-color: var(--color-netflix-red);
-    color: white;
-}
-
-.form-actions .submit-btn:hover {
-    background-color: #ff3333;
-}
-
-.form-actions .cancel-btn {
     background-color: var(--color-accent-gray);
     color: var(--color-text-light);
 }
@@ -153,16 +168,20 @@ h2 {
     width: 100%;
     border-collapse: collapse;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-    background-color: var(--color-surface-dark);
+    background: rgba(31, 31, 31, 0.65); 
+    backdrop-filter: blur(5px); 
+    -webkit-backdrop-filter: blur(5px);
     margin-bottom: 30px;
     border-radius: 8px;
     overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .users-table th, .users-table td {
     border: 1px solid #333333;
     padding: 12px 15px;
     text-align: left;
+    background: none;
 }
 
 .users-table th {
@@ -174,11 +193,11 @@ h2 {
 }
 
 .users-table tr:nth-child(even) {
-    background-color: #1a1a1a;
+    background: rgba(0, 0, 0, 0.2);
 }
 
 .users-table tr:hover {
-    background-color: #383838;
+    background: rgba(50, 50, 50, 0.4);
 }
 
 .action-btn {
@@ -195,8 +214,8 @@ h2 {
 }
 
 .edit-btn {
-    background-color: #555;
-    color: var(--color-text-light);
+    background-color: #ffffff;
+    color: black;
 }
 
 .delete-btn {
@@ -204,8 +223,8 @@ h2 {
     color: white;
 }
 
-.edit-btn:hover { background-color: #777; }
-.delete-btn:hover { background-color: #ff3333; }
+.edit-btn:hover { background-color: #ffffff; }
+.delete-btn:hover { background-color: var(--netflix-red-hover); }
 
 @media (max-width: 768px) {
     .netflix-admin-body {
@@ -225,7 +244,7 @@ h2 {
     .form-group label {
         margin-top: 10px;
     }
-
+    
     .users-table thead tr th:nth-child(4),
     .users-table tbody tr td:nth-child(4),
     .users-table thead tr th:nth-child(5),

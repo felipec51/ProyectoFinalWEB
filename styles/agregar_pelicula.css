@@ -220,6 +220,8 @@ select.input-field[multiple] {
     margin-left: .5em;
 }
 
+
+
 @media (max-width: 768px) {
 
     .col-6,

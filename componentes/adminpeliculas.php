@@ -43,10 +43,8 @@ function renderpeliculas(array $peliculas): void
                 <div class="ciencia-ficcin"><?php echo $generos; ?></div>
             </div>
 
-            <!-- BOTONES CRUD -->
             <div class="container18 flex-row-center">
 
-                <!-- EDITAR -->
                 <div class="button2 btnEditar" data-id="<?php echo $id; ?>">
                     <img src="./imgs/icons/icono-10-(12).svg" class="icon5" alt="">
                    <a href="editar_pelicula.php?id=<?php echo $id; ?>"><div class="editar">Editar</div></a>

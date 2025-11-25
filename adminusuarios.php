@@ -14,7 +14,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete' && isset($_GET['id']))
     if ($crud->eliminarUsuario($id_usuario_delete)) {
         $message = ['type' => 'success', 'text' => 'Usuario eliminado con éxito.'];
     } else {
-        // El mensaje de error de FK ya se establece dentro de crud_usuarios.php si aplica
+
         if (!isset($_SESSION['message'])) {
              $message = ['type' => 'error', 'text' => 'Error al eliminar el usuario.'];
         } else {

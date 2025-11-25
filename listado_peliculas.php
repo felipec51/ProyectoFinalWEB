@@ -1,18 +1,13 @@
 <?php
-// Archivo: listado_peliculas.php (¡Solo proveedor de datos!)
 
-// Incluimos la conexión a la base de datos (Asegúrate de que la ruta sea correcta)
 include_once './conexion.php'; 
 
-// 1. Conectar a la base de datos
 $objeto = new Conexion();
 $conexion = $objeto->Conectar();
-
-// La variable debe llamarse $peliculas, porque es el nombre que usa paneladmin.php
 $peliculas = []; 
 
 try {
-    // 2. Consulta SQL para traer Películas, Director y todos los Géneros
+    
     $consulta = "
         SELECT 
             p.id_pelicula,
@@ -37,16 +32,14 @@ try {
             
     $resultado = $conexion->prepare($consulta);
     $resultado->execute();        
-    // 3. Almacenamos el resultado en la variable $peliculas
+    
     $peliculas = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 } catch (PDOException $e) {
-    // Si hay un error, $peliculas se mantiene como un array vacío.
-    // echo "Error al cargar películas: " . $e->getMessage(); // Descomentar para depurar
+    
+    
     $peliculas = [];
 }
 
 $conexion = null;
-
-// ATENCIÓN: No hay llamada a renderpeliculas() aquí, solo se define la variable $peliculas
 ?>

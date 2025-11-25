@@ -1,42 +1,40 @@
+
 .mas-info-div {
-    position: absolute;
+   
+    position: absolute; 
     top: 1815px;
-    left: calc(50% - 779px);
-    width: 1558px;
-    height: 343px;
+    width: 90%;
+    max-width: 1600px;
+    padding-top: 20px;
     font-size: 15px;
+    margin-left: 7%;
+    
 }
 
 .ms-info {
-    position: absolute;
-    height: 9.91%;
-    width: 11.04%;
-    top: 0;
-    left: 0;
     font-size: 40px;
-    line-height: 101px;
-    display: flex;
     font-weight: 800;
-    align-items: center;
-    margin: 0;
+    margin: 0 0 20px 0;
+    line-height: 1.2;
+}
+
+
+.info-container-flex {
+    display: flex;
+    gap: 30px;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .info-box {
-    position: absolute;
-    height: 85.13%;
-    width: 32.73%;
-    top: 14.87%;
-    bottom: 0;
+   
+    flex: 1 1 30%; 
+    min-width: 300px;
+    position: relative;
 }
-
-.info-box-1 { right: 67.2%; left: 0.06%; }
-.info-box-2 { right: 33.44%; left: 33.83%; }
-.info-box-3 { right: -0.32%; left: 67.59%; }
 
 .div-audio-subtitulos-child {
     position: absolute;
-    height: 100%;
-    width: 100%;
     top: 0;
     right: 0;
     bottom: 0;
@@ -45,145 +43,80 @@
     background-color: rgba(61, 64, 65, 0.7);
     border: 1px solid #fff;
     box-sizing: border-box;
+    z-index: 0;
 }
+
 
 div[class^="informacion"] {
-    position: absolute;
-    width: 89.02%;
-}
-
-.informacion {
-    height: 43.49%;
-    top: 11.64%;
-    right: 4.9%;
-    bottom: 44.86%;
-    left: 6.08%;
-}
-
-.informacion2 {
-    height: 26.71%;
-    top: 11.64%;
-    right: 4.9%;
-    bottom: 61.64%;
-    left: 6.08%;
-}
-
-.informacion3 {
-    height: 83.9%;
-    top: 10.27%;
-    right: 6.08%;
-    bottom: 5.82%;
-    left: 4.9%;
-}
-
-.informacion strong, .informacion2 strong, .informacion3 strong {
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative;
+    padding: 20px 25px;
+    height: 100%;
+    box-sizing: border-box;
+    z-index: 1;
     display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.audio,
+.subtitulos,
+.generos,
+.esta-pelicualaseriees,
+.tags-de-peliculas {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+
+.audio strong,
+.subtitulos strong,
+.generos strong,
+.esta-serie-es,
+.elenco,
+.Director {
     font-weight: 700;
-    align-items: center;
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #ffffff;
 }
 
-.informacion span, .informacion2 span, .informacion3 span {
-    position: absolute;
-    width: 100%;
-    top: 30.3%;
-    left: 0;
-    display: flex;
+
+.ingls-audio,
+.ingls-y-espaol,
+.series-dramaticasseries-de,
+.inquietantenostalgicobanda-s,
+.elencoCompleto,
+.DirectorCompleto {
     font-weight: 300;
-    align-items: center;
+    line-height: 1.4;
+    color: #ccc;
 }
 
-.audio {
-    position: absolute;
-    height: 51.97%;
+.generos span, 
+.esta-pelicualaseriees span, 
+.tags-de-peliculas span {
+   
     width: 100%;
-    top: 0;
-    right: 0;
-    bottom: 48.03%;
-    left: 0;
 }
 
-.audio2 { height: 45.45%; width: 12.56%; }
-
-.ingls-audio {
-    height: 69.7%;
-    top: 30.3%;
+.tags-de-peliculas {
+    margin-bottom: 15px;
 }
 
-.subtitulos {
-    position: absolute;
-    height: 48.03%;
-    width: 26.21%;
-    top: 51.97%;
-    right: 73.79%;
-    bottom: 0;
-    left: 0;
+.elencoCompleto,
+.DirectorCompleto {
+   
+    display: block;
 }
 
-.subttulos { height: 49.18%; width: 100%; }
-
-.ingls-y-espaol {
-    height: 75.41%;
-    width: 95.8%;
-    top: 24.59%;
-}
-
-.elenco { height: 38.46%; width: 12.56%; }
-
-.winona-ryder-david {
-    height: 58.97%;
-    top: 41.03%;
-}
-
-.generos {
-    position: absolute;
-    height: 28.57%;
-    width: 100%;
-    top: 0;
-    right: 0;
-    bottom: 71.43%;
-    left: 0;
-}
-
-.gneros { height: 42.86%; width: 12.56%; }
-
-.series-dramaticasseries-de {
-    height: 65.71%;
-    top: 34.29%;
-}
-
-.esta-pelicualaseriees {
-    position: absolute;
-    height: 34.69%;
-    width: 100%;
-    top: 33.88%;
-    right: 0;
-    bottom: 31.43%;
-    left: 0;
-}
-
-.esta-serie-es { height: 35.29%; width: 26.21%; }
-
-.inquietantenostalgicobanda-s {
-    height: 54.12%;
-    top: 45.88%;
-}
-
-.acerda-peliculaserie {
-    position: absolute;
-    height: 23.67%;
-    width: 100%;
-    top: 76.33%;
-    right: 0;
-    bottom: 0;
-    left: 0;
-}
-
-.acerca-de-nombre { height: 51.72%; width: 39.87%; }
-
-.descubre-el-detras {
-    height: 79.31%;
-    top: 20.69%;
+@media (max-width: 1024px) {
+    .info-container-flex {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .info-box {
+        flex: 1 1 100%;
+        min-height: 150px;
+    }
 }

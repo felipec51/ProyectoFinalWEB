@@ -1,10 +1,8 @@
 <?php
 session_start();
 
-// 1. Recuperar los datos guardados de la sesión (para el "Formulario Pegajoso")
 $data = $_SESSION['form_data'] ?? [];
 
-// 2. Limpiar los datos del formulario de la sesión después de recuperarlos
 unset($_SESSION['form_data']);
 ?>
 
@@ -249,7 +247,6 @@ unset($_SESSION['form_data']);
     </div>
 
     <style>
-        /* Estilos básicos de la notificación (Puedes mejorarlos con CSS) */
         .notification-box {
             position: fixed;
             bottom: 20px;
@@ -264,17 +261,15 @@ unset($_SESSION['form_data']);
             transform: translateY(100%);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             font-family: Arial, sans-serif;
-            /* Asegurando que el texto se vea bien */
+
         }
 
         .notification-box.success {
             background-color: #4CAF50;
-            /* Verde */
         }
 
         .notification-box.error {
             background-color: #f44336;
-            /* Rojo */
         }
 
         .notification-box.show {
@@ -287,18 +282,14 @@ unset($_SESSION['form_data']);
 
     <script>
         <?php
-        // Lógica PHP para manejar la sesión de notificación
+
         if (isset($_SESSION['notification'])) {
             $type = $_SESSION['notification']['type'];
             $message = $_SESSION['notification']['message'];
-
-            // Limpiar la sesión para que el mensaje no se muestre de nuevo
             unset($_SESSION['notification']);
         ?>
-
-            // Lógica JavaScript para mostrar la notificación
             const notifBox = document.getElementById('notification-area');
-            // Usamos JSON.parse para decodificar el mensaje y evitar problemas con comillas
+
             try {
                 notifBox.textContent = "<?php echo htmlspecialchars($message, ENT_QUOTES, 'UTF-8'); ?>";
             } catch (e) {
@@ -306,16 +297,11 @@ unset($_SESSION['form_data']);
             }
 
             notifBox.classList.add("<?php echo $type; ?>");
-
-            // Usar un pequeño timeout para aplicar la transición
             setTimeout(() => {
                 notifBox.classList.add('show');
             }, 100);
-
-            // Ocultar la notificación después de 5 segundos
             setTimeout(() => {
                 notifBox.classList.remove('show');
-                // Eliminar completamente el elemento del DOM después de la transición
                 setTimeout(() => {
                     notifBox.remove();
                 }, 500);

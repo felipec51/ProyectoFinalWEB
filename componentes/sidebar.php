@@ -1,15 +1,5 @@
 <?php
 
-/**
- * Función para renderizar el componente "sidebar.php" de una serie/película.
- 
-
- * @return void
- */
-
-
-
-
 function rendersidebar(): void
 {
 ?>
@@ -50,13 +40,17 @@ function rendersidebar(): void
                         <div class="sidebarmenuitem3">
                             <div class="slotclone2 flex-row-center">
                                 <img src="./imgs/icons/icono-10-(7).svg" class="icon18" alt="icono de tendencias">
-                                <div class="appsidebar4">Genero</div>
+                                <a href="generos.php" style="text-decoration:none; color:inherit;">
+                                <div class="appsidebar4">Generos</div>
+                                </a>
                             </div>
                         </div>
                         <div class="sidebarmenuitem4">
                             <div class="slotclone2 flex-row-center">
                                 <img src="./imgs/icons/icono-10-(4).svg" class="icon18" alt="icono de análisis">
+                                <a href="actores.php" style="text-decoration:none; color:inherit;">
                                 <div class="appsidebar5">Actores</div>
+                                </a>
                             </div>
                         </div>
                     </div>

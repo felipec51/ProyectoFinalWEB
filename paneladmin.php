@@ -2,8 +2,6 @@
 
 include 'componentes/adminpeliculas.php';
 include 'componentes/sidebar.php';
-include 'listado_peliculas.php';//include 'data_peliculas.php'; --- ignorar eso lo comentan y colocan el crud correspondiente ---
-
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +16,6 @@ include 'listado_peliculas.php';//include 'data_peliculas.php'; --- ignorar eso 
 </head>
 
 <body>
-
     <div class="desktop">
         <div class="admin-movie-panel-activity">
             <div class="app">
@@ -44,7 +41,7 @@ include 'listado_peliculas.php';//include 'data_peliculas.php'; --- ignorar eso 
                                     <img src="./imgs/icons/Icon-7.svg" class="icon2" alt="">
                                 </div>
                             </div>
-                            
+
                         </header>
 
                         <div class="container4 text-secundario">

@@ -42,7 +42,6 @@ function renderdisponible($nombre_peli, $anio, $duracion_tag, $precio): void
                     </div>
                 </div>
 
-                <!-- Tarjeta 2: 15 días -->
                 <div class="rent-card card-pos-2">
                     <div class="card-icon-container">
                         <img src="./imgs/icons/iconofecha.svg" alt="fecha">
@@ -52,8 +51,6 @@ function renderdisponible($nombre_peli, $anio, $duracion_tag, $precio): void
                         <div class="card-price-text">$<?php echo $precio * 1.3; ?></div>
                     </div>
                 </div>
-
-                <!-- Tarjeta 3: 1 mes -->
                 <div class="rent-card card-pos-3">
                     <div class="card-icon-container">
                         <img src="./imgs/icons/iconofecha.svg" alt="fecha">
@@ -65,8 +62,6 @@ function renderdisponible($nombre_peli, $anio, $duracion_tag, $precio): void
                 </div>
             </div>
         </div>
-
-        <!-- Botón de Rentar Película -->
         <div class="rent-button">
             <div class="button-icon-container">
                 <img src="./imgs/icons/movieIcon.svg" alt="fecha">

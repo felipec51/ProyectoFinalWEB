@@ -1,12 +1,12 @@
 <?php
-// Archivo: crud_pelicula.php
+
 include_once './conexion.php';
 $objeto = new Conexion();
 $conexion = $objeto->Conectar();
 
-// -------------------------
-// SOPORTE GET PARA PANELADMIN
-// -------------------------
+
+
+
 if (isset($_GET['delete'])) {
     $id = intval($_GET['delete']);
 
@@ -33,9 +33,9 @@ if (isset($_GET['fetch'])) {
     exit;
 }
 
-// -------------------------
-// MANEJO POST (AJAX)
-// -------------------------
+
+
+
 $titulo = $_POST['titulo'] ?? '';
 $anio = $_POST['anio'] ?? '';
 $duracion_min = $_POST['duracion_min'] ?? '';
@@ -53,7 +53,7 @@ $data = [];
 try {
     switch ($opc) {
 
-        case 1: // INSERTAR
+        case 1: 
             $consulta = "INSERT INTO pelicula 
                 (titulo, anio, duracion_min, descripcion, poster_path, precio_alquiler, calificacion, director_id_director) 
                 VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
@@ -73,7 +73,7 @@ try {
 
             break;
 
-        case 2: // ACTUALIZAR
+        case 2: 
             $consulta = "UPDATE pelicula 
                          SET titulo=?, anio=?, duracion_min=?, descripcion=?, poster_path=?, precio_alquiler=?, calificacion=?, director_id_director=? 
                          WHERE id_pelicula=?";
@@ -95,7 +95,7 @@ try {
 
             break;
 
-        case 3: // ELIMINAR (AJAX)
+        case 3: 
             $consulta = "DELETE FROM pelicula WHERE id_pelicula=?";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute([$id_pelicula]);
@@ -103,7 +103,7 @@ try {
             $data = ["status" => "ok", "id_eliminado" => $id_pelicula];
             break;
 
-        case 4: // LISTAR TODO
+        case 4: 
             $consulta = "SELECT p.*, d.nombre AS director_nombre 
                          FROM pelicula p 
                          JOIN director d ON p.director_id_director = d.id_director

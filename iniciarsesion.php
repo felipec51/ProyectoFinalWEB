@@ -1,11 +1,9 @@
 <?php
 session_start();
 
-// 1. Manejo del mensaje de error del login
 $error_login = $_SESSION["error"] ?? "";
 unset($_SESSION["error"]);
 
-// 2. Manejo de mensajes de éxito/error genéricos (como el de registro exitoso)
 $notification = $_SESSION['notification'] ?? null;
 unset($_SESSION['notification']);
 ?>
@@ -51,8 +49,6 @@ unset($_SESSION['notification']);
                         <?= htmlspecialchars($error_login) ?>
                     </div>
                 <?php endif; ?>
-
-                <!-- BOTÓN INICIAR SESION -->
                 <div class="btn-continuar">
                     <div class="btn-continuar-child"></div>
                     <button type="submit" class="iniciar-sesion2"
@@ -96,7 +92,6 @@ unset($_SESSION['notification']);
 
                     <div class="loginscreen">
                         <div class="input estilo-input-base">
-                            <!-- Es importante que el name sea 'username' como lo espera login.php -->
                             <input class="estilo-input-basico tuemailcom"
                                 type="text" name="username"
                                 placeholder="Ingresa tu dirección o tu username" required>
@@ -105,7 +100,6 @@ unset($_SESSION['notification']);
                     </div>
                 </div>
 
-                <!-- CAMPO CONTRASEÑA -->
                 <div class="container2 campo-input-contenedor">
                     <div class="primitivelabel">
                         <div class="correo-electrnico">Contraseña</div>
@@ -121,7 +115,6 @@ unset($_SESSION['notification']);
                 </div>
 
             </form>
-            <!-- CERRAMOS EL FORM -->
         </div>
 
         <div class="rewindcodefilm">
@@ -132,46 +125,37 @@ unset($_SESSION['notification']);
 </body>
 
 </html>
-<!-- Estilos y Script de Notificación para mensajes de ÉXITO (ej. después de registro) -->
+
 <style>
-    /* Estilos de la Notificación (MODIFICADOS PARA SER GRANDES Y ABAJO) */
+   
     .notification-box {
         position: fixed;
         bottom: 10px;
-        /* Más cerca del borde inferior */
         right: 10px;
-        /* Dejar un pequeño margen a la derecha */
         left: 10px;
-        /* Ocupar casi todo el ancho */
         max-width: 98%;
-        /* Para asegurar que no exceda el ancho del viewport */
         padding: 20px 30px;
-        /* Relleno grande */
         border-radius: 12px;
-        /* Esquinas más redondeadas */
         color: white;
         font-weight: bold;
         font-size: 1.2em;
-        /* Letra más grande */
         text-align: center;
-        /* Centrar el texto */
         z-index: 1000;
         opacity: 0;
         transition: opacity 0.5s, transform 0.5s;
         transform: translateY(100%);
-        /* Sale desde abajo */
+      
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-        /* Sombra más pronunciada */
+
     }
 
     .notification-box.success {
         background-color: #4CAF50;
-        /* Verde */
+
     }
 
     .notification-box.error-flash {
         background-color: #f44336;
-        /* Rojo */
     }
 
     .notification-box.show {
@@ -184,30 +168,26 @@ unset($_SESSION['notification']);
 
 <script>
     <?php
-    // Lógica PHP para manejar la sesión de notificación (usada principalmente para éxito de registro)
+
     if (isset($notification)) {
-        // Usamos el mensaje recuperado en el punto 2 del PHP
+
         $type = $notification['type'];
         $message = $notification['message'];
 
-        // Convertimos 'error' a 'error-flash' para usar la clase CSS correcta
+
         $css_type = ($type === 'error') ? 'error-flash' : $type;
     ?>
 
-        // Lógica JavaScript para mostrar la notificación
         const notifBox = document.getElementById('notification-area');
         notifBox.textContent = "<?php echo htmlspecialchars($message, ENT_QUOTES, 'UTF-8'); ?>";
         notifBox.classList.add("<?php echo $css_type; ?>");
-
-        // Usar un pequeño timeout para aplicar la transición
         setTimeout(() => {
             notifBox.classList.add('show');
         }, 100);
 
-        // Ocultar la notificación después de 5 segundos
         setTimeout(() => {
             notifBox.classList.remove('show');
-            // Eliminar completamente el elemento del DOM después de la transición
+
             setTimeout(() => {
                 notifBox.remove();
             }, 500);
