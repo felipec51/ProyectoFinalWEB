@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 19-11-2025 a las 21:46:53
+-- Tiempo de generación: 25-11-2025 a las 21:16:46
 -- Versión del servidor: 12.0.2-MariaDB
 -- Versión de PHP: 8.4.14
 
@@ -41,7 +41,6 @@ INSERT INTO `actor` (`id_actor`, `nombre`) VALUES
 (2, 'David Harbour'),
 (3, 'Millie Bobby Brown'),
 (4, 'Finn Wolfhard'),
-(5, 'Olivia Colman'),
 (6, 'Imelda Staunton'),
 (7, 'Anthony Gonzalez'),
 (8, 'Gael García Bernal'),
@@ -58,7 +57,8 @@ INSERT INTO `actor` (`id_actor`, `nombre`) VALUES
 (19, 'Sam Worthington'),
 (20, 'Zoe Saldaña'),
 (21, 'Daniel Craig'),
-(22, 'Keanu Reeves');
+(22, 'Keanu Reeves'),
+(24, 'Rebecca Ferguson');
 
 -- --------------------------------------------------------
 
@@ -77,10 +77,6 @@ CREATE TABLE `cinta` (
 --
 
 INSERT INTO `cinta` (`id_cinta`, `estado`, `pelicula_id_pelicula`) VALUES
-(1, 'disponible', 1),
-(2, 'prestada', 1),
-(3, 'disponible', 1),
-(4, 'prestada', 1),
 (5, 'disponible', 5),
 (6, 'disponible', 6),
 (8, 'disponible', 8),
@@ -90,7 +86,12 @@ INSERT INTO `cinta` (`id_cinta`, `estado`, `pelicula_id_pelicula`) VALUES
 (16, 'disponible', 17),
 (17, 'disponible', 10),
 (18, 'disponible', 10),
-(19, 'disponible', 18);
+(19, 'disponible', 18),
+(20, 'disponible', 17),
+(21, 'disponible', 20),
+(22, 'disponible', 20),
+(23, 'disponible', 20),
+(24, 'disponible', 21);
 
 -- --------------------------------------------------------
 
@@ -120,7 +121,9 @@ INSERT INTO `director` (`id_director`, `nombre`) VALUES
 (10, 'Sam Mendes'),
 (11, 'Chris Sanders'),
 (12, 'Lilly Wachowski'),
-(13, 'Louis Leterrier');
+(13, 'Louis Leterrier'),
+(14, 'Nola'),
+(15, 'Denis Villeneuve');
 
 -- --------------------------------------------------------
 
@@ -143,7 +146,6 @@ INSERT INTO `genero` (`id_genero`, `nombre`) VALUES
 (3, 'Drama'),
 (4, 'Animación'),
 (5, 'Acción'),
-(6, 'Superhéroes'),
 (7, 'Comedia'),
 (8, 'Fantasía'),
 (9, 'Espionaje');
@@ -181,6 +183,13 @@ CREATE TABLE `gusto_genero` (
   `genero_id_genero` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
 
+--
+-- Volcado de datos para la tabla `gusto_genero`
+--
+
+INSERT INTO `gusto_genero` (`Usuario_id_usuario`, `genero_id_genero`) VALUES
+(1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -205,7 +214,7 @@ CREATE TABLE `pelicula` (
   `titulo` varchar(150) NOT NULL,
   `anio` int(11) NOT NULL,
   `duracion_min` int(11) NOT NULL,
-  `descripcion` varchar(250) NOT NULL,
+  `descripcion` varchar(350) NOT NULL,
   `poster_path` varchar(255) NOT NULL,
   `precio_alquiler` decimal(8,0) NOT NULL,
   `calificacion` varchar(45) NOT NULL,
@@ -219,15 +228,16 @@ CREATE TABLE `pelicula` (
 --
 
 INSERT INTO `pelicula` (`id_pelicula`, `titulo`, `anio`, `duracion_min`, `descripcion`, `poster_path`, `precio_alquiler`, `calificacion`, `director_id_director`, `idioma`, `ncopias`) VALUES
-(1, 'Stranger Things', 2025, 2400, 'Fuerza maligna desciende sobre un pequeño pueblo de Indiana en los 80.', 'https://github.com/felipec51/ProyectoFinalWEB/blob/main/imgs/strangerthings.webp?raw=true', 15000, '16+', 8, 'Inglés', 4),
 (2, 'The Crown', 2023, 2160, 'Crónica de la vida de la Reina Isabel II.', 'https://hbz.h-cdn.co/assets/16/40/1600x800/landscape-1475588380-the-crown-index.jpg', 12000, '13+', 2, 'Inglés', 0),
 (4, 'Misión Imposible', 1996, 110, 'Un agente del FMI es incriminado; debe limpiar su nombre.', 'https://github.com/felipec51/ProyectoFinalWEB/blob/main/imgs/mission.webp?raw=true', 13000, '13+', 4, 'Inglés', 0),
 (5, 'Breaking Bad', 2008, 3000, 'Profesor de química con cáncer fabrica y vende metanfetamina.', 'https://github.com/felipec51/ProyectoFinalWEB/blob/main/imgs/breaking-bad_2880x1800_xtrafondos.com.webp?raw=true', 16000, '18+', 5, 'Inglés', 1),
 (6, 'The Boys', 2019, 1920, 'Vigilantes se enfrentan a superhéroes corruptos.', 'https://www.hdwallpapers.in/download/the_boys_poster_4k_hd-3840x2160.jpg', 16000, '18+', 6, 'Inglés', 1),
 (8, 'Dune', 2021, 155, 'Épica odisea de la familia Atreides en un planeta desértico.', 'https://github.com/felipec51/ProyectoFinalWEB/blob/main/imgs/poster-de-dune_2560x1440_xtrafondos.com.webp?raw=true', 17000, '13+', 8, 'Inglés', 1),
 (10, 'Matrix 1999', 1999, 136, 'Un experto en computadoras descubre que su mundo es una simulación total creada con maliciosas intenciones por parte de la ciberinteligencia.', 'https://github.com/felipec51/ProyectoFinalWEB/blob/main/imgs/the-matrix-resurrections_2560x1440_xtrafondos.com.webp?raw=true', 19900, '+18', 12, 'Inglés', 2),
-(17, 'Robot salvaje ', 2024, 102, 'es u. robot salvaje', 'https://hablemosconspoilers.com/wp-content/uploads/2024/09/HCS-32-png.webp', 26000, 'PG', 6, 'Inglés ', 4),
-(18, 'Blade Runner 2049', 2017, 200, 'Blade Runner 2049 trata sobre el agente K, un nuevo \"blade runner\" que descubre un secreto enterrado durante mucho tiempo que podría desestabilizar la sociedad: la capacidad de los replicantes para reproducirse.', 'https://preview.redd.it/won4unyk84y31.jpg?width=1080&crop=smart&auto=webp&s=f36f1d7f90a30dd2c1021ecd55842d0ba527093b', 12000, '13+', 8, 'Inglés', 1);
+(17, 'Robot salvaje ', 2022, 102, 'es u. robot salvaje', 'https://hablemosconspoilers.com/wp-content/uploads/2024/09/HCS-32-png.webp', 25600, '13+', 11, 'Inglés ', 5),
+(18, 'Blade Runner 2049', 2017, 200, 'Blade Runner 2049 trata sobre el agente K, un nuevo \"blade runner\" que descubre un secreto enterrado durante mucho tiempo que podría desestabilizar la sociedad: la capacidad de los replicantes para reproducirse.', 'https://preview.redd.it/won4unyk84y31.jpg?width=1080&crop=smart&auto=webp&s=f36f1d7f90a30dd2c1021ecd55842d0ba527093b', 12000, '13+', 8, 'Inglés', 1),
+(20, 'Interestelas', 2018, 120, 'es una ', 'https://media.vandalsports.com/i/640x360/4-2024/202441895311_1.jpg', 19000, '19+', 14, 'Inglés', 3),
+(21, 'El joker', 2024, 155, 'Joker es una película de suspense psicológico estadounidense de 2019 dirigida y producida por Todd Phillips, quien coescribió el guion con Scott Silver. La película, basada en personajes de DC Comics, está protagonizada por Joaquin Phoenix como El Joker y proporciona una historia alternativa del origen del personaje. ', 'https://i.ytimg.com/vi/QtZPjL_CbQI/maxresdefault.jpg', 18000, 'PG-13', 15, 'Inglés', 1);
 
 -- --------------------------------------------------------
 
@@ -246,11 +256,6 @@ CREATE TABLE `pelicula_actor` (
 --
 
 INSERT INTO `pelicula_actor` (`pelicula_id_pelicula`, `actor_id_actor`, `rol_pelicula`) VALUES
-(1, 1, 'Protagonista (Joyce)'),
-(1, 2, 'Protagonista (Jim Hopper)'),
-(1, 3, 'Protagonista (Eleven)'),
-(1, 4, 'Protagonista (Mike)'),
-(2, 5, 'Protagonista (Isabel II)'),
 (2, 6, 'Protagonista (Isabel II - posterior)'),
 (4, 9, 'Protagonista (Ethan Hunt)'),
 (4, 10, 'Antagonista (Jim Phelps)'),
@@ -261,7 +266,11 @@ INSERT INTO `pelicula_actor` (`pelicula_id_pelicula`, `actor_id_actor`, `rol_pel
 (8, 17, 'Protagonista (Paul Atreides)'),
 (8, 18, 'Protagonista (Chani)'),
 (17, 2, 'Protagonista'),
-(10, 22, 'Protagonista\r\n');
+(10, 22, 'Protagonista\r\n'),
+(21, 2, 'Protagonista'),
+(21, 24, 'Protagonista'),
+(21, 17, 'Protagonista'),
+(21, 18, 'Protagonista');
 
 -- --------------------------------------------------------
 
@@ -279,18 +288,21 @@ CREATE TABLE `pelicula_genero` (
 --
 
 INSERT INTO `pelicula_genero` (`pelicula_id_pelicula`, `genero_id_genero`) VALUES
-(1, 1),
-(1, 2),
 (2, 3),
 (4, 5),
 (5, 3),
-(6, 6),
 (6, 5),
 (8, 1),
 (8, 8),
 (17, 4),
 (10, 1),
-(18, 5);
+(20, 5),
+(20, 8),
+(20, 1),
+(18, 5),
+(18, 1),
+(21, 5),
+(21, 3);
 
 -- --------------------------------------------------------
 
@@ -305,13 +317,6 @@ CREATE TABLE `prestamo` (
   `Usuario_id_usuario` int(11) NOT NULL,
   `cinta_id_cinta` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
-
---
--- Volcado de datos para la tabla `prestamo`
---
-
-INSERT INTO `prestamo` (`id_prestamo`, `fecha_prestamo`, `fecha_devolucion`, `Usuario_id_usuario`, `cinta_id_cinta`) VALUES
-(1, '2025-11-17 21:50:09', '2025-11-17 21:50:09', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -349,13 +354,13 @@ CREATE TABLE `traileres` (
 --
 
 INSERT INTO `traileres` (`id_traileres`, `ruta`, `pelicula_id_pelicula`) VALUES
-(1, 'https://www.youtube.com/embed/PssKpzB0Ah0', 1),
-(2, 'https://www.youtube.com/embed/d0JYlUTbv1A', 1),
 (3, 'https://www.youtube.com/embed/Way9Dexny3w?si=Az-JibfmXD5b4qLS', 8),
 (4, 'https://www.youtube.com/embed/2O5VhM1f1pY', 2),
 (7, 'https://www.youtube.com/embed/Z4Y4eJ_403Q', 4),
 (8, 'https://www.youtube.com/embed/HhFk_v_7y7U', 5),
-(9, 'https://www.youtube.com/embed/UPgUIORqja4?si=hI5gDRr3XpLbzAWl\" title=\"YouTube video player', 17);
+(9, 'https://www.youtube.com/embed/UPgUIORqja4?si=hI5gDRr3XpLbzAWl\" title=\"YouTube video player', 17),
+(10, 'https://www.youtube.com/embed/ECtK_IR4j5I?si=M3UUiBzBc1hyVOeY', 21),
+(11, 'https://www.youtube.com/embed/ygUHhImN98w?si=TqAoBgCdg11U_pty', 21);
 
 -- --------------------------------------------------------
 
@@ -382,10 +387,10 @@ CREATE TABLE `Usuario` (
 --
 
 INSERT INTO `Usuario` (`id_usuario`, `username`, `password`, `nombre`, `direccion`, `telefono`, `email`, `pregunta_seguridad`, `respuesta_seguridad`, `fecha_creacion`, `rol_id_rol`) VALUES
-(1, 'felipe', 'felipec51', 'felipe murillo', 'calle12', '3052781', 'marlon@gmail.com', '¿Cuál es el nombre de tu primera mascota?', 'nata', '2025-11-17 03:20:52', 2),
+(1, 'felipe', 'nata1234', 'felipe murillo', 'calle12', '3052781', 'marlon@gmail.com', '¿Cuál es el nombre de tu primera mascota?', 'nata', '2025-11-17 03:20:52', 2),
 (2, 'admin', 'admin', 'Administrador', 'Sede Central', '0000000000', 'admin@videoclub.local', '¿Cuál es el nombre de tu primera mascota?', 'mono', '2025-11-01 08:00:00', 1),
-(7, 'marlonc51', 'marlon', 'marlon', 'calle 14', '300728282', 'marlon@gmail.com ', '¿Cuál es el nombre de tu primera mascota?', 'princesa', '2025-11-16 23:59:58', 2),
-(10, 'johanc', 'temporal123', 'johan', 'calle 14', '3059239494', 'johan@gmail.com', '¿Cuál es el nombre de tu primera mascota?', 'mono', '2025-11-18 00:59:20', 2);
+(10, 'johanc', 'temporal123', 'johan perez', 'calle 13', '3059239494', 'johan@gmail.com', '¿Cuál es el nombre de tu primera mascota?', 'mono', '2025-11-18 00:59:20', 2),
+(16, 'maria', 'maria123', 'maria Rodriguez', 'calle 15', '305924981', 'mari123@gmail.com', 'madre', 'isa', '2025-11-19 22:55:16', 2);
 
 --
 -- Índices para tablas volcadas
@@ -499,28 +504,52 @@ ALTER TABLE `Usuario`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `actor`
+--
+ALTER TABLE `actor`
+  MODIFY `id_actor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
 -- AUTO_INCREMENT de la tabla `cinta`
 --
 ALTER TABLE `cinta`
-  MODIFY `id_cinta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_cinta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `director`
 --
 ALTER TABLE `director`
-  MODIFY `id_director` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_director` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT de la tabla `genero`
+--
+ALTER TABLE `genero`
+  MODIFY `id_genero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `pelicula`
 --
 ALTER TABLE `pelicula`
-  MODIFY `id_pelicula` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_pelicula` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT de la tabla `prestamo`
+--
+ALTER TABLE `prestamo`
+  MODIFY `id_prestamo` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `traileres`
+--
+ALTER TABLE `traileres`
+  MODIFY `id_traileres` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `Usuario`
 --
 ALTER TABLE `Usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Restricciones para tablas volcadas
