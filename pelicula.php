@@ -1,6 +1,18 @@
 <?php
 require_once 'conexion.php';
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (!isset($_SESSION["id_usuario"])) {
+    header("Location: iniciarsesion.php");
+    exit;
+}
+
+$usuario_logueado_id = $_SESSION["id_usuario"];
+
+
 include 'componentes/masinfo.php';
 include 'componentes/tagserie.php';
 include 'componentes/trailers.php';

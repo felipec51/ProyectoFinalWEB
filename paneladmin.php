@@ -1,7 +1,20 @@
 <?php
 
+include 'check_session.php'; 
+
+if (!isset($_SESSION["rol_id_rol"]) || $_SESSION["rol_id_rol"] != 1) {
+    header("Location: peliculasMenu.php"); 
+    exit;
+}
+$usuario_logueado_id = $_SESSION["id_usuario"];
+
+
+
+include 'listado_peliculas.php'; 
 include 'componentes/adminpeliculas.php';
 include 'componentes/sidebar.php';
+
+
 ?>
 
 <!DOCTYPE html>

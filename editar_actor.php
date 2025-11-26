@@ -1,6 +1,11 @@
 <?php
-// editar_actor.php
+
 require_once 'conexion.php';
+
+if (!isset($_SESSION["rol_id_rol"]) || $_SESSION["rol_id_rol"] != 1) {
+    header("Location: peliculasMenu.php"); 
+    exit;
+}
 
 $mensaje = "";
 $actor = null;
@@ -9,21 +14,19 @@ try {
     $objeto = new Conexion();
     $conexion = $objeto->Conectar();
 
-    // 1. Obtener el ID del actor a editar
     if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
         die("ID de actor no válido.");
     }
     $id_editar = $_GET['id'];
 
-    // --- Lógica para ACTUALIZAR el Actor ---
     if (isset($_POST['btn_actualizar'])) {
         $nuevo_nombre = trim($_POST['nombre']);
-        $id_actor_form = $_POST['id_actor']; // Aseguramos el ID desde el formulario
+        $id_actor_form = $_POST['id_actor']; 
 
         if (empty($nuevo_nombre)) {
             $mensaje = "<div class='alert error'>El nombre del actor no puede estar vacío.</div>";
         } else {
-            // Verificar si el nuevo nombre ya existe en otro actor (excluyendo el actual)
+            
             $sqlCheck = "SELECT COUNT(*) FROM actor WHERE nombre = :nombre AND id_actor != :id";
             $stmtCheck = $conexion->prepare($sqlCheck);
             $stmtCheck->execute([':nombre' => $nuevo_nombre, ':id' => $id_actor_form]);
@@ -31,13 +34,13 @@ try {
             if ($stmtCheck->fetchColumn() > 0) {
                 $mensaje = "<div class='alert error'>Ya existe otro actor con el nombre '<b>" . htmlspecialchars($nuevo_nombre) . "</b>'.</div>";
             } else {
-                // Actualizar el actor
+                
                 $sqlUpdate = "UPDATE actor SET nombre = :nombre WHERE id_actor = :id";
                 $stmtUpdate = $conexion->prepare($sqlUpdate);
 
                 if ($stmtUpdate->execute([':nombre' => $nuevo_nombre, ':id' => $id_actor_form])) {
                     $mensaje = "<div class='alert success'>Actor ID #$id_actor_form actualizado a '<b>" . htmlspecialchars($nuevo_nombre) . "</b>' correctamente.</div>";
-                    // Recargar los datos actualizados para mostrarlos en el formulario
+                    
                     $id_editar = $id_actor_form;
                 } else {
                     $mensaje = "<div class='alert error'>Error al intentar actualizar el actor.</div>";
@@ -45,8 +48,7 @@ try {
             }
         }
     }
-
-    // 2. Consultar los datos actuales del actor
+    
     $consulta = "SELECT id_actor, nombre FROM actor WHERE id_actor = :id";
     $sentencia = $conexion->prepare($consulta);
     $sentencia->execute([':id' => $id_editar]);

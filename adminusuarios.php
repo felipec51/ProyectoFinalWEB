@@ -1,6 +1,12 @@
 <?php
-// Archivo: adminusuarios.php
-session_start();
+
+include 'check_session.php'; 
+
+if (!isset($_SESSION["rol_id_rol"]) || $_SESSION["rol_id_rol"] != 1) {
+    header("Location: peliculasMenu.php"); 
+    exit;
+}
+$usuario_logueado_id = $_SESSION["id_usuario"];
 
 
 require_once 'crud_usuarios.php';

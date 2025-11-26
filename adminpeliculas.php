@@ -1,6 +1,15 @@
 <?php
 // adminpeliculas.php
 require_once 'conexion.php';
+include 'check_session.php'; 
+
+if (!isset($_SESSION["rol_id_rol"]) || $_SESSION["rol_id_rol"] != 1) {
+    header("Location: peliculasMenu.php"); 
+    exit;
+}
+$usuario_logueado_id = $_SESSION["id_usuario"];
+
+
 
 $mensaje = "";
 

@@ -1,6 +1,18 @@
 <?php
-
+include 'componentes/headermain.php';
 require_once 'conexion.php';
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (!isset($_SESSION["id_usuario"])) {
+    header("Location: iniciarsesion.php");
+    exit;
+}
+
+$usuario_logueado_id = $_SESSION["id_usuario"];
+
+
 try {
     $objetoConexion = Conexion::Conectar();
 
@@ -27,32 +39,9 @@ try {
 </head>
 
 <body>
+
     <div class="desktop">
-        <div class="nav">
-            <div class="rewind-code-film text-main-title">RewindCodeFilm</div>
-
-            <div class="button_perfil" id="btn-perfil">
-                <a href="perfil.php">
-                    <img src="./imgs/icons/iconuser.png" class="icon8" alt="Icono de Perfil">
-                    <strong>Perfil</strong>
-                </a>
-            </div>
-
-            <div class="button_perfil" id="btn-noti">
-                <a href="perfil.php">
-                    <img src="./imgs/icons/icono-10-(17).svg" class="icon8" alt="Icono de Notificaciones">
-                    <strong>Notificaciones</strong>
-                </a>
-            </div>
-
-            <div class="button_perfil" id="btn-config">
-                <a href="perfil.php">
-                    <img src="./imgs/icons/icono-10-(10).svg" class="icon8" alt="Icono de Configuración">
-                    <strong>Configuración</strong>
-                </a>
-            </div>
-
-        </div>
+        <?php navheader("Inicio", $usuario_logueado_id) ?>
 
         <div class="conten-div">
             <div class="text-wrapper-4 text-main-title">Solo en RewindCodeFilm</div>

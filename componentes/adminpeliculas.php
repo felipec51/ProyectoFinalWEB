@@ -1,4 +1,5 @@
 <?php
+
 function renderpeliculas(array $peliculas): void
 {
     ?>

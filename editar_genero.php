@@ -2,6 +2,13 @@
 // editar_genero.php
 require_once 'conexion.php';
 
+if (!isset($_SESSION["rol_id_rol"]) || $_SESSION["rol_id_rol"] != 1) {
+    header("Location: peliculasMenu.php"); 
+    exit;
+}
+
+
+
 $mensaje = "";
 $genero = null; 
 
