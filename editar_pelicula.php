@@ -2,10 +2,14 @@
 
 require_once 'conexion.php';
 
+
+include 'check_session.php'; 
+
 if (!isset($_SESSION["rol_id_rol"]) || $_SESSION["rol_id_rol"] != 1) {
     header("Location: peliculasMenu.php"); 
     exit;
 }
+$usuario_logueado_id = $_SESSION["id_usuario"];
 
 
 $id_pelicula = isset($_GET['id']) ? $_GET['id'] : null;
@@ -64,7 +68,8 @@ try {
         if ($nuevas_copias > $copias_actuales && $puede_actualizar) {
             $diferencia = $nuevas_copias - $copias_actuales;
             
-            $sqlInsertCinta = "INSERT INTO cinta (estado, pelicula_id_pelicula) VALUES ('disponible', :id_peli)";
+            // ⚠️ CÓDIGO CORREGIDO: Se eliminó 'estado' de la inserción de cinta.
+            $sqlInsertCinta = "INSERT INTO cinta (pelicula_id_pelicula) VALUES (:id_peli)";
             $stmtCinta = $conexion->prepare($sqlInsertCinta);
             
             for ($i = 0; $i < $diferencia; $i++) {
@@ -302,17 +307,17 @@ try {
                     
                     <div class="input-group col-4">
                         <label class="label sub-label">Trailer 1 URL</label>
-                        <input type="url" name="trailer_url[]" class="input-field" value="<?php echo htmlspecialchars($trailer1_url); ?>" placeholder="https:
+                        <input type="url" name="trailer_url[]" class="input-field" value="<?php echo htmlspecialchars($trailer1_url); ?>" placeholder="https:">
                     </div>
                     
                     <div class="input-group col-4">
                         <label class="label sub-label">Trailer 2 URL</label>
-                        <input type="url" name="trailer_url[]" class="input-field" value="<?php echo htmlspecialchars($trailer2_url); ?>" placeholder="https:
+                        <input type="url" name="trailer_url[]" class="input-field" value="<?php echo htmlspecialchars($trailer2_url); ?>" placeholder="https:">
                     </div>
                     
                     <div class="input-group col-4">
                         <label class="label sub-label">Trailer 3 URL</label>
-                        <input type="url" name="trailer_url[]" class="input-field" value="<?php echo htmlspecialchars($trailer3_url); ?>" placeholder="https:
+                        <input type="url" name="trailer_url[]" class="input-field" value="<?php echo htmlspecialchars($trailer3_url); ?>" placeholder="https:">
                     </div>
 
                     <div class="input-group col-3">
@@ -341,7 +346,7 @@ try {
 
                     <div class="input-group col-12">
                         <label class="label">URL del Póster</label>
-                        <input type="url" name="poster" class="input-field" value="<?php echo htmlspecialchars($pelicula['poster_path']); ?>" placeholder="https:
+                        <input type="url" name="poster" class="input-field" value="<?php echo htmlspecialchars($pelicula['poster_path']); ?>" placeholder="https:">
                     </div>
 
                 </div>
