@@ -24,7 +24,7 @@ try {
     $conexion = Conexion::Conectar();
     
     
-    $sqlUser = "SELECT username, nombre, direccion, telefono, email, fecha_creacion FROM Usuario WHERE id_usuario = :id";
+    $sqlUser = "SELECT username, nombre, direccion, telefono, email, fecha_creacion, rol_id_rol FROM Usuario WHERE id_usuario = :id";
     $stmtUser = $conexion->prepare($sqlUser);
     $stmtUser->bindParam(':id', $usuario_logueado_id, PDO::PARAM_INT);
     $stmtUser->execute();
@@ -76,7 +76,8 @@ try {
             'username' => 'n/a',
             'email' => 'n/a',
             'telefono' => 'n/a',
-            'direccion' => 'n/a'
+            'direccion' => 'n/a',
+            'rol_id_rol' => 2 // Default to non-admin
         ];
     }
     
@@ -89,7 +90,8 @@ try {
         'username' => 'n/a',
         'email' => 'Error BD',
         'telefono' => 'Error BD',
-        'direccion' => 'Error BD'
+        'direccion' => 'Error BD',
+        'rol_id_rol' => 2 // Default to non-admin
     ];
     $userInitials = "!";
 }
@@ -152,12 +154,14 @@ $direccion = nl2br(htmlspecialchars($userData['direccion']));
             </div>
 
             <div class="profile-actions">
-                <button class="btn btn-outline">
+                <a href="editar_perfil.php" class="btn btn-outline">
                     <img src="./imgs/icons/editarbtn.svg" alt=""> Editar perfil
-                </button>
-                <button class="btn btn-primary">
+                </a>
+                <?php if (isset($userData['rol_id_rol']) && $userData['rol_id_rol'] == 1): ?>
+                <a href="admin_dashboard.php" class="btn btn-primary">
                     <img src="./imgs/icons/documento.svg" alt=""> Ir a Ficha Usuario
-                </button>
+                </a>
+                <?php endif; ?>
             </div>
         </section>
 
@@ -169,7 +173,7 @@ $direccion = nl2br(htmlspecialchars($userData['direccion']));
                         <img class="icon-md" src="img/vector-36.svg" alt="">
                         <h2>Datos Personales</h2>
                     </div>
-                    <button class="edit-icon"><img src="./imgs/icons/editarbtn.svg" alt="Editar"></button>
+                    <a href="editar_perfil.php#datos-personales" class="edit-icon"><img src="./imgs/icons/editarbtn.svg" alt="Editar"></a>
                 </div>
                 <div class="card-body">
                     <div class="field-group">
@@ -189,7 +193,7 @@ $direccion = nl2br(htmlspecialchars($userData['direccion']));
                         <img class="icon-md" src="img/vector-5.svg" alt="">
                         <h2>Contacto/Gmail</h2>
                     </div>
-                    <button class="edit-icon"><img src="./imgs/icons/editarbtn.svg" alt="Editar"></button>
+                    <a href="editar_perfil.php#contacto" class="edit-icon"><img src="./imgs/icons/editarbtn.svg" alt="Editar"></a>
                 </div>
                 <div class="card-body">
                     <div class="field-group">
@@ -209,7 +213,7 @@ $direccion = nl2br(htmlspecialchars($userData['direccion']));
                         <img class="icon-md" src="img/vector-14.svg" alt="">
                         <h2>Dirección</h2>
                     </div>
-                    <button class="edit-icon"><img src="./imgs/icons/editarbtn.svg" alt="Editar"></button>
+                    <a href="editar_perfil.php#direccion" class="edit-icon"><img src="./imgs/icons/editarbtn.svg" alt="Editar"></a>
                 </div>
                 <div class="card-body">
                     <div class="field-group">
@@ -224,7 +228,7 @@ $direccion = nl2br(htmlspecialchars($userData['direccion']));
                         <img class="icon-md" src="img/vector-24.svg" alt="">
                         <h2>Preferencias</h2>
                     </div>
-                    <button class="edit-icon"><img src="./imgs/icons/editarbtn.svg" alt="Editar"></button>
+                    <a href="editar_perfil.php#preferencias" class="edit-icon"><img src="./imgs/icons/editarbtn.svg" alt="Editar"></a>
                 </div>
                 <div class="card-body">
                     <div class="field-group">

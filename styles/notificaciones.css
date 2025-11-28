@@ -1,0 +1,33 @@
+.notifications-section {
+    margin-top: 2rem;
+}
+
+.notifications-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.notification-item {
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #333;
+    background-color: #1c1c1c;
+    transition: background-color 0.3s;
+}
+
+.notification-item.unread {
+    background-color: #2a2a2a;
+    border-left: 4px solid #007bff;
+}
+
+.notification-message {
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+    color: #f0f0f0;
+}
+
+.notification-date {
+    font-size: 0.8rem;
+    color: #888;
+}

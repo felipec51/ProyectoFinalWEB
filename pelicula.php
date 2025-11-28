@@ -43,7 +43,10 @@ $elenco_info = [];
 $episodios = []; 
 
 try {
-    $sql = "SELECT p.*, d.nombre as nombre_director 
+    $sql = "SELECT 
+                p.*, 
+                d.nombre as nombre_director,
+                (SELECT COUNT(*) FROM cinta c WHERE c.pelicula_id_pelicula = p.id_pelicula AND c.estado = 'disponible') as copias_disponibles
             FROM pelicula p 
             JOIN director d ON p.director_id_director = d.id_director 
             WHERE p.id_pelicula = :id";
@@ -67,7 +70,8 @@ try {
         $duracion_encabezado = "{$horas}h {$minutos}m";
         $duracion_tag = "{$pelicula_actual['duracion_min']} min";
 
-        $ncopia = $pelicula_actual['ncopias'];
+        // Usar el conteo de la nueva consulta unificada
+        $ncopia = $pelicula_actual['copias_disponibles'];
         $ncopiastotales = $pelicula_actual['ncopias']; 
         
         $coincidencia = "98%"; 
@@ -122,6 +126,31 @@ try {
 </head>
 
 <body>
+    <?php
+    // Mostrar mensajes de la lista de espera o de alquiler
+    $message = '';
+    $message_type = '';
+
+    if (isset($_SESSION['mensaje_lista_espera'])) {
+        $message = $_SESSION['mensaje_lista_espera'];
+        $message_type = 'success';
+        unset($_SESSION['mensaje_lista_espera']);
+    } elseif (isset($_SESSION['mensaje_lista_espera_error'])) {
+        $message = $_SESSION['mensaje_lista_espera_error'];
+        $message_type = 'error';
+        unset($_SESSION['mensaje_lista_espera_error']);
+    } elseif (isset($_SESSION['mensaje_alquiler_error'])) {
+        $message = $_SESSION['mensaje_alquiler_error'];
+        $message_type = 'error';
+        unset($_SESSION['mensaje_alquiler_error']);
+    }
+
+    if ($message): ?>
+        <div style="padding: 15px; margin-bottom: 20px; border: 1px solid transparent; border-radius: 4px; color: #fff; text-align: center; background-color: <?php echo $message_type === 'success' ? '#28a745' : '#dc3545'; ?>;">
+            <?php echo $message; ?>
+        </div>
+    <?php endif; ?>
+
     <div class="desktop">
     
         <img src="<?php echo $fondo_img; ?>" class="fondestringer-icon" alt="Carátula de <?php echo $nombre_peli; ?>" onerror="this.src='imgs/default_poster.jpg'">
@@ -130,9 +159,9 @@ try {
         
         <?php
         if ($ncopia > 0) {
-            renderdisponible($nombre_peli, $anio, $duracion_tag,$precio);
+            renderdisponible($nombre_peli, $anio, $duracion_tag, $precio, $id_peli);
         } else {
-            rendernodisponible($nombre_peli, $ncopia, $ncopiastotales, $nfila, $duracion_tag, $anio);
+            rendernodisponible($nombre_peli, $ncopia, $ncopiastotales, $nfila, $duracion_tag, $anio, $id_peli);
         }
         ?>
         

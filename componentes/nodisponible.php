@@ -1,5 +1,5 @@
 <?php
-function rendernodisponible(string $nombre_serie, string $ncopia, string $ncopiastotales, string $nfila, string $duracion_tag, string $anio): void
+function rendernodisponible(string $nombre_serie, string $ncopia, string $ncopiastotales, string $nfila, string $duracion_tag, string $anio, string $id_peli): void
 {
 ?>
   <link rel="stylesheet" href="./styles/nodisponible.css" />
@@ -63,10 +63,13 @@ function rendernodisponible(string $nombre_serie, string $ncopia, string $ncopia
         <div class="mensaje">No disponible para Rentar</div>
       </div>
 
-      <div class="boton-renta boton-fila">
-        <img src="./imgs/icons/Icon-6.svg" alt="fecha" />
-        <div class="texto-boton">Añadirme a la fila</div>
-      </div>
+      <form action="unirse_lista_espera.php" method="POST" style="display: contents;">
+        <input type="hidden" name="pelicula_id" value="<?php echo $id_peli; ?>">
+        <button type="submit" class="boton-renta boton-fila">
+          <img src="./imgs/icons/Icon-6.svg" alt="fecha" />
+          <div class="texto-boton">Añadirme a la fila</div>
+        </button>
+      </form>
     </div>
   </div>
 

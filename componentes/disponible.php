@@ -1,5 +1,5 @@
 <?php
-function renderdisponible($nombre_peli, $anio, $duracion_tag, $precio): void
+function renderdisponible($nombre_peli, $anio, $duracion_tag, $precio, $id_peli): void
 { ?>
 
     <link rel="stylesheet" href="./styles/disponible.css" />
@@ -27,48 +27,51 @@ function renderdisponible($nombre_peli, $anio, $duracion_tag, $precio): void
             </div>
         </div>
 
-        <div class="rent-options-group">
-            <div class="option-label-row">
-                <div class="label-text">Selecciona el periodo de renta:</div>
-            </div>
-            <div class="rent-card-container">
-                <div class="rent-card card-pos-1">
-                    <div class="card-icon-container">
-                        <img src="./imgs/icons/iconofecha.svg" alt="fecha">
-                    </div>
-                    <div class="card-duration-text">3 días</div>
-                    <div class="card-price-row">
-                        <div class="card-price-text">$<?php echo $precio; ?></div>
-                    </div>
+        <form action="alquilar_pelicula.php" method="POST">
+            <input type="hidden" name="pelicula_id" value="<?php echo $id_peli; ?>">
+            <div class="rent-options-group">
+                <div class="option-label-row">
+                    <div class="label-text">Selecciona el periodo de renta:</div>
                 </div>
+                <div class="rent-card-container">
+                    <div class="rent-card card-pos-1">
+                        <div class="card-icon-container">
+                            <img src="./imgs/icons/iconofecha.svg" alt="fecha">
+                        </div>
+                        <div class="card-duration-text">3 días</div>
+                        <div class="card-price-row">
+                            <div class="card-price-text">$<?php echo $precio; ?></div>
+                        </div>
+                    </div>
 
-                <div class="rent-card card-pos-2">
-                    <div class="card-icon-container">
-                        <img src="./imgs/icons/iconofecha.svg" alt="fecha">
+                    <div class="rent-card card-pos-2">
+                        <div class="card-icon-container">
+                            <img src="./imgs/icons/iconofecha.svg" alt="fecha">
+                        </div>
+                        <div class="card-duration-text">15 días</div>
+                        <div class="card-price-row">
+                            <div class="card-price-text">$<?php echo $precio * 1.3; ?></div>
+                        </div>
                     </div>
-                    <div class="card-duration-text">15 días</div>
-                    <div class="card-price-row">
-                        <div class="card-price-text">$<?php echo $precio * 1.3; ?></div>
-                    </div>
-                </div>
-                <div class="rent-card card-pos-3">
-                    <div class="card-icon-container">
-                        <img src="./imgs/icons/iconofecha.svg" alt="fecha">
-                    </div>
-                    <div class="card-duration-text">1 mes</div>
-                    <div class="card-price-row">
-                        <div class="card-price-text">$<?php echo $precio * 1.6; ?></div>
+                    <div class="rent-card card-pos-3">
+                        <div class="card-icon-container">
+                            <img src="./imgs/icons/iconofecha.svg" alt="fecha">
+                        </div>
+                        <div class="card-duration-text">1 mes</div>
+                        <div class="card-price-row">
+                            <div class="card-price-text">$<?php echo $precio * 1.6; ?></div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="rent-button">
-            <div class="button-icon-container">
-                <img src="./imgs/icons/movieIcon.svg" alt="fecha">
+            <button type="submit" class="rent-button">
+                <div class="button-icon-container">
+                    <img src="./imgs/icons/movieIcon.svg" alt="fecha">
 
-            </div>
-            <div class="button-text">Rentar película</div>
-        </div>
+                </div>
+                <div class="button-text">Rentar película</div>
+            </button>
+        </form>
 
     </div>
 <?php
