@@ -43,10 +43,7 @@ $elenco_info = [];
 $episodios = []; 
 
 try {
-    $sql = "SELECT 
-                p.*, 
-                d.nombre as nombre_director,
-                (SELECT COUNT(*) FROM cinta c WHERE c.pelicula_id_pelicula = p.id_pelicula AND c.estado = 'disponible') as copias_disponibles
+    $sql = "SELECT p.*, d.nombre as nombre_director 
             FROM pelicula p 
             JOIN director d ON p.director_id_director = d.id_director 
             WHERE p.id_pelicula = :id";
@@ -70,8 +67,7 @@ try {
         $duracion_encabezado = "{$horas}h {$minutos}m";
         $duracion_tag = "{$pelicula_actual['duracion_min']} min";
 
-        // Usar el conteo de la nueva consulta unificada
-        $ncopia = $pelicula_actual['copias_disponibles'];
+        $ncopia = $pelicula_actual['ncopias'];
         $ncopiastotales = $pelicula_actual['ncopias']; 
         
         $coincidencia = "98%"; 
@@ -123,34 +119,10 @@ try {
     <title>RewindCodeFilm - <?php echo $nombre_peli; ?></title>
     <link rel="stylesheet" href="./styles/serie.css" />
     <link rel="stylesheet" href="./styles/masinfo.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
-    <?php
-    // Mostrar mensajes de la lista de espera o de alquiler
-    $message = '';
-    $message_type = '';
-
-    if (isset($_SESSION['mensaje_lista_espera'])) {
-        $message = $_SESSION['mensaje_lista_espera'];
-        $message_type = 'success';
-        unset($_SESSION['mensaje_lista_espera']);
-    } elseif (isset($_SESSION['mensaje_lista_espera_error'])) {
-        $message = $_SESSION['mensaje_lista_espera_error'];
-        $message_type = 'error';
-        unset($_SESSION['mensaje_lista_espera_error']);
-    } elseif (isset($_SESSION['mensaje_alquiler_error'])) {
-        $message = $_SESSION['mensaje_alquiler_error'];
-        $message_type = 'error';
-        unset($_SESSION['mensaje_alquiler_error']);
-    }
-
-    if ($message): ?>
-        <div style="padding: 15px; margin-bottom: 20px; border: 1px solid transparent; border-radius: 4px; color: #fff; text-align: center; background-color: <?php echo $message_type === 'success' ? '#28a745' : '#dc3545'; ?>;">
-            <?php echo $message; ?>
-        </div>
-    <?php endif; ?>
-
     <div class="desktop">
     
         <img src="<?php echo $fondo_img; ?>" class="fondestringer-icon" alt="Carátula de <?php echo $nombre_peli; ?>" onerror="this.src='imgs/default_poster.jpg'">
@@ -159,9 +131,9 @@ try {
         
         <?php
         if ($ncopia > 0) {
-            renderdisponible($nombre_peli, $anio, $duracion_tag, $precio, $id_peli);
+            renderdisponible($nombre_peli, $anio, $duracion_tag,$precio,$id_peli,$usuario_logueado_id);
         } else {
-            rendernodisponible($nombre_peli, $ncopia, $ncopiastotales, $nfila, $duracion_tag, $anio, $id_peli);
+            rendernodisponible($nombre_peli, $ncopia, $ncopiastotales, $nfila, $duracion_tag, $anio,$id_peli);
         }
         ?>
         
@@ -180,5 +152,62 @@ try {
             renderMasInfo($primer_genero, $descripcion, $elenco_resumen, $creadores); 
         ?>
     </div>
+
+    
 </body>
 </html>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const formAlquiler = document.getElementById('form-alquiler');
+
+        if (formAlquiler) {
+            formAlquiler.addEventListener('submit', function(e) {
+                e.preventDefault(); // Evita que la página cambie a la pantalla blanca con JSON
+
+                // Crear los datos para enviar
+                const formData = new FormData(this);
+
+                // Enviar datos a alquilar_pelicula.php usando fetch
+                fetch('alquilar_pelicula.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json()) // Convertir la respuesta a objeto JSON
+                .then(data => {
+                    if (data.success) {
+                        // ÉXITO: Mostrar alerta verde
+                        Swal.fire({
+                            title: '¡Alquiler Exitoso!',
+                            text: data.message,
+                            icon: 'success',
+                            confirmButtonText: 'Ver mis películas',
+                            confirmButtonColor: '#3085d6'
+                        }).then((result) => {
+                            // Opcional: Redirigir si el usuario da click en OK
+                            // window.location.href = 'mis_peliculas.php'; 
+                            // O simplemente recargar para actualizar stock:
+                            location.reload(); 
+                        });
+                    } else {
+                        // ERROR: Mostrar alerta roja (AQUÍ SALDRÁ TU MENSAJE DE PRÉSTAMO ACTIVO)
+                        Swal.fire({
+                            title: 'Atención',
+                            text: data.message, // "Ya tienes un préstamo activo..."
+                            icon: 'warning',
+                            confirmButtonText: 'Entendido',
+                            confirmButtonColor: '#d33'
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    Swal.fire({
+                        title: 'Error',
+                        text: 'Hubo un problema de conexión con el servidor.',
+                        icon: 'error'
+                    });
+                });
+            });
+        }
+    });
+    </script>

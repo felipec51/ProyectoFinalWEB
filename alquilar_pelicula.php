@@ -1,80 +1,96 @@
 <?php
 require_once 'conexion.php';
+date_default_timezone_set('America/Bogota');
+header('Content-Type: application/json'); // Importante para que JS entienda la respuesta
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
+try {
+    $conexion = Conexion::Conectar();
+} catch (Exception $e) {
+    echo json_encode(["success" => false, "message" => "Error de conexión a BD: " . $e->getMessage()]);
+    exit();
 }
 
-if (!isset($_SESSION["id_usuario"])) {
-    header("Location: iniciarsesion.php");
-    exit;
+$id_usuario  = isset($_POST['id_usuario'])  ? (int)$_POST['id_usuario']  : 0;
+$id_pelicula = isset($_POST['id_pelicula']) ? (int)$_POST['id_pelicula'] : 0;
+$precio      = isset($_POST['precio'])      ? $_POST['precio']          : '0.00';
+
+if ($id_usuario <= 0 || $id_pelicula <= 0 || !is_numeric($precio) || (float)$precio <= 0) {
+    echo json_encode(["success" => false, "message" => "Datos inválidos."]);
+    exit();
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pelicula_id'])) {
-    $id_pelicula = $_POST['pelicula_id'];
-    $id_usuario = $_SESSION['id_usuario'];
+$conexion->beginTransaction();
 
-    $objeto = new Conexion();
-    $conexion = $objeto->Conectar();
+try {
+    // 1. Obtener nombre usuario
+    $stmt = $conexion->prepare("SELECT nombre FROM Usuario WHERE id_usuario = :id_usuario");
+    $stmt->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
+    $stmt->execute();
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    if ($row) { $nombreUsuario = $row['nombre']; } else { throw new Exception("Usuario no encontrado."); }
 
-    try {
-        $conexion->beginTransaction();
+    // 2. Obtener nombre película
+    $stmt = $conexion->prepare("SELECT titulo FROM pelicula WHERE id_pelicula = :id_pelicula");
+    $stmt->bindParam(':id_pelicula', $id_pelicula, PDO::PARAM_INT);
+    $stmt->execute();
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    if (!$row) { throw new Exception("Película no encontrada."); }
+    $nombrePelicula = $row['titulo'];
 
-        // 1. Buscar una cinta disponible y bloquearla para evitar que otro la tome
-        $sql_find_cinta = "SELECT id_cinta FROM cinta WHERE pelicula_id_pelicula = :id_pelicula AND estado = 'disponible' LIMIT 1 FOR UPDATE";
-        $stmt_find = $conexion->prepare($sql_find_cinta);
-        $stmt_find->bindParam(':id_pelicula', $id_pelicula, PDO::PARAM_INT);
-        $stmt_find->execute();
-        $cinta = $stmt_find->fetch(PDO::FETCH_ASSOC);
+    // 3. VERIFICACIÓN DE PRÉSTAMO ACTIVO (Esta es la parte clave para tu notificación)
+    $sqlCheck = "SELECT COUNT(*) AS total FROM prestamo p JOIN cinta c ON p.cinta_id_cinta = c.id_cinta WHERE p.Usuario_id_usuario = :id_usuario AND c.pelicula_id_pelicula = :id_pelicula AND p.estado_alquiler = 'en curso'";
+    $stmt = $conexion->prepare($sqlCheck);
+    $stmt->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
+    $stmt->bindParam(':id_pelicula', $id_pelicula, PDO::PARAM_INT);
+    $stmt->execute();
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($cinta) {
-            $id_cinta = $cinta['id_cinta'];
-
-            // 2. Actualizar el estado de la cinta a 'prestada'
-            $sql_update_cinta = "UPDATE cinta SET estado = 'prestada' WHERE id_cinta = :id_cinta";
-            $stmt_update = $conexion->prepare($sql_update_cinta);
-            $stmt_update->bindParam(':id_cinta', $id_cinta, PDO::PARAM_INT);
-            $stmt_update->execute();
-
-            // 3. Insertar el registro del préstamo
-            $fecha_prestamo = date('Y-m-d H:i:s');
-            $fecha_devolucion = date('Y-m-d H:i:s', strtotime('+7 days')); // Alquiler por 7 días
-
-            $sql_insert_prestamo = "INSERT INTO prestamo (fecha_prestamo, fecha_devolucion, Usuario_id_usuario, cinta_id_cinta) VALUES (:fecha_prestamo, :fecha_devolucion, :id_usuario, :id_cinta)";
-            $stmt_insert = $conexion->prepare($sql_insert_prestamo);
-            $stmt_insert->bindParam(':fecha_prestamo', $fecha_prestamo);
-            $stmt_insert->bindParam(':fecha_devolucion', $fecha_devolucion);
-            $stmt_insert->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
-            $stmt_insert->bindParam(':id_cinta', $id_cinta, PDO::PARAM_INT);
-            $stmt_insert->execute();
-
-            // 4. Confirmar la transacción
-            $conexion->commit();
-
-            // Redirigir con mensaje de éxito
-            $_SESSION['mensaje_alquiler'] = "¡Película alquilada con éxito! Disfrútala.";
-            header("Location: perfil.php");
-            exit;
-
-        } else {
-            // No hay cintas disponibles, deshacer la transacción
-            $conexion->rollBack();
-            $_SESSION['mensaje_alquiler_error'] = "Lo sentimos, no hay copias disponibles en este momento.";
-            header("Location: pelicula.php?id=" . $id_pelicula);
-            exit;
-        }
-
-    } catch (Exception $e) {
-        // En caso de error, deshacer la transacción
-        $conexion->rollBack();
-        $_SESSION['mensaje_alquiler_error'] = "Ha ocurrido un error al procesar tu solicitud. Por favor, inténtalo de nuevo.";
-        // Log del error: error_log($e->getMessage());
-        header("Location: pelicula.php?id=" . $id_pelicula);
-        exit;
+    if ($row['total'] > 0) {
+        throw new Exception("Ya tienes un préstamo activo de esta película. Debes devolverla antes de volver a alquilarla.");
     }
-} else {
-    // Si no es una solicitud POST, redirigir
-    header("Location: listado_peliculas.php");
-    exit;
+
+    // 4. Buscar cinta disponible
+    $sqlCinta = "SELECT c.id_cinta FROM cinta c LEFT JOIN prestamo p ON c.id_cinta = p.cinta_id_cinta AND p.estado_alquiler = 'en curso' WHERE c.pelicula_id_pelicula = :id_pelicula AND p.id_prestamo IS NULL LIMIT 1 FOR UPDATE";
+    $stmt = $conexion->prepare($sqlCinta);
+    $stmt->bindParam(':id_pelicula', $id_pelicula, PDO::PARAM_INT);
+    $stmt->execute();
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($row) { $id_cinta = $row['id_cinta']; } else { throw new Exception("No hay copias disponibles."); }
+
+    // 5. Insertar Préstamo
+    $fecha_prestamo = date('Y-m-d H:i:s');
+    $fecha_devolucion = date('Y-m-d H:i:s', strtotime('+7 days'));
+    $sqlPrestamo = "INSERT INTO prestamo (fecha_prestamo, fecha_devolucion, Usuario_id_usuario, cinta_id_cinta, estado_alquiler) VALUES (:fecha_prestamo, :fecha_devolucion, :id_usuario, :id_cinta, 'en curso')";
+    $stmt = $conexion->prepare($sqlPrestamo);
+    $stmt->bindParam(':fecha_prestamo', $fecha_prestamo);
+    $stmt->bindParam(':fecha_devolucion', $fecha_devolucion);
+    $stmt->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
+    $stmt->bindParam(':id_cinta', $id_cinta, PDO::PARAM_INT);
+    $stmt->execute();
+    $id_prestamo_generado = $conexion->lastInsertId();
+
+    // 6. Insertar Factura
+    $sqlFactura = "INSERT INTO factura (Nombre_user, precio_alquiler, fecha_factura, nombre_pelicula, Usuario_id_usuario) VALUES (:nombre_user, :precio_alquiler, :fecha_factura, :id_cinta, :id_usuario_fk)";
+    $stmt = $conexion->prepare($sqlFactura);
+    $stmt->bindParam(':nombre_user', $nombreUsuario);
+    $stmt->bindParam(':precio_alquiler', $precio);
+    $stmt->bindParam(':fecha_factura', $fecha_prestamo);
+    $stmt->bindParam(':id_cinta', $id_cinta, PDO::PARAM_INT); 
+    $stmt->bindParam(':id_usuario_fk', $id_usuario, PDO::PARAM_INT); 
+    $stmt->execute();
+
+    $conexion->commit();
+
+    echo json_encode([
+        "success" => true,
+        "message" => "¡Alquiler realizado con éxito!",
+        "fecha_devolucion" => $fecha_devolucion
+    ]);
+
+} catch (Exception $e) {
+    if ($conexion->inTransaction()) { $conexion->rollBack(); }
+    // Aquí se devuelve el mensaje de error que JS mostrará
+    echo json_encode(["success" => false, "message" => $e->getMessage()]);
 }
 ?>

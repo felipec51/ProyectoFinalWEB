@@ -1,6 +1,6 @@
 <?php
 require_once 'conexion.php';
-include 'componentes/headermain.php';
+include 'componentes/headermain.php'; // Asegúrate de que este archivo exista
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -17,12 +17,14 @@ $rentedMovies = [];
 try {
     $conexion = Conexion::Conectar();
 
+    // **** CAMBIO AQUÍ: Añadimos 'AND pr.estado_alquiler = 'en curso'' ****
     $sqlRented = "
         SELECT p.titulo, pr.id_prestamo, pr.fecha_prestamo, pr.fecha_devolucion
         FROM prestamo pr
         JOIN cinta c ON pr.cinta_id_cinta = c.id_cinta
         JOIN pelicula p ON c.pelicula_id_pelicula = p.id_pelicula
-        WHERE pr.Usuario_id_usuario = :id
+        WHERE pr.Usuario_id_usuario = :id 
+          AND pr.estado_alquiler = 'en curso'
         ORDER BY pr.fecha_devolucion ASC
     ";
     $stmtRented = $conexion->prepare($sqlRented);
@@ -32,6 +34,8 @@ try {
 
 } catch (Exception $e) {
     error_log("Error fetching rented movies: " . $e->getMessage());
+    // Opcional: mostrar un mensaje de error al usuario
+    $_SESSION['mensaje_alquiler_error'] = "Error al cargar tus alquileres.";
 }
 ?>
 
@@ -80,6 +84,7 @@ try {
                                 <p>Alquilada el: <?php echo date('d/m/Y', strtotime($rental['fecha_prestamo'])); ?></p>
                                 <p>Vence el: <?php echo date('d/m/Y', strtotime($rental['fecha_devolucion'])); ?></p>
                             </div>
+                            <!-- La acción del formulario es correcta, apunta a devolver_pelicula.php -->
                             <form action="devolver_pelicula.php" method="POST" class="rental-action">
                                 <input type="hidden" name="prestamo_id" value="<?php echo $rental['id_prestamo']; ?>">
                                 <button type="submit" class="btn btn-danger">Devolver</button>

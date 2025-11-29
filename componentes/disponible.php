@@ -1,5 +1,5 @@
 <?php
-function renderdisponible($nombre_peli, $anio, $duracion_tag, $precio, $id_peli): void
+function renderdisponible($nombre_peli, $anio, $duracion_tag, $precio, $id_peli, $id_usuario_sesion): void
 { ?>
 
     <link rel="stylesheet" href="./styles/disponible.css" />
@@ -27,8 +27,10 @@ function renderdisponible($nombre_peli, $anio, $duracion_tag, $precio, $id_peli)
             </div>
         </div>
 
-        <form action="alquilar_pelicula.php" method="POST">
-            <input type="hidden" name="pelicula_id" value="<?php echo $id_peli; ?>">
+        <form id="form-alquiler" action="alquilar_pelicula.php" method="POST">
+            <input type="hidden" name="id_pelicula" value="<?php echo $id_peli; ?>">
+            <input type="hidden" name="id_usuario" value="<?php echo $id_usuario_sesion; ?>"> 
+            <input type="hidden" name="precio" value="<?php echo $precio; ?>"> 
             <div class="rent-options-group">
                 <div class="option-label-row">
                     <div class="label-text">Selecciona el periodo de renta:</div>
@@ -38,28 +40,9 @@ function renderdisponible($nombre_peli, $anio, $duracion_tag, $precio, $id_peli)
                         <div class="card-icon-container">
                             <img src="./imgs/icons/iconofecha.svg" alt="fecha">
                         </div>
-                        <div class="card-duration-text">3 días</div>
+                        <div class="card-duration-text">7 días</div>
                         <div class="card-price-row">
                             <div class="card-price-text">$<?php echo $precio; ?></div>
-                        </div>
-                    </div>
-
-                    <div class="rent-card card-pos-2">
-                        <div class="card-icon-container">
-                            <img src="./imgs/icons/iconofecha.svg" alt="fecha">
-                        </div>
-                        <div class="card-duration-text">15 días</div>
-                        <div class="card-price-row">
-                            <div class="card-price-text">$<?php echo $precio * 1.3; ?></div>
-                        </div>
-                    </div>
-                    <div class="rent-card card-pos-3">
-                        <div class="card-icon-container">
-                            <img src="./imgs/icons/iconofecha.svg" alt="fecha">
-                        </div>
-                        <div class="card-duration-text">1 mes</div>
-                        <div class="card-price-row">
-                            <div class="card-price-text">$<?php echo $precio * 1.6; ?></div>
                         </div>
                     </div>
                 </div>
