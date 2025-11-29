@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 25-11-2025 a las 21:16:46
+-- Tiempo de generación: 28-11-2025 a las 20:49:37
 -- Versión del servidor: 12.0.2-MariaDB
 -- Versión de PHP: 8.4.14
 
@@ -68,7 +68,6 @@ INSERT INTO `actor` (`id_actor`, `nombre`) VALUES
 
 CREATE TABLE `cinta` (
   `id_cinta` int(11) NOT NULL,
-  `estado` enum('disponible','prestada','danada') NOT NULL,
   `pelicula_id_pelicula` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
 
@@ -76,22 +75,23 @@ CREATE TABLE `cinta` (
 -- Volcado de datos para la tabla `cinta`
 --
 
-INSERT INTO `cinta` (`id_cinta`, `estado`, `pelicula_id_pelicula`) VALUES
-(5, 'disponible', 5),
-(6, 'disponible', 6),
-(8, 'disponible', 8),
-(13, 'disponible', 17),
-(14, 'prestada', 17),
-(15, 'disponible', 17),
-(16, 'disponible', 17),
-(17, 'disponible', 10),
-(18, 'disponible', 10),
-(19, 'disponible', 18),
-(20, 'disponible', 17),
-(21, 'disponible', 20),
-(22, 'disponible', 20),
-(23, 'disponible', 20),
-(24, 'disponible', 21);
+INSERT INTO `cinta` (`id_cinta`, `pelicula_id_pelicula`) VALUES
+(25, 4),
+(5, 5),
+(6, 6),
+(8, 8),
+(17, 10),
+(18, 10),
+(13, 17),
+(14, 17),
+(15, 17),
+(16, 17),
+(20, 17),
+(19, 18),
+(21, 20),
+(22, 20),
+(23, 20),
+(24, 21);
 
 -- --------------------------------------------------------
 
@@ -124,6 +124,39 @@ INSERT INTO `director` (`id_director`, `nombre`) VALUES
 (13, 'Louis Leterrier'),
 (14, 'Nola'),
 (15, 'Denis Villeneuve');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `factura`
+--
+
+CREATE TABLE `factura` (
+  `idFactura` int(11) NOT NULL,
+  `Nombre_user` varchar(45) NOT NULL,
+  `precio_alquiler` varchar(45) NOT NULL,
+  `fecha_factura` varchar(45) NOT NULL,
+  `nombre_pelicula` int(11) NOT NULL,
+  `Usuario_id_usuario` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
+
+--
+-- Volcado de datos para la tabla `factura`
+--
+
+INSERT INTO `factura` (`idFactura`, `Nombre_user`, `precio_alquiler`, `fecha_factura`, `nombre_pelicula`, `Usuario_id_usuario`) VALUES
+(1, 'felipe murillo', '16000.0', '2025-11-28 05:18:48', 6, 1),
+(2, 'felipe murillo', '19900.0', '2025-11-28 05:19:35', 17, 1),
+(3, 'felipe murillo', '19900.0', '2025-11-28 05:19:42', 18, 1),
+(4, 'felipe murillo', '19900.0', '2025-11-28 05:35:10', 17, 1),
+(5, 'maria Rodriguez', '19900.0', '2025-11-28 05:49:57', 18, 16),
+(6, 'felipe murillo', '25600.0', '2025-11-28 05:58:04', 13, 1),
+(18, 'maria Rodriguez', '16000.0', '2025-11-28 17:56:47', 5, 16),
+(19, 'maria Rodriguez', '16000.0', '2025-11-28 17:57:46', 5, 16),
+(20, 'maria Rodriguez', '25600.0', '2025-11-28 13:02:18', 14, 16),
+(22, 'felipe murillo', '19900.0', '2025-11-28 13:05:18', 17, 1),
+(23, 'felipe murillo', '17000.0', '2025-11-28 13:09:25', 8, 1),
+(24, 'felipe murillo', '13000.0', '2025-11-28 15:04:07', 25, 1);
 
 -- --------------------------------------------------------
 
@@ -161,6 +194,14 @@ CREATE TABLE `gusta_director` (
   `director_id_director` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
 
+--
+-- Volcado de datos para la tabla `gusta_director`
+--
+
+INSERT INTO `gusta_director` (`Usuario_id_usuario`, `director_id_director`) VALUES
+(1, 8),
+(1, 3);
+
 -- --------------------------------------------------------
 
 --
@@ -171,6 +212,16 @@ CREATE TABLE `gusto_actor` (
   `Usuario_id_usuario` int(11) NOT NULL,
   `actor_id_actor` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
+
+--
+-- Volcado de datos para la tabla `gusto_actor`
+--
+
+INSERT INTO `gusto_actor` (`Usuario_id_usuario`, `actor_id_actor`) VALUES
+(1, 14),
+(1, 3),
+(1, 9),
+(1, 18);
 
 -- --------------------------------------------------------
 
@@ -203,6 +254,14 @@ CREATE TABLE `lista_espera` (
   `pelicula_id_pelicula` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
 
+--
+-- Volcado de datos para la tabla `lista_espera`
+--
+
+INSERT INTO `lista_espera` (`id_espera`, `fecha_solicitud`, `Usuario_id_usuario`, `pelicula_id_pelicula`) VALUES
+(4, '2025-11-28 13:48:19', 1, 4),
+(5, '2025-11-28 15:04:25', 16, 4);
+
 -- --------------------------------------------------------
 
 --
@@ -229,7 +288,7 @@ CREATE TABLE `pelicula` (
 
 INSERT INTO `pelicula` (`id_pelicula`, `titulo`, `anio`, `duracion_min`, `descripcion`, `poster_path`, `precio_alquiler`, `calificacion`, `director_id_director`, `idioma`, `ncopias`) VALUES
 (2, 'The Crown', 2023, 2160, 'Crónica de la vida de la Reina Isabel II.', 'https://hbz.h-cdn.co/assets/16/40/1600x800/landscape-1475588380-the-crown-index.jpg', 12000, '13+', 2, 'Inglés', 0),
-(4, 'Misión Imposible', 1996, 110, 'Un agente del FMI es incriminado; debe limpiar su nombre.', 'https://github.com/felipec51/ProyectoFinalWEB/blob/main/imgs/mission.webp?raw=true', 13000, '13+', 4, 'Inglés', 0),
+(4, 'Misión Imposible', 2024, 110, 'Un agente del FMI es incriminado; debe limpiar su nombre.', 'https://github.com/felipec51/ProyectoFinalWEB/blob/main/imgs/mission.webp?raw=true', 13000, '13+', 4, 'Inglés', 1),
 (5, 'Breaking Bad', 2008, 3000, 'Profesor de química con cáncer fabrica y vende metanfetamina.', 'https://github.com/felipec51/ProyectoFinalWEB/blob/main/imgs/breaking-bad_2880x1800_xtrafondos.com.webp?raw=true', 16000, '18+', 5, 'Inglés', 1),
 (6, 'The Boys', 2019, 1920, 'Vigilantes se enfrentan a superhéroes corruptos.', 'https://www.hdwallpapers.in/download/the_boys_poster_4k_hd-3840x2160.jpg', 16000, '18+', 6, 'Inglés', 1),
 (8, 'Dune', 2021, 155, 'Épica odisea de la familia Atreides en un planeta desértico.', 'https://github.com/felipec51/ProyectoFinalWEB/blob/main/imgs/poster-de-dune_2560x1440_xtrafondos.com.webp?raw=true', 17000, '13+', 8, 'Inglés', 1),
@@ -257,8 +316,6 @@ CREATE TABLE `pelicula_actor` (
 
 INSERT INTO `pelicula_actor` (`pelicula_id_pelicula`, `actor_id_actor`, `rol_pelicula`) VALUES
 (2, 6, 'Protagonista (Isabel II - posterior)'),
-(4, 9, 'Protagonista (Ethan Hunt)'),
-(4, 10, 'Antagonista (Jim Phelps)'),
 (5, 11, 'Protagonista (Walter White)'),
 (5, 12, 'Protagonista (Jesse Pinkman)'),
 (6, 13, 'Protagonista (Billy)'),
@@ -270,7 +327,8 @@ INSERT INTO `pelicula_actor` (`pelicula_id_pelicula`, `actor_id_actor`, `rol_pel
 (21, 2, 'Protagonista'),
 (21, 24, 'Protagonista'),
 (21, 17, 'Protagonista'),
-(21, 18, 'Protagonista');
+(21, 18, 'Protagonista'),
+(4, 9, 'Protagonista');
 
 -- --------------------------------------------------------
 
@@ -289,7 +347,6 @@ CREATE TABLE `pelicula_genero` (
 
 INSERT INTO `pelicula_genero` (`pelicula_id_pelicula`, `genero_id_genero`) VALUES
 (2, 3),
-(4, 5),
 (5, 3),
 (6, 5),
 (8, 1),
@@ -302,7 +359,8 @@ INSERT INTO `pelicula_genero` (`pelicula_id_pelicula`, `genero_id_genero`) VALUE
 (18, 5),
 (18, 1),
 (21, 5),
-(21, 3);
+(21, 3),
+(4, 5);
 
 -- --------------------------------------------------------
 
@@ -315,8 +373,26 @@ CREATE TABLE `prestamo` (
   `fecha_prestamo` datetime NOT NULL,
   `fecha_devolucion` datetime NOT NULL,
   `Usuario_id_usuario` int(11) NOT NULL,
-  `cinta_id_cinta` int(11) NOT NULL
+  `cinta_id_cinta` int(11) NOT NULL,
+  `estado_alquiler` enum('en curso','finalizado') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
+
+--
+-- Volcado de datos para la tabla `prestamo`
+--
+
+INSERT INTO `prestamo` (`id_prestamo`, `fecha_prestamo`, `fecha_devolucion`, `Usuario_id_usuario`, `cinta_id_cinta`, `estado_alquiler`) VALUES
+(1, '2025-11-28 05:18:48', '2025-12-05 05:18:48', 1, 6, 'en curso'),
+(3, '2025-11-28 05:19:42', '2025-12-05 05:19:42', 1, 18, 'finalizado'),
+(4, '2025-11-28 05:35:10', '2025-12-05 05:35:10', 1, 17, 'finalizado'),
+(5, '2025-11-28 05:49:57', '2025-12-05 05:49:57', 16, 18, 'en curso'),
+(6, '2025-11-30 05:58:04', '2025-12-05 05:58:04', 1, 13, 'en curso'),
+(25, '2025-11-28 17:56:47', '2025-12-05 17:56:47', 16, 5, 'finalizado'),
+(26, '2025-11-28 17:57:46', '2025-12-05 17:57:46', 16, 5, 'en curso'),
+(27, '2025-11-28 13:02:18', '2025-12-05 13:02:18', 16, 14, 'en curso'),
+(29, '2025-11-28 13:05:18', '2025-12-04 13:05:18', 1, 17, 'en curso'),
+(30, '2025-11-28 13:09:25', '2025-12-05 13:09:25', 1, 8, 'en curso'),
+(31, '2025-11-28 15:04:07', '2025-12-05 15:04:07', 1, 25, 'en curso');
 
 -- --------------------------------------------------------
 
@@ -356,11 +432,11 @@ CREATE TABLE `traileres` (
 INSERT INTO `traileres` (`id_traileres`, `ruta`, `pelicula_id_pelicula`) VALUES
 (3, 'https://www.youtube.com/embed/Way9Dexny3w?si=Az-JibfmXD5b4qLS', 8),
 (4, 'https://www.youtube.com/embed/2O5VhM1f1pY', 2),
-(7, 'https://www.youtube.com/embed/Z4Y4eJ_403Q', 4),
 (8, 'https://www.youtube.com/embed/HhFk_v_7y7U', 5),
 (9, 'https://www.youtube.com/embed/UPgUIORqja4?si=hI5gDRr3XpLbzAWl\" title=\"YouTube video player', 17),
 (10, 'https://www.youtube.com/embed/ECtK_IR4j5I?si=M3UUiBzBc1hyVOeY', 21),
-(11, 'https://www.youtube.com/embed/ygUHhImN98w?si=TqAoBgCdg11U_pty', 21);
+(11, 'https://www.youtube.com/embed/ygUHhImN98w?si=TqAoBgCdg11U_pty', 21),
+(12, 'https://www.youtube.com/embed/Z4Y4eJ_403Q', 4);
 
 -- --------------------------------------------------------
 
@@ -414,6 +490,13 @@ ALTER TABLE `cinta`
 --
 ALTER TABLE `director`
   ADD PRIMARY KEY (`id_director`);
+
+--
+-- Indices de la tabla `factura`
+--
+ALTER TABLE `factura`
+  ADD PRIMARY KEY (`idFactura`),
+  ADD KEY `fk_Factura_Usuario1_idx` (`Usuario_id_usuario`);
 
 --
 -- Indices de la tabla `genero`
@@ -513,7 +596,7 @@ ALTER TABLE `actor`
 -- AUTO_INCREMENT de la tabla `cinta`
 --
 ALTER TABLE `cinta`
-  MODIFY `id_cinta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_cinta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `director`
@@ -522,10 +605,22 @@ ALTER TABLE `director`
   MODIFY `id_director` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
+-- AUTO_INCREMENT de la tabla `factura`
+--
+ALTER TABLE `factura`
+  MODIFY `idFactura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
 -- AUTO_INCREMENT de la tabla `genero`
 --
 ALTER TABLE `genero`
   MODIFY `id_genero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT de la tabla `lista_espera`
+--
+ALTER TABLE `lista_espera`
+  MODIFY `id_espera` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `pelicula`
@@ -537,13 +632,13 @@ ALTER TABLE `pelicula`
 -- AUTO_INCREMENT de la tabla `prestamo`
 --
 ALTER TABLE `prestamo`
-  MODIFY `id_prestamo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_prestamo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT de la tabla `traileres`
 --
 ALTER TABLE `traileres`
-  MODIFY `id_traileres` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_traileres` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `Usuario`
@@ -560,6 +655,13 @@ ALTER TABLE `Usuario`
 --
 ALTER TABLE `cinta`
   ADD CONSTRAINT `fk_cinta_pelicula1` FOREIGN KEY (`pelicula_id_pelicula`) REFERENCES `pelicula` (`id_pelicula`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `factura`
+--
+ALTER TABLE `factura`
+  ADD CONSTRAINT `fk_Factura_Usuario1` FOREIGN KEY (`Usuario_id_usuario`) REFERENCES `Usuario` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Factura_cinta1` FOREIGN KEY (`nombre_pelicula`) REFERENCES `cinta` (`id_cinta`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `gusta_director`
