@@ -21,7 +21,7 @@ session_start();
             <label class="form-label">Tipo de Reporte</label>
             <select name="tipo" class="form-select" required>
                 <option value="" disabled selected>Seleccione el tipo...</option>
-                <option value="top10">Top 10 por calificación (mejor a peor)</option>
+                <option value="top10">Tipo de calificacion</option>
                 <option value="anio">Películas ordenadas por año (desc)</option>
                 <option value="director">Películas por director (alfabético)</option>
                 <option value="rango">Películas por rango de años</option>

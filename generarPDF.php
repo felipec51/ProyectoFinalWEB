@@ -1,131 +1,173 @@
 <?php
-// ReportePDF.php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 
-try {
-    $base = __DIR__;
-    $fpdfPath = $base . '/fpdf.php';
-    $conexionPath = $base . '/conexion.php';
+require_once './conexion.php';
+require_once './fpdf184/fpdf.php';
 
-    if (!file_exists($fpdfPath)) {
-        throw new Exception("No se encontró fpdf.php en: $fpdfPath");
-    }
-    if (!file_exists($conexionPath)) {
-        throw new Exception("No se encontró conexion.php en: $conexionPath");
+class GenerarPDF
+{
+    private $conexion;
+
+    public function __construct()
+    {
+        $obj = new Conexion();
+        $this->conexion = $obj->Conectar();
     }
 
-    require_once $conexionPath;
-    require_once $fpdfPath;
-
-    $tipo = $_GET['tipo'] ?? '';
-    $ini  = isset($_GET['ini']) && $_GET['ini'] !== '' ? intval($_GET['ini']) : null;
-    $fin  = isset($_GET['fin']) && $_GET['fin'] !== '' ? intval($_GET['fin']) : null;
-
-    $db = Conexion::Conectar();
-
-    // Construir consulta según tipo
+    // =====================================================================
+    // ============= NUEVO MÉTODO PARA GENERAR REPORTES ====================
+    // =====================================================================
+    public function generarReportePeliculas($tipo, $ini = null, $fin = null)
+{
+    // Obtener los datos según el tipo
     switch ($tipo) {
-        case 'top10':
-            // Intentamos ordenar por calificación; si es textual, fallback por año.
-            $sql = "SELECT p.titulo, p.anio, p.calificacion, COALESCE(d.nombre,'-') AS director
-                    FROM pelicula p
-                    LEFT JOIN director d ON p.director_id_director = d.id_director
-                    ORDER BY CAST(REPLACE(p.calificacion, '+', '') AS SIGNED) DESC, p.anio DESC
+
+        case "top10":
+            $sql = "SELECT titulo, calificacion, anio
+                    FROM pelicula
+                    ORDER BY CAST(calificacion AS DECIMAL(4,2)) DESC
                     LIMIT 10";
-            $stmt = $db->prepare($sql);
+            $stmt = $this->conexion->query($sql);
             break;
 
-        case 'anio':
-            $sql = "SELECT p.titulo, p.anio, p.calificacion, COALESCE(d.nombre,'-') AS director
-                    FROM pelicula p
-                    LEFT JOIN director d ON p.director_id_director = d.id_director
-                    ORDER BY p.anio DESC, p.titulo ASC";
-            $stmt = $db->prepare($sql);
-            break;
-
-        case 'director':
-            $sql = "SELECT p.titulo, p.anio, p.calificacion, COALESCE(d.nombre,'-') AS director
-                    FROM pelicula p
-                    LEFT JOIN director d ON p.director_id_director = d.id_director
-                    ORDER BY d.nombre ASC, p.titulo ASC";
-            $stmt = $db->prepare($sql);
-            break;
-
-        case 'rango':
-            if ($ini === null || $fin === null) {
-                throw new Exception("Para el reporte por rango es necesario indicar ini y fin.");
+        case "anio":
+            // Si vienen ini y fin, aplicamos filtro BETWEEN (orden asc para rango).
+            if (!empty($ini) && !empty($fin)) {
+                $sql = "SELECT titulo, anio, calificacion
+                        FROM pelicula
+                        WHERE anio BETWEEN ? AND ?
+                        ORDER BY anio ASC";
+                $stmt = $this->conexion->prepare($sql);
+                $stmt->execute([$ini, $fin]);
+            } else {
+                // Si no hay rango, listamos todas las películas por año (desc)
+                $sql = "SELECT titulo, anio, calificacion
+                        FROM pelicula
+                        ORDER BY anio DESC";
+                $stmt = $this->conexion->query($sql);
             }
-            if ($ini > $fin) {
-                throw new Exception("Año inicial no puede ser mayor que año final.");
-            }
-            $sql = "SELECT p.titulo, p.anio, p.calificacion, COALESCE(d.nombre,'-') AS director
+            break;
+
+        case "director":
+            // Consulta que ya tienes funcionando (usa join con columna director_id_director)
+            $sql = "SELECT 
+                        p.titulo,
+                        d.nombre AS director,
+                        p.anio,
+                        p.calificacion
                     FROM pelicula p
-                    LEFT JOIN director d ON p.director_id_director = d.id_director
-                    WHERE p.anio BETWEEN :ini AND :fin
-                    ORDER BY p.anio ASC, p.titulo ASC";
-            $stmt = $db->prepare($sql);
-            $stmt->bindParam(':ini', $ini, PDO::PARAM_INT);
-            $stmt->bindParam(':fin', $fin, PDO::PARAM_INT);
+                    INNER JOIN director d 
+                        ON p.director_id_director = d.id_director
+                    ORDER BY d.nombre ASC";
+            $stmt = $this->conexion->query($sql);
+            break;
+
+        case "rango":
+            // Si el usuario usó explícitamente la opción 'rango', requerimos ini/fin
+            if (empty($ini) || empty($fin)) {
+                die("Debe ingresar los años inicial y final para el rango.");
+            }
+            $sql = "SELECT titulo, anio, calificacion
+                    FROM pelicula
+                    WHERE anio BETWEEN ? AND ?
+                    ORDER BY anio ASC";
+            $stmt = $this->conexion->prepare($sql);
+            $stmt->execute([$ini, $fin]);
             break;
 
         default:
-            throw new Exception("Tipo de reporte no válido.");
+            die("Tipo de reporte inválido.");
     }
 
-    $stmt->execute();
-    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    // Obtener resultados
+    $peliculas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // Generar PDF
-    $pdf = new FPDF('L','mm','A4'); // horizontal para más columnas
+    if (!$peliculas || count($peliculas) === 0) {
+        die("No hay datos para generar el reporte.");
+    }
+
+    // Generar PDF (salida igual a la que usas)
+    $pdf = new FPDF();
     $pdf->AddPage();
-    $pdf->SetFont('Arial','B',14);
-    $pdf->Cell(0,8,utf8_decode('Reporte de Películas - RewindCodeFilm'),0,1,'C');
-    $pdf->SetFont('Arial','',10);
-    $fechaGen = date('d/m/Y H:i:s');
-    $pdf->Cell(0,6,"Generado: $fechaGen",0,1,'R');
-    $pdf->Ln(4);
+    $pdf->SetFont('Arial','B',16);
 
-    // Cabecera de tabla
-    $pdf->SetFont('Arial','B',10);
-    $pdf->SetFillColor(230,230,230);
-    $pdf->Cell(100,8,utf8_decode('Título'),1,0,'L',true);
-    $pdf->Cell(25,8,'Año',1,0,'C',true);
-    $pdf->Cell(35,8,utf8_decode('Calificación'),1,0,'C',true);
-    $pdf->Cell(95,8,utf8_decode('Director'),1,0,'L',true);
-    $pdf->Ln();
+    // Título del reporte según tipo
+    $titulos = [
+        "top10" => "Calificacion",
+        "anio" => !empty($ini) && !empty($fin) ? "PELICULAS ENTRE $ini Y $fin" : "PELÍCULAS POR ANIO (DESC)",
+        "director" => "PELICULAS POR DIRECTOR (A-Z)",
+        "rango" => "PELICULAS ENTRE $ini Y $fin"
+    ];
 
-    $pdf->SetFont('Arial','',10);
+    $titulo = $titulos[$tipo] ?? "REPORTE DE PELICULAS";
+    $pdf->Cell(0,10, utf8_decode($titulo), 0, 1, 'C');
+    $pdf->Ln(8);
 
-    if (count($rows) === 0) {
-        $pdf->Cell(255,8,utf8_decode('No se encontraron registros para los criterios seleccionados.'),1,1,'C');
-    } else {
-        foreach ($rows as $r) {
-            $titulo = utf8_decode($r['titulo'] ?? '-');
-            $anio = $r['anio'] ?? '-';
-            $cal = utf8_decode($r['calificacion'] ?? '-');
-            $dir = utf8_decode($r['director'] ?? '-');
+    // Encabezados simples
+    $pdf->Cell(70,10,'TItulo',1,0,'C');
+    $pdf->Cell(40,10,'Director',1,0,'C');
+    $pdf->Cell(20,10,'Anio',1,0,'C');
+    $pdf->Cell(30,10,'Calificacion',1,1,'C');
 
-            // Ajustar celda de título si es muy larga: multi-cell manual
-            $pdf->Cell(100,8, $pdf->GetStringWidth($titulo) > 96 ? substr($titulo,0,55)."..." : $titulo,1,0,'L');
-            $pdf->Cell(25,8,$anio,1,0,'C');
-            $pdf->Cell(35,8,$cal,1,0,'C');
-            $pdf->Cell(95,8, $pdf->GetStringWidth($dir) > 90 ? substr($dir,0,50)."..." : $dir,1,0,'L');
-            $pdf->Ln();
-        }
+
+    // Contenido
+    $pdf->SetFont('Arial','',11);
+    foreach ($peliculas as $p) {
+        $pdf->Cell(90,8, utf8_decode($p['titulo']),1);
+        $pdf->Cell(25,8, $p['anio'],1);
+        $pdf->Cell(35,8, $p['calificacion'],1);
+        $pdf->Ln();
     }
 
-    // Enviar output
-    $pdf->Output('I', 'reporte_peliculas_' . date('Ymd_His') . '.pdf');
+    $pdf->Output();
     exit;
+}
 
-} catch (Exception $e) {
-    // Mostrar error claro en pantalla (útil para depuración). 
-    // En producción puedes loguearlo en un archivo en lugar de mostrarlo.
-    echo "<h3>Error al generar el reporte</h3>";
-    echo "<pre>" . htmlspecialchars($e->getMessage()) . "</pre>";
-    // Si quieres ver trace:
-    // echo "<pre>" . $e->getTraceAsString() . "</pre>";
-    exit;
+
+    // =====================================================================
+    //  MÉTODOS ORIGINALES 
+    // =====================================================================
+
+    public function generarFacturaPDF($factura, $usuario, $pelicula)
+    {
+        $pdf = new FPDF();
+        $pdf->AddPage();
+        $pdf->SetFont('Arial','B',16);
+
+        $pdf->Cell(0,10,'REPORTE DE FACTURA',0,1,'C');
+        $pdf->Ln(10);
+
+        $pdf->SetFont('Arial','',12);
+
+        $pdf->Cell(0,10,'Cliente: ' . $usuario['nombre'],0,1);
+        $pdf->Cell(0,10,'Pelicula: ' . $pelicula['titulo'],0,1);
+        $pdf->Cell(0,10,'Precio: $' . $factura['precio_alquiler'],0,1);
+        $pdf->Cell(0,10,'Fecha de factura: ' . $factura['fecha_factura'],0,1);
+
+        $pdf->Ln(5);
+        $pdf->Cell(0,10,'Generado automaticamente.',0,1);
+
+        return $pdf->Output('S');
+    }
+
+    public function guardarPDF($idFactura, $pdfContent)
+    {
+        $sql = "INSERT INTO reportes (id_factura, nombre_reporte, fecha_generacion, archivo)
+                VALUES (?, ?, NOW(), ?)";
+
+        $query = $this->conexion->prepare($sql);
+
+        $nombre = "Reporte Factura " . $idFactura;
+
+        $query->bindParam(1, $idFactura);
+        $query->bindParam(2, $nombre);
+        $query->bindParam(3, $pdfContent, PDO::PARAM_LOB);
+
+        return $query->execute();
+    }
+
+    public function generarYGuardarReporte($factura, $usuario, $pelicula)
+    {
+        $pdf = $this->generarFacturaPDF($factura, $usuario, $pelicula);
+        return $this->guardarPDF($factura['id_factura'], $pdf);
+    }
 }
