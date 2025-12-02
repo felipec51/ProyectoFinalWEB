@@ -309,15 +309,15 @@ body {
 
 .container3 {
     position: absolute;
-    height: calc(100% - 28px);
     top: 13px;
-    right: 60px;
-    bottom: 15px;
-    width: 203.2px;
+    right: 60px; /* ANTES estaba en 60px */
+    height: calc(100% - 28px);
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 5px;    /* separación entre el título y el botón */
+    justify-content: flex-end;
 }
+
 
 .button-icon2 {
     height: 36px;
@@ -515,3 +515,21 @@ body {
     line-height: 20px;
     display: inline-block;
 }
+
+.rewind-code-film {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.generar-reporte {
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    background: #0d6efd;
+    color: white !important;
+    text-decoration: none;
+    height: 36px;
+    display: flex;
+    align-items: center;
+}
+

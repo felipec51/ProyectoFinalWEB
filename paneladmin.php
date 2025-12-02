@@ -36,28 +36,37 @@ include 'componentes/sidebar.php';
                 </div>
                 <div class="sidebarinset">
                     <div class="app2">
-                        <header class="app3">
+                       <header class="app3">
                             <img src="./imgs/icons/icono-10-(1).svg" class="button-icon" alt="">
-
                             <div class="primitivediv"></div>
+
                             <div class="container">
-                                <div class="primitivebutton flex-row-center">
-                                    <div class="primitivespan flex-row-center">
-                                        <div class="todos text-base">Todos</div>
-                                    </div>
-                                    <img src="./imgs/icons/icono-10-(20).svg" class="icon" alt="icono de todos">
-                                </div>
                                 <div class="container2">
-                                    <div class="input flex-row-center">
-                                        <div class="buscar-pelculas-directores text-secundario">Buscar películas, directores...</div>
+                                    <div class="input">
+                                        <span class="buscar-pelculas-directores">Buscar películas, directores...</span>
                                     </div>
-                                    <img src="./imgs/icons/Icon-7.svg" class="icon2" alt="">
+                                    <img class="icon2" src="./imgs/icons/search.svg" alt="">
                                 </div>
+                            </div>
+
+                            <div class="primitivebutton">
+                                <div class="primitivespan">
+                                    <span class="todos">Todos</span>
+                                </div>
+                                <img class="icon" src="./imgs/icons/down.svg" alt="">
+                            </div>
+
+                            <!-- AQUI SE AGREGA TU TITULO Y TU BOTON -->
+                            <div class="container3">
+                                <div class="rewind-code-film text-main-title">RewindCodeFilm</div>
+                                <a href="GenerarReporte.php" class="btn btn-primary generar-reporte">Generar Reporte</a>
                             </div>
 
                         </header>
 
+
                         <div class="container4 text-secundario">
+                            
                             <div class="card card-base">
                                 <div class="statscard">
                                     <div class="container5">
@@ -75,6 +84,7 @@ include 'componentes/sidebar.php';
                                     </div>
                                 </div>
                             </div>
+                            
                             <div class="card2 card-base">
                                 <div class="statscard2">
                                     <div class="container5">

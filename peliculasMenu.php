@@ -42,7 +42,9 @@ try {
 
     <div class="desktop">
         <?php navheader("Inicio", $usuario_logueado_id) ?>
-
+        
+            
+            
         <div class="conten-div">
             <div class="text-wrapper-4 text-main-title">Solo en RewindCodeFilm</div>
             <p class="p text-body">
