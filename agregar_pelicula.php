@@ -158,6 +158,57 @@ try {
                 }
                 
                 
+                // 8. Notificar a usuarios con preferencias coincidentes
+                $all_user_ids_to_notify = [];
+
+                // A. Encontrar usuarios por director
+                if ($director_id_final) {
+                    $sqlUsersDir = "SELECT Usuario_id_usuario FROM gusta_director WHERE director_id_director = :dir_id";
+                    $stmtUsersDir = $conexion->prepare($sqlUsersDir);
+                    $stmtUsersDir->execute([':dir_id' => $director_id_final]);
+                    $usersByDir = $stmtUsersDir->fetchAll(PDO::FETCH_COLUMN);
+                    $all_user_ids_to_notify = array_merge($all_user_ids_to_notify, $usersByDir);
+                }
+
+                // B. Encontrar usuarios por género(s)
+                if (!empty($generos)) {
+                    $placeholders = rtrim(str_repeat('?,', count($generos)), ',');
+                    $sqlUsersGen = "SELECT Usuario_id_usuario FROM gusto_genero WHERE genero_id_genero IN ($placeholders)";
+                    $stmtUsersGen = $conexion->prepare($sqlUsersGen);
+                    $stmtUsersGen->execute($generos);
+                    $usersByGen = $stmtUsersGen->fetchAll(PDO::FETCH_COLUMN);
+                    $all_user_ids_to_notify = array_merge($all_user_ids_to_notify, $usersByGen);
+                }
+
+                // C. Encontrar usuarios por actor(es)
+                if (!empty($actor_ids_unicos)) {
+                    $placeholders = rtrim(str_repeat('?,', count($actor_ids_unicos)), ',');
+                    $sqlUsersAct = "SELECT Usuario_id_usuario FROM gusto_actor WHERE actor_id_actor IN ($placeholders)";
+                    $stmtUsersAct = $conexion->prepare($sqlUsersAct);
+                    $stmtUsersAct->execute($actor_ids_unicos);
+                    $usersByAct = $stmtUsersAct->fetchAll(PDO::FETCH_COLUMN);
+                    $all_user_ids_to_notify = array_merge($all_user_ids_to_notify, $usersByAct);
+                }
+
+                // D. Insertar notificaciones (solo a usuarios únicos)
+                $unique_user_ids = array_unique(array_map('intval', $all_user_ids_to_notify));
+
+                if (!empty($unique_user_ids)) {
+                    $mensajeNotif = "¡Nueva película que podría gustarte! Ya está disponible \"$titulo\".";
+                    $sqlNotif = "INSERT INTO notificaciones (id_usuario, mensaje) VALUES (:id_usuario, :mensaje)";
+                    $stmtNotif = $conexion->prepare($sqlNotif);
+                    
+                    foreach ($unique_user_ids as $user_id) {
+                        // Evitar notificar al admin si es que tuviera gustos. Opcional.
+                        if ($user_id > 0) { // Asumiendo que el admin no es el usuario 0
+                             $stmtNotif->execute([
+                                ':id_usuario' => $user_id,
+                                ':mensaje' => $mensajeNotif
+                            ]);
+                        }
+                    }
+                }
+
                 $conexion->commit();
                 
                 echo "<script>alert('¡Película agregada con éxito!'); window.location.href='adminpeliculas.php';</script>";

@@ -68,8 +68,14 @@ try {
         $duracion_tag = "{$pelicula_actual['duracion_min']} min";
 
         $ncopia = $pelicula_actual['ncopias'];
-        $ncopiastotales = $pelicula_actual['ncopias']; 
         
+        // Corregido: Obtener el total de copias desde la tabla 'cinta'
+        $sqlTotalCopias = "SELECT COUNT(*) FROM cinta WHERE pelicula_id_pelicula = :id_peli";
+        $stmtTotal = $conexion->prepare($sqlTotalCopias);
+        $stmtTotal->bindParam(':id_peli', $id_peli, PDO::PARAM_INT);
+        $stmtTotal->execute();
+        $ncopiastotales = $stmtTotal->fetchColumn();
+
         $coincidencia = "98%"; 
         $calidad = "HD";       
         $nfila = 1;            
@@ -102,7 +108,18 @@ try {
         $stmtT->execute();
         $trailers = $stmtT->fetchAll(PDO::FETCH_COLUMN);
 
-
+        // Verificar si el usuario está en la lista de espera, solo si no hay copias
+        $usuario_en_lista = false;
+        if ($ncopia <= 0) {
+            $sqlCheckEspera = "SELECT Usuario_id_usuario FROM lista_espera WHERE Usuario_id_usuario = :id_usuario AND pelicula_id_pelicula = :id_peli";
+            $stmtCheckEspera = $conexion->prepare($sqlCheckEspera);
+            $stmtCheckEspera->bindParam(':id_usuario', $usuario_logueado_id, PDO::PARAM_INT);
+            $stmtCheckEspera->bindParam(':id_peli', $id_peli, PDO::PARAM_INT);
+            $stmtCheckEspera->execute();
+            if ($stmtCheckEspera->fetch()) {
+                $usuario_en_lista = true;
+            }
+        }
     }
 
 } catch (Exception $e) {
@@ -131,9 +148,9 @@ try {
         
         <?php
         if ($ncopia > 0) {
-            renderdisponible($nombre_peli, $anio, $duracion_tag,$precio,$id_peli,$usuario_logueado_id);
+            renderdisponible($nombre_peli, $anio, $duracion_tag, $precio, $id_peli, $usuario_logueado_id, $ncopia, $ncopiastotales);
         } else {
-            rendernodisponible($nombre_peli, $ncopia, $ncopiastotales, $nfila, $duracion_tag, $anio,$id_peli);
+            rendernodisponible($nombre_peli, $ncopia, $ncopiastotales, $nfila, $duracion_tag, $anio, $id_peli, $usuario_en_lista);
         }
         ?>
         
@@ -162,52 +179,81 @@ try {
 
         if (formAlquiler) {
             formAlquiler.addEventListener('submit', function(e) {
-                e.preventDefault(); // Evita que la página cambie a la pantalla blanca con JSON
+                e.preventDefault();
 
-                // Crear los datos para enviar
+                const rentButton = document.getElementById('rent-button');
+                const buttonText = rentButton.querySelector('.texto-boton'); // CORREGIDO
+                const originalButtonText = buttonText.innerHTML;
+                const ncopiasDisplay = document.getElementById('ncopias-display');
+
+                // 1. Estado de carga
+                rentButton.disabled = true;
+                buttonText.innerHTML = 'Procesando...';
+
                 const formData = new FormData(this);
 
-                // Enviar datos a alquilar_pelicula.php usando fetch
                 fetch('alquilar_pelicula.php', {
                     method: 'POST',
                     body: formData
                 })
-                .then(response => response.json()) // Convertir la respuesta a objeto JSON
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('El servidor respondió con un error.');
+                    }
+                    return response.json();
+                })
                 .then(data => {
                     if (data.success) {
-                        // ÉXITO: Mostrar alerta verde
+                        // 2. Éxito
                         Swal.fire({
                             title: '¡Alquiler Exitoso!',
                             text: data.message,
                             icon: 'success',
-                            confirmButtonText: 'Ver mis películas',
-                            confirmButtonColor: '#3085d6'
-                        }).then((result) => {
-                            // Opcional: Redirigir si el usuario da click en OK
-                            // window.location.href = 'mis_peliculas.php'; 
-                            // O simplemente recargar para actualizar stock:
-                            location.reload(); 
+                            confirmButtonText: 'Entendido'
                         });
+
+                        if (ncopiasDisplay) {
+                            ncopiasDisplay.textContent = data.ncopias;
+                        }
+
+                        buttonText.innerHTML = 'Ya lo tienes alquilado';
+                        rentButton.disabled = true;
+
+                        if (data.ncopias <= 0) {
+                            formAlquiler.style.display = 'none';
+                            const container = document.getElementById('main-container');
+                            if (container) {
+                                 const noCopiesMsg = document.createElement('p');
+                                 noCopiesMsg.textContent = 'No quedan más copias disponibles.';
+                                 noCopiesMsg.style.color = 'white';
+                                 noCopiesMsg.style.marginTop = '20px';
+                                 container.appendChild(noCopiesMsg);
+                            }
+                        }
                     } else {
-                        // ERROR: Mostrar alerta roja (AQUÍ SALDRÁ TU MENSAJE DE PRÉSTAMO ACTIVO)
+                        // 3. Error del servidor (ej: ya alquilada)
                         Swal.fire({
                             title: 'Atención',
-                            text: data.message, // "Ya tienes un préstamo activo..."
+                            text: data.message,
                             icon: 'warning',
-                            confirmButtonText: 'Entendido',
-                            confirmButtonColor: '#d33'
+                            confirmButtonText: 'Entendido'
                         });
+                        rentButton.disabled = false;
+                        buttonText.innerHTML = originalButtonText;
                     }
                 })
                 .catch(error => {
-                    console.error('Error:', error);
+                    // 4. Error de red o conexión
+                    console.error('Error en fetch:', error);
                     Swal.fire({
-                        title: 'Error',
-                        text: 'Hubo un problema de conexión con el servidor.',
+                        title: 'Error de Conexión',
+                        text: 'No se pudo completar la solicitud.',
                         icon: 'error'
                     });
+                    rentButton.disabled = false;
+                    buttonText.innerHTML = originalButtonText;
                 });
             });
         }
     });
-    </script>
+</script>

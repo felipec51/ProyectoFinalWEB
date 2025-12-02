@@ -1,242 +1,165 @@
-
+/* Estilos refactorizados para usar Flexbox */
 .container {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    min-height: 400px;
-    padding: 20px;
-    box-sizing: border-box;
-    top: 369px;
+  position: relative;
+  top: 369px;
   left: 151px;
-}
-.title-group {
-    width: 557px;
-    height: 77.90px;
-    left: 0px;
-    top: 0px;
-    position: absolute;
+  width: 557px; /* Ancho del contenedor principal */
 }
 
-.main-title {
-    color: white;
-    font-size: 72px;
-    font-family: Arimo, sans-serif;
-    font-style: italic;
-    font-weight: 400;
-    line-height: 72px;
-    position: absolute;
-    left: 0;
-    top: 0;
+.info-principal {
+  width: 100%;
+  margin-bottom: 10px;
 }
 
-.metadata-group {
-    height: 23.39px;
-    position: absolute;
-    left: 14px; 
-    top: 76px;
-    width: 200px;
+.titulo-principal {
+  color: white;
+  font-size: 72px;
+  font-family: Arimo;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 5px;
 }
 
-.metadata-item {
-    height: 19.99px;
-    position: absolute;
+.detalles {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap; /* Para que se ajuste en pantallas pequeñas */
 }
 
-.metadata-match {
-    width: 136px;
-    left: 0px;
-    top: 1.69px;
+.coincidencia {
+  color: #46d369;
+  font-size: 14px;
+  font-family: Arimo;
 }
 
-.metadata-year {
-    width: 30.18px;
-    left: 142.02px;
-    top: 1.69px;
+.anio,
+.duracion {
+  color: white;
+  font-size: 14px;
+  font-family: Arimo;
 }
 
-.metadata-duration {
-    width: 57.74px;
-    left: 243.78px;
-    top: 1.69px;
+.edad,
+.calidad {
+  padding: 2px 8px;
+  border-radius: 8px;
+  border: 1.05px solid #808080;
+  color: white;
+  font-size: 13px;
+  font-family: Arimo;
 }
 
-.match-score {
-    color: #aeffc2;
-    font-size: 14px;
-    font-family: Arimo, sans-serif;
-    font-weight: 400;
-    line-height: 20px;
+.panel-informacion {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Espacio entre bloques */
 }
 
-.text-white {
-    color: white;
-    font-size: 14px;
-    font-family: Arimo, sans-serif;
-    font-weight: 400;
-    line-height: 20px;
+.bloque {
+  width: 100%;
+  border-radius: 16px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1.05px solid rgba(255, 255, 255, 0.2);
 }
 
-.age-rating-box {
-    padding: 2px 8px;
-    overflow: hidden;
-    border-radius: 8px;
-    outline: 1.05px #808080 solid;
-    outline-offset: -1.05px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    gap: 4px;
-    font-size: 13px;
-    font-family: Arimo, sans-serif;
-    line-height: 17.33px;
-    color: white;
-    position: absolute;
+.fila {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.metadata-age-rating {
-    left: 188.19px;
-    top: 0px;
-    width: 39.60px;
-    height: 23.39px;
+.divisor {
+  width: 1px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.2);
 }
 
-.metadata-quality {
-    left: 317.51px;
-    top: 0px;
-    width: 88.35px;
-    height: 23.39px;
+.icono {
+  width: 16px;
+  height: 16px;
 }
 
-.rent-options-group {
-    width: 275px;
-    height: 90.49px;
-    left: 0px;
-    top: 114px;
-    position: absolute;
-    display: inline-flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 8px;
+.texto {
+  display: flex;
+  flex-direction: column;
 }
 
-.option-label-row {
-    align-self: stretch;
-    height: 19.98px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
+.etiqueta {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 13px;
+  font-family: Arimo;
+  line-height: 17px;
 }
 
-.label-text {
-    flex: 1 1 0;
-    color: rgba(255, 255, 255, 0.80);
-    font-size: 14px;
-    font-family: Arimo, sans-serif;
-    font-weight: 400;
-    line-height: 20px;
+.valor {
+  color: white;
+  font-size: 14px;
+  font-family: Arimo;
+  line-height: 20px;
 }
 
-.rent-card-container {
-    align-self: stretch;
-    height: 86.95px;
-    position: relative;
+.precio-valor {
+  font-size: 30px;
+  font-family: Arimo;
+  font-weight: 400;
+  line-height: 36px;
+  color: white;
 }
 
-.rent-card {
-    width: 81px;
-    height: 87px;
-    position: absolute;
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 14px;
-    outline: 0.84px rgba(255, 255, 255, 0.30) solid;
-    outline-offset: -0.84px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 3.99px;
-    padding: 0;
+.moneda {
+  color: #ffffff;
+  font-size: 14px;
+  margin-left: 8px;
 }
 
-.card-pos-1 { left: 0px; top: 0.02px; }
-.card-pos-2 { left: 90px; top: 0.02px; }
-.card-pos-3 { left: 180px; top: 0.02px; }
-
-.card-icon-container {
-    width: 15.99px;
-    height: 15.99px;
-    position: relative;
-    overflow: hidden;
+.mensaje {
+  color: #ffffff;
+  font-size: 14px;
+  font-family: Arimo;
+  line-height: 20px;
 }
 
-
-
-.card-duration-text {
-    color: white;
-    font-size: 13px;
-    font-family: Arimo, sans-serif;
-    font-weight: 400;
-    line-height: 17.33px;
-    word-wrap: break-word;
-    margin-top: -3px; 
+/* --- Botón de Alquilar --- */
+.boton-renta {
+  width: 100%; /* Ocupa todo el ancho del panel */
+  height: 46px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 0 12px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s, opacity 0.2s;
+  box-sizing: border-box;
 }
 
-.card-price-row {
-    width: 51px;
-    height: 20px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
+.boton-alquilar {
+  background: white;
+  color: black;
+}
+.boton-alquilar:hover {
+  background: #e0e0e0;
+}
+.boton-alquilar:disabled {
+  background: #888;
+  color: #ccc;
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
-.card-price-text {
-    color: white;
-    font-size: 14px;
-    font-family: Arimo, sans-serif;
-    font-weight: 400;
-    line-height: 20px;
-}
-
-.rent-button {
-    width: 158.23px;
-    height: 39.99px;
-    left: 0px;
-    top: 258px;
-    position: absolute;
-    background: white;
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    padding-left: 16px;
-    box-sizing: border-box;
-}
-
-.button-icon-container {
-    width: 15.99px;
-    height: 15.99px;
-    position: relative;
-    overflow: hidden;
-    margin-right: 16px; 
-}
-
-.button-icon-box {
-    width: 11.99px;
-    height: 11.99px;
-    left: 2px;
-    top: 2px;
-    position: absolute;
-    outline: 1.33px black solid;
-    outline-offset: -0.67px;
-}
-
-.button-text {
-    color: black;
-    font-size: 14px;
-    font-family: Arimo, sans-serif;
-    font-weight: 400;
-    line-height: 20px;
-    position: relative;
-    left: 0;
-    top: 0;
+.texto-boton {
+  color: inherit;
+  font-size: 14px;
+  font-family: Arimo;
+  line-height: 20px;
 }

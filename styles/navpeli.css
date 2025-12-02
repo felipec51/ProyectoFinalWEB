@@ -1,38 +1,44 @@
 .barra-nav-en-peliculas {
     position: fixed;
-    top: 36px;
-    left: 862px;
+    top: 20px;
+    right: 20px;
     z-index: 1000;
-    width: 700px;
+    width: auto;
     height: 45px;
-    text-align: center;
+    border-radius: 22.5px;
+    background-color: rgba(7, 9, 9, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    padding: 0 25px;
+    gap: 30px;
 }
 
 .barra-nav-en-peliculas-child {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    border-radius: 22.5px;
-    background-color: rgba(7, 9, 9, 0.76);
+    display: none; /* No longer needed with flexbox */
 }
 
 .nav-item {
-    position: absolute;
-    height: 60%;
-    top: 20%;
-    line-height: 27px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: inherit;
+    color: #b0b0b0;
     text-decoration: none;
+    font-size: 15px;
+    font-family: 'Arimo', sans-serif;
+    transition: color 0.2s ease-in-out;
+    white-space: nowrap;
 }
 
-.traileres { width: 14.76%; left: 4.66%; }
-.episodios { width: 14.76%; left: 23.69%; }
-.mas-contenido-para { width: 31.46%; left: 44.08%; }
-.planes { width: 17.86%; left: 79.81%; }
+.nav-item:hover {
+    color: #ffffff;
+}
+
+.back-link {
+    font-weight: 700;
+    color: #ffffff;
+    padding-right: 30px;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Legacy classes, no styles needed anymore */
+.traileres, .episodios, .mas-contenido-para, .planes { }

@@ -1,38 +1,30 @@
 .container {
-  width: 100%;
-  height: 100%;
   position: relative;
   top: 369px;
   left: 151px;
+  width: 557px;
 }
 
 .info-principal {
-  width: 557px;
-  height: 99px;
-  position: absolute;
-  top: 0;
-  left: 0;
+  width: 100%;
+  margin-bottom: 10px;
 }
 
 .titulo-principal {
-  position: absolute;
-  left: 14px;
-  top: 0;
   color: white;
   font-size: 72px;
   font-family: Arimo;
   font-style: italic;
   font-weight: 400;
-  line-height: 72px;
+  line-height: 1.1;
+  margin-bottom: 5px;
 }
 
 .detalles {
-  position: absolute;
-  top: 76px;
-  left: 14px;
   display: flex;
   align-items: center;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
 .coincidencia {
@@ -58,13 +50,11 @@
   font-family: Arimo;
 }
 
-
 .panel-informacion {
   width: 320px;
-  height: 372px;
-  position: absolute;
-  left: 14px;
-  top: 109px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .bloque {
@@ -74,26 +64,9 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-}
-
-.bloque.disponibles {
+  box-sizing: border-box;
   background: rgba(255, 255, 255, 0.15);
   border: 1.05px solid rgba(255, 255, 255, 0.2);
-}
-
-.bloque.fila-espera {
-  background: rgba(255, 255, 255, 0.15);
-  border: 1.05px solid rgba(255, 255, 255, 0.2);
-  margin-top: 8px;
-}
-
-.bloque.precio {
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 16px;
-  margin-top: 6px;
-  color: white;
-  font-family: Arimo;
-
 }
 
 .fila {
@@ -111,26 +84,11 @@
 .icono {
   width: 16px;
   height: 16px;
-  position: relative;
-}
-
-.cuadro {
-  width: 12px;
-  height: 12px;
-  border: 1.33px solid #ff6467;
-  position: absolute;
-  top: 2px;
-  left: 2px;
-}
-
-.cuadro.doble {
-  background: black;
 }
 
 .texto {
   display: flex;
   flex-direction: column;
-  gap: 0;
 }
 
 .etiqueta {
@@ -140,23 +98,12 @@
   line-height: 17px;
 }
 
-.valor {
+.valor,
+.numero {
   color: white;
   font-size: 14px;
   font-family: Arimo;
   line-height: 20px;
-}
-
-.numero {
-  color: white;
-  font-size: 16px;
-  line-height: 24px;
-}
-
-.subtexto {
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 13px;
-  line-height: 17px;
 }
 
 .precio-valor {
@@ -164,6 +111,7 @@
   font-family: Arimo;
   font-weight: 400;
   line-height: 36px;
+  color: white;
 }
 
 .moneda {
@@ -179,35 +127,41 @@
   line-height: 20px;
 }
 
-/* --- Botón añadir fila --- */
+/* --- Botones --- */
 .boton-renta {
-  width: 320px;
+  width: 100%;
   height: 46px;
   border-radius: 14px;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 12px;
-  padding-left: 12px;
+  padding: 0 12px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  box-sizing: border-box;
+  margin-top: 10px;
 }
 
 .boton-fila {
   background: #d08700;
   color: black;
-  position: absolute;
-  top: 287px;
-  left: 0;
+}
+.boton-fila:hover {
+  background: #e99a00;
 }
 
-.icono-boton {
-  width: 16px;
-  height: 16px;
-  border: 1.33px solid black;
-  background: transparent;
-  border-radius: 2px;
+.boton-quitar {
+  background: #555;
+  color: white;
+}
+.boton-quitar:hover {
+  background: #666;
 }
 
 .texto-boton {
-  color: black;
+  color: inherit;
   font-size: 14px;
   font-family: Arimo;
   line-height: 20px;

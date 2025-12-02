@@ -49,7 +49,7 @@ try {
     <link rel="stylesheet" href="./styles/mis_alquileres.css" />
     <link rel="stylesheet" href="styles/config.css" />
 </head>
-<body>
+<body class="page-layout-simple">
     <?php navheader("Mis Alquileres", $usuario_logueado_id); ?>
 
     <nav class="breadcrumbs" aria-label="Breadcrumb">

@@ -1,3 +1,9 @@
+/* Solución para el problema de solapamiento de capas (z-index) */
+.main-content {
+    position: relative;
+    z-index: 10;
+}
+
 .rentals-section {
     margin-top: 2rem;
 }

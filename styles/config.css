@@ -183,3 +183,16 @@ a:-webkit-any-link {
     cursor: pointer;
 
 }
+
+/* --- FIX PARA LAYOUT --- */
+/* Oculta los elementos de fondo de la página de película en otras páginas */
+.page-layout-simple .fondestringer-icon,
+.page-layout-simple .rewindcodefilm {
+    display: none;
+}
+
+/* Resetea la altura del contenedor principal en páginas simples */
+.page-layout-simple .desktop {
+    height: auto;
+    overflow-y: auto;
+}

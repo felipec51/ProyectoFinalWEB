@@ -58,7 +58,17 @@ try {
 
     if ($row) { $id_cinta = $row['id_cinta']; } else { throw new Exception("No hay copias disponibles."); }
 
-    // 5. Insertar Préstamo
+    // 5. Decrementar el contador de copias de la película
+    $sqlDecrement = "UPDATE pelicula SET ncopias = ncopias - 1 WHERE id_pelicula = :id_pelicula AND ncopias > 0";
+    $stmtDecrement = $conexion->prepare($sqlDecrement);
+    $stmtDecrement->bindParam(':id_pelicula', $id_pelicula, PDO::PARAM_INT);
+    $stmtDecrement->execute();
+
+    if ($stmtDecrement->rowCount() == 0) {
+        throw new Exception("La última copia acaba de ser alquilada por otra persona. Inténtalo de nuevo.");
+    }
+
+    // 6. Insertar Préstamo
     $fecha_prestamo = date('Y-m-d H:i:s');
     $fecha_devolucion = date('Y-m-d H:i:s', strtotime('+7 days'));
     $sqlPrestamo = "INSERT INTO prestamo (fecha_prestamo, fecha_devolucion, Usuario_id_usuario, cinta_id_cinta, estado_alquiler) VALUES (:fecha_prestamo, :fecha_devolucion, :id_usuario, :id_cinta, 'en curso')";
@@ -70,7 +80,7 @@ try {
     $stmt->execute();
     $id_prestamo_generado = $conexion->lastInsertId();
 
-    // 6. Insertar Factura
+    // 7. Insertar Factura
     $sqlFactura = "INSERT INTO factura (Nombre_user, precio_alquiler, fecha_factura, nombre_pelicula, Usuario_id_usuario) VALUES (:nombre_user, :precio_alquiler, :fecha_factura, :id_cinta, :id_usuario_fk)";
     $stmt = $conexion->prepare($sqlFactura);
     $stmt->bindParam(':nombre_user', $nombreUsuario);
@@ -80,12 +90,27 @@ try {
     $stmt->bindParam(':id_usuario_fk', $id_usuario, PDO::PARAM_INT); 
     $stmt->execute();
 
+    // 8. Insertar Notificación de Alquiler Exitoso
+    $mensajeNotif = "¡Alquiler exitoso! Has alquilado la película \"$nombrePelicula\". Tienes hasta el " . date('d/m/Y', strtotime($fecha_devolucion)) . " para devolverla.";
+    $sqlNotif = "INSERT INTO notificaciones (id_usuario, mensaje) VALUES (:id_usuario, :mensaje)";
+    $stmtNotif = $conexion->prepare($sqlNotif);
+    $stmtNotif->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
+    $stmtNotif->bindParam(':mensaje', $mensajeNotif);
+    $stmtNotif->execute();
+
     $conexion->commit();
+
+    // Tras el commit, obtener el número de copias actualizado para devolverlo
+    $stmtCopias = $conexion->prepare("SELECT ncopias FROM pelicula WHERE id_pelicula = :id_pelicula");
+    $stmtCopias->bindParam(':id_pelicula', $id_pelicula, PDO::PARAM_INT);
+    $stmtCopias->execute();
+    $nuevasCopias = $stmtCopias->fetchColumn();
 
     echo json_encode([
         "success" => true,
         "message" => "¡Alquiler realizado con éxito!",
-        "fecha_devolucion" => $fecha_devolucion
+        "fecha_devolucion" => $fecha_devolucion,
+        "ncopias" => $nuevasCopias ?? 0 // Devolver el nuevo conteo
     ]);
 
 } catch (Exception $e) {

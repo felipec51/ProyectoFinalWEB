@@ -1,5 +1,5 @@
 <?php
-function rendernodisponible(string $nombre_serie, string $ncopia, string $ncopiastotales, string $nfila, string $duracion_tag, string $anio, string $id_peli): void
+function rendernodisponible(string $nombre_serie, string $ncopia, string $ncopiastotales, string $nfila, string $duracion_tag, string $anio, string $id_peli, bool $usuario_en_lista): void
 {
 ?>
   <link rel="stylesheet" href="./styles/nodisponible.css" />
@@ -63,16 +63,28 @@ function rendernodisponible(string $nombre_serie, string $ncopia, string $ncopia
         <div class="mensaje">No disponible para Rentar</div>
       </div>
 
-      <form action="unirse_lista_espera.php" method="POST" style="display: contents;">
-        <input type="hidden" name="pelicula_id" value="<?php echo $id_peli; ?>">
-        <button type="submit" class="boton-renta boton-fila">
-          <img src="./imgs/icons/Icon-6.svg" alt="fecha" />
-          <div class="texto-boton">Añadirme a la fila</div>
-        </button>
-      </form>
+      <?php if ($usuario_en_lista): ?>
+        <!-- Formulario para QUITARSE de la lista -->
+        <form action="quitar_lista_espera.php" method="POST" style="display: contents;">
+            <input type="hidden" name="pelicula_id" value="<?php echo $id_peli; ?>">
+            <button type="submit" class="boton-renta boton-quitar">
+              <img src="./imgs/icons/Icon-close.svg" alt="quitar" />
+              <div class="texto-boton">Quitar de la fila</div>
+            </button>
+        </form>
+      <?php else: ?>
+        <!-- Formulario para AÑADIRSE a la lista -->
+        <form action="unirse_lista_espera.php" method="POST" style="display: contents;">
+            <input type="hidden" name="pelicula_id" value="<?php echo $id_peli; ?>">
+            <button type="submit" class="boton-renta boton-fila">
+              <img src="./imgs/icons/Icon-6.svg" alt="añadir" />
+              <div class="texto-boton">Añadirme a la fila</div>
+            </button>
+        </form>
+      <?php endif; ?>
     </div>
   </div>
 
-  <?php
+<?php
 }
-  ?>
+?>

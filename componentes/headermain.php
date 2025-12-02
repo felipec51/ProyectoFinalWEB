@@ -13,49 +13,45 @@ function navheader(string $currentPage, int $userId): void
 {
     $userNameInitials = "U"; // Iniciales por defecto
     $userNombreCompleto = "Usuario Desconocido";
+    $unreadCount = 0;
 
-    // 1. Obtener datos del usuario desde la base de datos
+    // 1. Obtener datos del usuario y conteo de notificaciones
     try {
         $conexion = Conexion::Conectar();
-        $sql = "SELECT nombre FROM Usuario WHERE id_usuario = :id";
-        $stmt = $conexion->prepare($sql);
-        $stmt->bindParam(':id', $userId, PDO::PARAM_INT);
-        $stmt->execute();
-        $userData = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        // Datos del usuario
+        $sqlUser = "SELECT nombre FROM Usuario WHERE id_usuario = :id";
+        $stmtUser = $conexion->prepare($sqlUser);
+        $stmtUser->bindParam(':id', $userId, PDO::PARAM_INT);
+        $stmtUser->execute();
+        $userData = $stmtUser->fetch(PDO::FETCH_ASSOC);
 
         if ($userData) {
             $userNombreCompleto = $userData['nombre'];
-            
-            // Lógica para obtener las iniciales (Ejemplo: "Felipe Murillo" -> "FM")
             $nameParts = explode(" ", trim($userNombreCompleto));
             $initials = "";
-            
-            // Tomar la primera letra de las dos primeras palabras si existen
-            if (count($nameParts) >= 1) {
-                $initials .= strtoupper(substr($nameParts[0], 0, 1));
-            }
-            if (count($nameParts) >= 2) {
-                // Solo tomar la inicial de la segunda palabra
-                $initials .= strtoupper(substr($nameParts[1], 0, 1));
-            }
-
-            // Si se logró obtener alguna inicial
+            if (count($nameParts) >= 1) $initials .= strtoupper(substr($nameParts[0], 0, 1));
+            if (count($nameParts) >= 2) $initials .= strtoupper(substr($nameParts[1], 0, 1));
             if (!empty($initials)) {
                  $userNameInitials = $initials;
             } else if (count($nameParts) >= 1) {
-                 // Caso de nombre de una sola palabra, toma las dos primeras letras
                  $userNameInitials = strtoupper(substr($nameParts[0], 0, 2));
             }
-
         }
 
+        // Conteo de notificaciones no leídas
+        $sqlCount = "SELECT COUNT(*) FROM notificaciones WHERE id_usuario = :id AND leido = 0";
+        $stmtCount = $conexion->prepare($sqlCount);
+        $stmtCount->bindParam(':id', $userId, PDO::PARAM_INT);
+        $stmtCount->execute();
+        $unreadCount = $stmtCount->fetchColumn();
+
     } catch (Exception $e) {
-        // En caso de error de conexión o consulta
-        error_log("Error al obtener datos de usuario en navheader: " . $e->getMessage());
+        error_log("Error en navheader: " . $e->getMessage());
         $userNameInitials = "!"; 
     }
 
-    // 2. Definir los enlaces de navegación y sus archivos
+    // 2. Definir los enlaces de navegación
     $navLinks = [
         'Inicio' => 'peliculasMenu.php',
         'Perfil' => 'perfil.php',
@@ -75,7 +71,6 @@ function navheader(string $currentPage, int $userId): void
             <nav class="main-nav">
                 <?php foreach ($navLinks as $name => $url): ?>
                     <?php 
-                        // 3. Aplica la clase 'active' si el nombre de la página coincide
                         $isActive = ($name === $currentPage) ? ' active' : '';
                     ?>
                     <a href="<?php echo $url; ?>" class="nav-link<?php echo $isActive; ?>">
@@ -85,10 +80,12 @@ function navheader(string $currentPage, int $userId): void
             </nav>
 
             <div class="user-actions">
-                <button class="notification-btn" aria-label="Notificaciones">
+                <a href="notificaciones.php" class="notification-btn" aria-label="Notificaciones">
                     <img src="./imgs/icons/campana.svg" alt="Notificaciones" />
-                    <span class="badge">2</span>
-                </button>
+                    <?php if ($unreadCount > 0): ?>
+                        <span class="badge"><?php echo $unreadCount; ?></span>
+                    <?php endif; ?>
+                </a>
                 <div class="avatar-circle" title="<?php echo htmlspecialchars($userNombreCompleto); ?>">
                     <span><?php echo $userNameInitials; ?></span>
                 </div>
