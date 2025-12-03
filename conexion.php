@@ -5,7 +5,7 @@ class Conexion
     public static function Conectar()
     {
         define('servidor', 'localhost'); 
-        define('nombre_bd', 'mydb'); 
+        define('nombre_bd', 'mybd'); 
         define('usuario', 'root'); 
         define('passw', ''); 
 

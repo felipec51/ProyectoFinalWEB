@@ -57,9 +57,9 @@ include 'componentes/sidebar.php';
                             </div>
 
                             <!-- AQUI SE AGREGA TU TITULO Y TU BOTON -->
-                            <div class="container3">
+                            <div class="container3" >
                                 <div class="rewind-code-film text-main-title">RewindCodeFilm</div>
-                                <a href="GenerarReporte.php" class="btn btn-primary generar-reporte">Generar Reporte</a>
+                                <a href="GenerarReporte.php" class="btn btn-light generar-reporte">Generar Reporte</a>
                             </div>
 
                         </header>

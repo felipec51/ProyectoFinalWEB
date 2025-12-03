@@ -103,18 +103,36 @@ class GenerarPDF
     $pdf->Ln(8);
 
     // Encabezados simples
-    $pdf->Cell(70,10,'TItulo',1,0,'C');
-    $pdf->Cell(40,10,'Director',1,0,'C');
+    if($tipo=="top10"){
+    $pdf->Cell(100,10,'TItulo',1,0,'C');
+    $pdf->Cell(20,10,'Anio',1,0,'C');
+    $pdf->Cell(50,10,'Calificacion',1,1,'C');
+    }elseif($tipo=="anio"){
+    $pdf->Cell(100,10,'TItulo',1,0,'C');
+    $pdf->Cell(20,10,'Anio',1,0,'C');
+    $pdf->Cell(50,10,'Calificacion',1,1,'C');
+    }elseif($tipo=="director"){
+    $pdf->Cell(100,10,'TItulo',1,0,'C');
+    $pdf->Cell(30,10,'Director',1,0,'C');
     $pdf->Cell(20,10,'Anio',1,0,'C');
     $pdf->Cell(30,10,'Calificacion',1,1,'C');
-
-
+    }elseif($tipo=="rango"){
+    $pdf->Cell(100,10,'TItulo',1,0,'C');
+    $pdf->Cell(20,10,'Anio',1,0,'C');
+    $pdf->Cell(50,10,'Calificacion',1,1,'C');
+    }
     // Contenido
     $pdf->SetFont('Arial','',11);
     foreach ($peliculas as $p) {
-        $pdf->Cell(90,8, utf8_decode($p['titulo']),1);
-        $pdf->Cell(25,8, $p['anio'],1);
-        $pdf->Cell(35,8, $p['calificacion'],1);
+        $pdf->Cell(100,8, utf8_decode($p['titulo']),1);
+        if ($tipo=="director"){
+        $pdf->Cell(30,8, utf8_decode($p['director']),1);
+        $pdf->Cell(20,8, $p['anio'],1);
+        $pdf->Cell(30,8, $p['calificacion'],1);
+        }else{
+        $pdf->Cell(20,8, $p['anio'],1);
+        $pdf->Cell(50,8, $p['calificacion'],1);
+        }
         $pdf->Ln();
     }
 
