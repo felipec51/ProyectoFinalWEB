@@ -310,11 +310,11 @@ body {
 .container3 {
     position: absolute;
     top: 13px;
-    right: 60px;
+    right: 400px; /* ANTES estaba en 60px */
     height: calc(100% - 28px);
     display: flex;
     align-items: center;
-    gap: 20px;    /* Aumentar separación entre título y botón */
+    gap: 5px;    /* separación entre el título y el botón */
     justify-content: flex-end;
 }
 
@@ -531,9 +531,5 @@ body {
     height: 36px;
     display: flex;
     align-items: center;
-}
-
-.container3 .rewind-code-film {
-    margin-right: 0; /* Anular el margen automático */
 }
 
