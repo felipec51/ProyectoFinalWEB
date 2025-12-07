@@ -5,7 +5,7 @@ function rendernav(): void {
     .barra-nav-inline {
         position: fixed;
         top: 20px;
-        right: 20px;
+        right: 30%;
         z-index: 1000;
         width: auto;
         height: 45px;

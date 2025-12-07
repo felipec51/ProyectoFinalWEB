@@ -68,7 +68,7 @@ function rendernodisponible(string $nombre_serie, string $ncopia, string $ncopia
         <form action="quitar_lista_espera.php" method="POST" style="display: contents;">
             <input type="hidden" name="pelicula_id" value="<?php echo $id_peli; ?>">
             <button type="submit" class="boton-renta boton-quitar">
-              <img src="./imgs/icons/Icon-close.svg" alt="quitar" />
+              <img style="width: 18px;height: 18px;" src="./imgs/icons/icon_close.svg" alt="quitar" />
               <div class="texto-boton">Quitar de la fila</div>
             </button>
         </form>

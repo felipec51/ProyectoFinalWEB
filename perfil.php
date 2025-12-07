@@ -11,19 +11,18 @@ if (!isset($_SESSION["id_usuario"])) {
     exit;
 }
 
-// AÑADE ESTA LÍNEA AQUÍ para definir la variable antes de usarla
 $usuario_logueado_id = $_SESSION["id_usuario"];
 
 $userData = null;
 $userInitials = "U";
 $memberSince = "Desconocido";
 $favoriteGenres = [];
+$favoriteActors = [];     
+$favoriteDirectors = [];  
 
 
 try {
     $conexion = Conexion::Conectar();
-    
-    
     $sqlUser = "SELECT username, nombre, direccion, telefono, email, fecha_creacion, rol_id_rol FROM Usuario WHERE id_usuario = :id";
     $stmtUser = $conexion->prepare($sqlUser);
     $stmtUser->bindParam(':id', $usuario_logueado_id, PDO::PARAM_INT);
@@ -31,10 +30,9 @@ try {
     $userData = $stmtUser->fetch(PDO::FETCH_ASSOC);
 
     if ($userData) {
-        
+
         $nameParts = explode(" ", trim($userData['nombre']));
         $initials = "";
-        
         if (count($nameParts) >= 1) {
             $initials .= strtoupper(substr($nameParts[0], 0, 1));
         }
@@ -43,21 +41,16 @@ try {
         }
         $userInitials = !empty($initials) ? $initials : strtoupper(substr($userData['nombre'], 0, 2));
 
-
         
         $dateObj = new DateTime($userData['fecha_creacion']);
         $memberSince = $dateObj->format('F Y'); 
-        
-        
         $monthNames = [
             'January' => 'Enero', 'February' => 'Febrero', 'March' => 'Marzo', 'April' => 'Abril',
             'May' => 'Mayo', 'June' => 'Junio', 'July' => 'Julio', 'August' => 'Agosto',
             'September' => 'Septiembre', 'October' => 'Octubre', 'November' => 'Noviembre', 'December' => 'Diciembre'
         ];
         $memberSince = strtr($memberSince, $monthNames);
-        
-        
-        
+
         $sqlGenres = "
             SELECT g.nombre 
             FROM gusto_genero gg
@@ -69,33 +62,43 @@ try {
         $stmtGenres->execute();
         $favoriteGenres = $stmtGenres->fetchAll(PDO::FETCH_COLUMN);
 
+        $sqlActors = "
+            SELECT a.nombre 
+            FROM gusto_actor ga
+            JOIN actor a ON ga.actor_id_actor = a.id_actor
+            WHERE ga.Usuario_id_usuario = :id
+        ";
+        $stmtActors = $conexion->prepare($sqlActors);
+        $stmtActors->bindParam(':id', $usuario_logueado_id, PDO::PARAM_INT);
+        $stmtActors->execute();
+        $favoriteActors = $stmtActors->fetchAll(PDO::FETCH_COLUMN);
+
+        $sqlDirectors = "
+            SELECT d.nombre 
+            FROM gusta_director gd
+            JOIN director d ON gd.director_id_director = d.id_director
+            WHERE gd.Usuario_id_usuario = :id
+        ";
+        $stmtDirectors = $conexion->prepare($sqlDirectors);
+        $stmtDirectors->bindParam(':id', $usuario_logueado_id, PDO::PARAM_INT);
+        $stmtDirectors->execute();
+        $favoriteDirectors = $stmtDirectors->fetchAll(PDO::FETCH_COLUMN);
+
     } else {
-        
         $userData = [
-            'nombre' => 'Usuario No Encontrado',
-            'username' => 'n/a',
-            'email' => 'n/a',
-            'telefono' => 'n/a',
-            'direccion' => 'n/a',
-            'rol_id_rol' => 2 // Default to non-admin
+            'nombre' => 'Usuario No Encontrado', 'username' => 'n/a', 'email' => 'n/a',
+            'telefono' => 'n/a', 'direccion' => 'n/a', 'rol_id_rol' => 2 
         ];
     }
     
 } catch (Exception $e) {
-    
     error_log("Error de base de datos en perfil.php: " . $e->getMessage());
-    
     $userData = [
-        'nombre' => 'Error de Carga',
-        'username' => 'n/a',
-        'email' => 'Error BD',
-        'telefono' => 'Error BD',
-        'direccion' => 'Error BD',
-        'rol_id_rol' => 2 // Default to non-admin
+        'nombre' => 'Error de Carga', 'username' => 'n/a', 'email' => 'Error BD',
+        'telefono' => 'Error BD', 'direccion' => 'Error BD', 'rol_id_rol' => 2
     ];
     $userInitials = "!";
 }
-
 
 $nombre = htmlspecialchars($userData['nombre']);
 $username = htmlspecialchars($userData['username']);
@@ -112,7 +115,6 @@ $direccion = nl2br(htmlspecialchars($userData['direccion']));
     <title>Perfil de Usuario - CineMax</title>
     <link rel="stylesheet" href="./styles/perfil.css" />
     <link rel="stylesheet" href="styles/config.css" />
- 
 </head>
 <body>
     
@@ -124,7 +126,6 @@ $direccion = nl2br(htmlspecialchars($userData['direccion']));
                 <img class="icon-sm" src="img/vector-22.svg" alt="" /> 
                 Página Principal
             </a>
-            
             <span class="crumb-current">> Perfil</span>
         </div>
     </nav>
@@ -204,7 +205,7 @@ $direccion = nl2br(htmlspecialchars($userData['direccion']));
                         <label>Teléfono</label>
                         <p><?php echo $telefono; ?></p>
                     </div>
-                    </div>
+                </div>
             </article>
 
             <article class="card">
@@ -220,30 +221,74 @@ $direccion = nl2br(htmlspecialchars($userData['direccion']));
                         <label>Dirección principal</label>
                         <p><?php echo $direccion; ?></p>
                     </div>
-                    </div>
+                </div>
             </article>
+
             <article class="card">
                 <div class="card-header">
                     <div class="card-title">
                         <img class="icon-md" src="img/vector-24.svg" alt="">
-                        <h2>Preferencias</h2>
+                        <h2>Géneros Favoritos</h2>
                     </div>
-                    <a href="editar_perfil.php#preferencias" class="edit-icon"><img src="./imgs/icons/editarbtn.svg" alt="Editar"></a>
+                    <a href="editar_preferencias.php" class="edit-icon"><img src="./imgs/icons/editarbtn.svg" alt="Editar"></a>
                 </div>
                 <div class="card-body">
                     <div class="field-group">
-                        <label>Géneros favoritos</label>
                         <div class="tags">
                             <?php if (!empty($favoriteGenres)): ?>
                                 <?php foreach ($favoriteGenres as $genre): ?>
                                     <span class="tag"><?php echo htmlspecialchars($genre); ?></span>
                                 <?php endforeach; ?>
                             <?php else: ?>
-                                <p>No se han seleccionado géneros favoritos.</p>
+                                <p class="text-muted">No has seleccionado géneros.</p>
                             <?php endif; ?>
                         </div>
                     </div>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <img class="icon-md" src="./imgs/icons/reproducir.svg" alt=""> <h2>Actores Favoritos</h2>
                     </div>
+                    <a href="editar_preferencias.php" class="edit-icon"><img src="./imgs/icons/editarbtn.svg" alt="Editar"></a>
+                </div>
+                <div class="card-body">
+                    <div class="field-group">
+                        <div class="tags">
+                            <?php if (!empty($favoriteActors)): ?>
+                                <?php foreach ($favoriteActors as $actor): ?>
+                                    <span class="tag"><?php echo htmlspecialchars($actor); ?></span>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <p class="text-muted">No has seleccionado actores.</p>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <img class="icon-md" src="./imgs/icons/vector-22.svg" alt=""> <h2>Directores Favoritos</h2>
+                    </div>
+                    <a href="editar_preferencias.php" class="edit-icon"><img src="./imgs/icons/editarbtn.svg" alt="Editar"></a>
+                </div>
+                <div class="card-body">
+                    <div class="field-group">
+                        <div class="tags">
+                            <?php if (!empty($favoriteDirectors)): ?>
+                                <?php foreach ($favoriteDirectors as $director): ?>
+                                    <span class="tag"><?php echo htmlspecialchars($director); ?></span>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <p class="text-muted">No has seleccionado directores.</p>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
             </article>
 
         </div>

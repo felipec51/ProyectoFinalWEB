@@ -1,25 +1,17 @@
 <?php
-// Archivo: headermain.php
-
-// Asegúrate de que la ruta a tu archivo de conexión sea correcta
 require_once 'conexion.php'; 
 
-/**
- * Renderiza el encabezado de navegación.
- * * @param string $currentPage El nombre de la página actual para aplicar la clase 'active'.
- * @param int $userId El ID del usuario actualmente logueado.
- */
 function navheader(string $currentPage, int $userId): void
 {
-    $userNameInitials = "U"; // Iniciales por defecto
+    $userNameInitials = "U"; 
     $userNombreCompleto = "Usuario Desconocido";
     $unreadCount = 0;
 
-    // 1. Obtener datos del usuario y conteo de notificaciones
+    
     try {
         $conexion = Conexion::Conectar();
         
-        // Datos del usuario
+        
         $sqlUser = "SELECT nombre FROM Usuario WHERE id_usuario = :id";
         $stmtUser = $conexion->prepare($sqlUser);
         $stmtUser->bindParam(':id', $userId, PDO::PARAM_INT);
@@ -39,7 +31,6 @@ function navheader(string $currentPage, int $userId): void
             }
         }
 
-        // Conteo de notificaciones no leídas
         $sqlCount = "SELECT COUNT(*) FROM notificaciones WHERE id_usuario = :id AND leido = 0";
         $stmtCount = $conexion->prepare($sqlCount);
         $stmtCount->bindParam(':id', $userId, PDO::PARAM_INT);
@@ -50,14 +41,10 @@ function navheader(string $currentPage, int $userId): void
         error_log("Error en navheader: " . $e->getMessage());
         $userNameInitials = "!"; 
     }
-
-    // 2. Definir los enlaces de navegación
     $navLinks = [
         'Inicio' => 'peliculasMenu.php',
         'Perfil' => 'perfil.php',
-        'Favoritos' => 'favoritos.php',
-        'Mis Alquileres' => 'mis_alquileres.php',
-        'Actores' => 'seleccion_favoritos_directores.php',
+        'Mis Alquileres' => 'mis_alquileres.php'
     ];
 ?>
     <link rel="stylesheet" href="./styles/headermain.css" />
