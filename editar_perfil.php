@@ -9,7 +9,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
 
 if (!isset($_SESSION["id_usuario"])) {
-    header("Location: iniciarsesion.php");
+    header("Location: editar_perfil.php");
     exit;
 }
 

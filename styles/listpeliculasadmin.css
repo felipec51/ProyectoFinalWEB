@@ -193,6 +193,12 @@
 .ciencia-ficcin {
     position: relative;
     line-height: 18.67px;
+
+}
+.ciencia-ficcion {
+    position: relative;
+    width: 57px;
+    line-height: 18.67px;
 }
 
 .en-el-catlogo {

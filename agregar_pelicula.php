@@ -2,6 +2,15 @@
 
 require_once 'conexion.php';
 
+
+include 'check_session.php'; 
+
+if (!isset($_SESSION["rol_id_rol"]) || $_SESSION["rol_id_rol"] != 1) {
+    header("Location: login.php"); 
+    exit;
+}
+$usuario_logueado_id = $_SESSION["id_usuario"];
+
 $mensaje = "";
 $directores = [];
 $generos_db = [];
@@ -158,10 +167,7 @@ try {
                 }
                 
                 
-                // 8. Notificar a usuarios con preferencias coincidentes
                 $all_user_ids_to_notify = [];
-
-                // A. Encontrar usuarios por director
                 if ($director_id_final) {
                     $sqlUsersDir = "SELECT Usuario_id_usuario FROM gusta_director WHERE director_id_director = :dir_id";
                     $stmtUsersDir = $conexion->prepare($sqlUsersDir);
@@ -169,8 +175,7 @@ try {
                     $usersByDir = $stmtUsersDir->fetchAll(PDO::FETCH_COLUMN);
                     $all_user_ids_to_notify = array_merge($all_user_ids_to_notify, $usersByDir);
                 }
-
-                // B. Encontrar usuarios por género(s)
+                
                 if (!empty($generos)) {
                     $placeholders = rtrim(str_repeat('?,', count($generos)), ',');
                     $sqlUsersGen = "SELECT Usuario_id_usuario FROM gusto_genero WHERE genero_id_genero IN ($placeholders)";
@@ -178,9 +183,7 @@ try {
                     $stmtUsersGen->execute($generos);
                     $usersByGen = $stmtUsersGen->fetchAll(PDO::FETCH_COLUMN);
                     $all_user_ids_to_notify = array_merge($all_user_ids_to_notify, $usersByGen);
-                }
-
-                // C. Encontrar usuarios por actor(es)
+                } 
                 if (!empty($actor_ids_unicos)) {
                     $placeholders = rtrim(str_repeat('?,', count($actor_ids_unicos)), ',');
                     $sqlUsersAct = "SELECT Usuario_id_usuario FROM gusto_actor WHERE actor_id_actor IN ($placeholders)";
@@ -190,7 +193,6 @@ try {
                     $all_user_ids_to_notify = array_merge($all_user_ids_to_notify, $usersByAct);
                 }
 
-                // D. Insertar notificaciones (solo a usuarios únicos)
                 $unique_user_ids = array_unique(array_map('intval', $all_user_ids_to_notify));
 
                 if (!empty($unique_user_ids)) {
@@ -199,8 +201,8 @@ try {
                     $stmtNotif = $conexion->prepare($sqlNotif);
                     
                     foreach ($unique_user_ids as $user_id) {
-                        // Evitar notificar al admin si es que tuviera gustos. Opcional.
-                        if ($user_id > 0) { // Asumiendo que el admin no es el usuario 0
+                        
+                        if ($user_id > 0) { 
                              $stmtNotif->execute([
                                 ':id_usuario' => $user_id,
                                 ':mensaje' => $mensajeNotif
@@ -222,9 +224,6 @@ try {
         }
     }
 
-    
-    
-    
     $sqlDir = "SELECT * FROM director ORDER BY nombre ASC";
     $stmtDir = $conexion->prepare($sqlDir);
     $stmtDir->execute();
@@ -312,7 +311,7 @@ try {
                                 </option>
                             <?php endforeach; ?>
                         </select>
-                        <div style="font-size: 11px; color: #aaa; margin-top: 4px;">Mantén presionado **CTRL** (o **CMD** en Mac) para seleccionar varios.</div>
+                        <div style="font-size: 11px; color: #aaa; margin-top: 4px;">Mantén presionado CTRL (o CMD en Mac) para seleccionar varios.</div>
                     </div>
                     
                     <div class="col-12">
@@ -324,7 +323,6 @@ try {
                         <input type="text" name="nuevos_actores" class="input-field" placeholder="Ej: Brad Pitt, Jennifer Aniston">
                         <div style="font-size: 11px; color: #9ca3af; margin-top: 4px;">Si escribe aquí, ignora la selección anterior. Se registrarán como **Protagonistas**.</div>
                     </div>
-                    <hr class="separator"/>
 
                     <div class="input-group col-6">
                         <label class="label">Año</label>
@@ -355,7 +353,7 @@ try {
                                 </option>
                             <?php endforeach; ?>
                         </select>
-                        <div style="font-size: 11px; color: #aaa; margin-top: 4px;">Mantén presionado **CTRL** (o **CMD** en Mac) para seleccionar varios géneros.</div>
+                        <div style="font-size: 11px; color: #aaa; margin-top: 4px;">Mantén presionado CTRL (o CMD en Mac) para seleccionar varios géneros.</div>
                     </div>
 
 
@@ -372,7 +370,7 @@ try {
 
                     <div class="input-group col-12">
                         <label class="label">URL del Póster (Imagen)</label>
-                        <input type="url" name="poster" class="input-field" placeholder="https:
+                        <input type="url" name="poster" class="input-field" placeholder="https:url_de_la_imagen" required>
                     </div>
 
                     <div class="input-group col-12">

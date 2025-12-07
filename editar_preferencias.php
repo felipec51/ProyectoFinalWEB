@@ -6,7 +6,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// 1. VALIDAR SESIÓN
+
 if (!isset($_SESSION["id_usuario"])) {
     header("Location: iniciarsesion.php");
     exit;
@@ -18,23 +18,21 @@ $tipo_mensaje = "";
 
 try {
     $conexion = Conexion::Conectar();
-
-    // 2. PROCESAR EL FORMULARIO (GUARDAR DATOS)
+    
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $actores_seleccionados = $_POST['actores'] ?? [];
         $generos_seleccionados = $_POST['generos'] ?? [];
-        $directores_seleccionados = $_POST['directores'] ?? []; // NUEVO
+        $directores_seleccionados = $_POST['directores'] ?? []; 
 
-        // Validación de servidor: Mínimo 5 de cada uno
+        
         if (count($actores_seleccionados) < 5 || count($generos_seleccionados) < 5 || count($directores_seleccionados) < 5) {
             $mensaje = "Debes seleccionar al menos 5 actores, 5 géneros y 5 directores.";
             $tipo_mensaje = "error";
         } else {
             try {
-                // Usamos una TRANSACCIÓN
+                
                 $conexion->beginTransaction();
 
-                // --- A. ACTORES ---
                 $sqlDelActor = "DELETE FROM gusto_actor WHERE Usuario_id_usuario = :uid";
                 $stmtDelA = $conexion->prepare($sqlDelActor);
                 $stmtDelA->execute([':uid' => $usuario_id]);
@@ -44,8 +42,7 @@ try {
                 foreach ($actores_seleccionados as $actor_id) {
                     $stmtInsA->execute([':uid' => $usuario_id, ':aid' => $actor_id]);
                 }
-
-                // --- B. GÉNEROS ---
+  
                 $sqlDelGen = "DELETE FROM gusto_genero WHERE Usuario_id_usuario = :uid";
                 $stmtDelG = $conexion->prepare($sqlDelGen);
                 $stmtDelG->execute([':uid' => $usuario_id]);
@@ -56,7 +53,6 @@ try {
                     $stmtInsG->execute([':uid' => $usuario_id, ':gid' => $genero_id]);
                 }
 
-                // --- C. DIRECTORES (NUEVO) ---
                 $sqlDelDir = "DELETE FROM gusta_director WHERE Usuario_id_usuario = :uid";
                 $stmtDelD = $conexion->prepare($sqlDelDir);
                 $stmtDelD->execute([':uid' => $usuario_id]);
@@ -67,31 +63,28 @@ try {
                     $stmtInsD->execute([':uid' => $usuario_id, ':did' => $director_id]);
                 }
 
-                $conexion->commit(); // Confirmar cambios
+                $conexion->commit(); 
                 $mensaje = "¡Todas tus preferencias han sido actualizadas!";
                 $tipo_mensaje = "success";
 
             } catch (Exception $e) {
-                $conexion->rollBack(); // Si falla algo, deshacer todo
+                $conexion->rollBack(); 
                 $mensaje = "Error al guardar: " . $e->getMessage();
                 $tipo_mensaje = "error";
             }
         }
     }
 
-    // 3. OBTENER DATOS PARA MOSTRAR EN PANTALLA
-    
-    // A. Obtener TODOS los items
     $stmtAllActores = $conexion->query("SELECT id_actor, nombre FROM actor ORDER BY nombre ASC");
     $todos_actores = $stmtAllActores->fetchAll(PDO::FETCH_ASSOC);
 
     $stmtAllGeneros = $conexion->query("SELECT id_genero, nombre FROM genero ORDER BY nombre ASC");
     $todos_generos = $stmtAllGeneros->fetchAll(PDO::FETCH_ASSOC);
 
-    $stmtAllDirectores = $conexion->query("SELECT id_director, nombre FROM director ORDER BY nombre ASC"); // NUEVO
+    $stmtAllDirectores = $conexion->query("SELECT id_director, nombre FROM director ORDER BY nombre ASC"); 
     $todos_directores = $stmtAllDirectores->fetchAll(PDO::FETCH_ASSOC);
 
-    // B. Obtener lo que el usuario YA tiene seleccionado (IDs)
+    
     $stmtMisActores = $conexion->prepare("SELECT actor_id_actor FROM gusto_actor WHERE Usuario_id_usuario = :uid");
     $stmtMisActores->execute([':uid' => $usuario_id]);
     $mis_actores_ids = $stmtMisActores->fetchAll(PDO::FETCH_COLUMN); 
@@ -100,7 +93,7 @@ try {
     $stmtMisGeneros->execute([':uid' => $usuario_id]);
     $mis_generos_ids = $stmtMisGeneros->fetchAll(PDO::FETCH_COLUMN);
 
-    $stmtMisDirectores = $conexion->prepare("SELECT director_id_director FROM gusta_director WHERE Usuario_id_usuario = :uid"); // NUEVO
+    $stmtMisDirectores = $conexion->prepare("SELECT director_id_director FROM gusta_director WHERE Usuario_id_usuario = :uid"); 
     $stmtMisDirectores->execute([':uid' => $usuario_id]);
     $mis_directores_ids = $stmtMisDirectores->fetchAll(PDO::FETCH_COLUMN);
 
@@ -120,13 +113,13 @@ try {
     <link rel="stylesheet" href="styles/config.css" />
     
     <style>
-        /* Estilos específicos para la selección múltiple */
+    
         .selection-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
             gap: 15px;
             margin-top: 15px;
-            max-height: 250px; /* Un poco más pequeño para que quepan los 3 */
+            max-height: 250px;
             overflow-y: auto; 
             padding: 10px;
             background: #1a1a1a;
@@ -295,40 +288,34 @@ try {
                 </article>
 
             </div>
-
             <button type="submit" id="submitBtn" class="btn-save" disabled>Guardar Preferencias</button>
         </form>
     </main>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Referencias a los grupos de checkboxes
+            
             const actorChecks = document.querySelectorAll('.actor-check');
             const genreChecks = document.querySelectorAll('.genre-check');
-            const directorChecks = document.querySelectorAll('.director-check'); // NUEVO
-
-            // Referencias a los contadores visuales
+            const directorChecks = document.querySelectorAll('.director-check'); 
             const actorCounter = document.getElementById('actor-counter');
             const genreCounter = document.getElementById('genre-counter');
-            const directorCounter = document.getElementById('director-counter'); // NUEVO
+            const directorCounter = document.getElementById('director-counter'); 
             
             const submitBtn = document.getElementById('submitBtn');
 
             function updateCounters() {
-                // Contar cuántos hay seleccionados
+                
                 const actorCount = document.querySelectorAll('.actor-check:checked').length;
                 const genreCount = document.querySelectorAll('.genre-check:checked').length;
-                const directorCount = document.querySelectorAll('.director-check:checked').length; // NUEVO
-
-                // --- ACTUALIZAR ACTORES ---
+                const directorCount = document.querySelectorAll('.director-check:checked').length;  
                 actorCounter.textContent = `${actorCount}/5 Seleccionados`;
                 if (actorCount >= 5) {
                     actorCounter.classList.remove('invalid'); actorCounter.classList.add('valid');
                 } else {
                     actorCounter.classList.remove('valid'); actorCounter.classList.add('invalid');
                 }
-
-                // --- ACTUALIZAR GÉNEROS ---
+               
                 genreCounter.textContent = `${genreCount}/5 Seleccionados`;
                 if (genreCount >= 5) {
                     genreCounter.classList.remove('invalid'); genreCounter.classList.add('valid');
@@ -336,16 +323,14 @@ try {
                     genreCounter.classList.remove('valid'); genreCounter.classList.add('invalid');
                 }
 
-                // --- ACTUALIZAR DIRECTORES ---
+                
                 directorCounter.textContent = `${directorCount}/5 Seleccionados`;
                 if (directorCount >= 5) {
                     directorCounter.classList.remove('invalid'); directorCounter.classList.add('valid');
                 } else {
                     directorCounter.classList.remove('valid'); directorCounter.classList.add('invalid');
                 }
-
-                // --- VALIDACIÓN FINAL ---
-                // Solo activa el botón si los 3 cumplen el mínimo
+                     
                 if (actorCount >= 5 && genreCount >= 5 && directorCount >= 5) {
                     submitBtn.disabled = false;
                     submitBtn.textContent = "Guardar Preferencias";
@@ -354,13 +339,11 @@ try {
                     submitBtn.textContent = "Debes completar todas las selecciones (min 5 c/u)";
                 }
             }
-
-            // Escuchar cambios en cualquier grupo
+            
             actorChecks.forEach(ch => ch.addEventListener('change', updateCounters));
             genreChecks.forEach(ch => ch.addEventListener('change', updateCounters));
-            directorChecks.forEach(ch => ch.addEventListener('change', updateCounters)); // NUEVO
-
-            // Ejecutar al inicio para validar lo que viene de BD
+            directorChecks.forEach(ch => ch.addEventListener('change', updateCounters)); 
+          
             updateCounters();
         });
     </script>

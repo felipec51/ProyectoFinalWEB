@@ -141,10 +141,6 @@ class GenerarPDF
 }
 
 
-    // =====================================================================
-    //  MÉTODOS ORIGINALES 
-    // =====================================================================
-
     public function generarFacturaPDF($factura, $usuario, $pelicula)
     {
         $pdf = new FPDF();

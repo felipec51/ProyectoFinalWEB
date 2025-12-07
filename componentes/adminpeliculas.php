@@ -35,7 +35,7 @@ function renderpeliculas(array $peliculas): void
                 <div class="container17 flex-row-center">
                     <img src="./imgs/icons/icono-10-(14).svg" class="icon4" alt="">
                     <div class="text3 flex-row-center">
-                        <div class="ciencia-ficcin"><?php echo $calificacion; ?></div>
+                        <div class="ciencia-ficcion"><?php echo $calificacion; ?></div>
                     </div>
                 </div>
             </div>

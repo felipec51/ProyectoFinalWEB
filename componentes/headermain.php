@@ -11,7 +11,6 @@ function navheader(string $currentPage, int $userId): void
     try {
         $conexion = Conexion::Conectar();
         
-        
         $sqlUser = "SELECT nombre FROM Usuario WHERE id_usuario = :id";
         $stmtUser = $conexion->prepare($sqlUser);
         $stmtUser->bindParam(':id', $userId, PDO::PARAM_INT);
