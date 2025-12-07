@@ -6,6 +6,8 @@ $objeto = new Conexion();
 $conexion = $objeto->Conectar();
 $peliculas = []; 
 
+$search_term = isset($_GET['search']) ? $_GET['search'] : '';
+
 try {
     
     $consulta = "
@@ -24,13 +26,23 @@ try {
         LEFT JOIN 
             pelicula_genero pg ON p.id_pelicula = pg.pelicula_id_pelicula
         LEFT JOIN 
-            genero g ON pg.genero_id_genero = g.id_genero
-        GROUP BY
+            genero g ON pg.genero_id_genero = g.id_genero";
+
+    if (!empty($search_term)) {
+        $consulta .= " WHERE p.titulo LIKE :search_term OR d.nombre LIKE :search_term";
+    }
+
+    $consulta .= " GROUP BY
             p.id_pelicula, p.titulo, p.anio, p.poster_path, p.calificacion, d.nombre
         ORDER BY 
             p.anio DESC";
             
     $resultado = $conexion->prepare($consulta);
+
+    if (!empty($search_term)) {
+        $resultado->bindValue(':search_term', '%' . $search_term . '%');
+    }
+    
     $resultado->execute();        
     
     $peliculas = $resultado->fetchAll(PDO::FETCH_ASSOC);

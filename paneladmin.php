@@ -40,14 +40,14 @@ include 'componentes/sidebar.php';
                             <img src="./imgs/icons/icono-10-(1).svg" class="button-icon" alt="">
                             <div class="primitivediv"></div>
 
-                            <div class="container">
+                            <form action="paneladmin.php" method="GET" class="container">
                                 <div class="container2">
-                                    <div class="input">
-                                        <span class="buscar-pelculas-directores">Buscar películas, directores...</span>
-                                    </div>
-                                    <img class="icon2" src="./imgs/icons/search.svg" alt="">
+                                    <button type="submit" class="search-button">
+                                        <img class="icon2" src="./imgs/icons/Icon.svg" alt="Search">
+                                    </button>
+                                    <input type="text" name="search" class="input" placeholder="Buscar películas, directores..." value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
                                 </div>
-                            </div>
+                            </form>
 
                             <div class="primitivebutton">
                                 <div class="primitivespan">
@@ -59,7 +59,6 @@ include 'componentes/sidebar.php';
                             <!-- AQUI SE AGREGA TU TITULO Y TU BOTON -->
                             <div class="container3" >
                                 <div class="rewind-code-film text-main-title">RewindCodeFilm</div>
-                                <a href="GenerarReporte.php" class="btn btn-light generar-reporte">Generar Reporte</a>
                             </div>
 
                         </header>
@@ -139,7 +138,6 @@ include 'componentes/sidebar.php';
                                     <div class="pelculas-encontradas">8 películas encontradas</div>
                                 </div>
                             </div>
-
                         </div>
                         <div class="container14">
 

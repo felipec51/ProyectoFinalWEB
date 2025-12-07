@@ -1,6 +1,7 @@
 body {
     margin: 0;
     line-height: normal;
+    overflow: hidden;
 }
 
 .desktop {
@@ -8,12 +9,11 @@ body {
     height: 100vh;
     position: relative;
     background-color: #141414;
-    overflow-y: hidden;
     text-align: left;
     font-size: 14px;
-    overflow-x: hidden;
     color: #fff;
     font-family: Arimo;
+    overflow: auto;
 }
 
 .admin-movie-panel-activity {
@@ -22,7 +22,6 @@ body {
     left: 0;
     background-color: #fff;
     width: 2358px;
-    height: 100vh;
 }
 
 .app {
@@ -32,7 +31,6 @@ body {
     bottom: 0;
     left: 0;
     background-color: #141414;
-    height: 100vh;
 }
 
 .sidebarinset {
@@ -187,7 +185,6 @@ body {
     width: 100%;
     height: auto;
     background-color: #141414;
-    overflow: hidden;
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
@@ -234,8 +231,8 @@ body {
 
 .primitivebutton {
     position: absolute;
-    top: 0;
-    left: 463.97px;
+    top: 14px;
+    left: 525px;
     border-radius: 8px;
     background-color: #2f2f2f;
     border: 1.1px solid #2f2f2f;
@@ -271,38 +268,46 @@ body {
 }
 
 .container2 {
-    position: absolute;
-    top: 0;
-    left: 0;
+    display: flex;
+    align-items: center;
+    background-color: #2f2f2f;
+    border-radius: 8px;
+    border: 1.1px solid #2f2f2f;
     width: 448px;
     height: 36px;
-    color: #6a7282;
+    padding: 0 12px;
 }
 
 .input {
-    position: absolute;
-    top: 0;
-    left: 0;
-    border-radius: 8px;
-    background-color: #2f2f2f;
-    border: 1.1px solid #2f2f2f;
-    box-sizing: border-box;
-    width: 448px;
-    height: 36px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    padding: 4px 12px 4px 36px;
+    flex-grow: 1;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-family: Arimo;
+    font-size: 14px;
+    height: 100%;
 }
 
-.buscar-pelculas-directores {
-    position: relative;
+.input:focus {
+    outline: none;
+}
+
+.input::placeholder {
+    color: #6a7282;
+}
+
+.search-button {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 8px;
 }
 
 .icon2 {
-    position: absolute;
-    top: 10.01px;
-    left: 11.99px;
     width: 16px;
     height: 16px;
 }
@@ -310,7 +315,7 @@ body {
 .container3 {
     position: absolute;
     top: 13px;
-    right: 400px; /* ANTES estaba en 60px */
+    right: 60px; /* ANTES estaba en 60px */
     height: calc(100% - 28px);
     display: flex;
     align-items: center;
@@ -467,7 +472,6 @@ body {
 .container12 {
     width: 100%;
     height: 50px;
-    overflow-y: auto;
     position: relative;
     font-size: 16px;
 }
@@ -486,7 +490,6 @@ body {
 .container14 {
    width: 100%;
     height: auto;
-    overflow-y: hidden;
     position: relative;
     font-size: 16px;
 

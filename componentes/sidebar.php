@@ -67,6 +67,14 @@ function rendersidebar(): void
                                 </a>
                             </div>
                         </div>
+                        <div class="sidebarmenuitem2">
+                            <div class="slotclone2 flex-row-center">
+                                <img src="./imgs/icons/icono-10-(4).svg" class="icon18" alt="icono de reporte">
+                                <a href="GenerarReporte.php" style="text-decoration:none; color:inherit;">
+                                <div class="appsidebar7">Generar Reporte</div>
+                                </a>
+                            </div>
+                        </div>
             
                        
                     </div>
