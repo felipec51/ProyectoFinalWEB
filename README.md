@@ -5,9 +5,8 @@ Una página web básica para explorar y descubrir películas. Este proyecto mues
 ---
 
 
-
 ##  Introducción
-**MovieHub** es un proyecto web básico que permite a los usuarios navegar por una lista de películas. Se enfoca en la presentación y estructura del contenido, utilizando tecnologías web modernas y un diseño atractivo.
+es un proyecto web básico que permite a los usuarios navegar por una lista de películas. Se enfoca en la presentación y estructura del contenido, utilizando tecnologías web modernas y un diseño atractivo.
 
 ---
 
