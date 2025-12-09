@@ -1,6 +1,6 @@
 #  RewindCodeFilm
 
-Una página web básica para explorar y descubrir películas. Este proyecto muestra información de películas populares, incluyendo su título, sinopsis y calificación. Ideal como práctica de desarrollo web y diseño responsivo.
+Una página web básica para explorar y descubrir películas. Este proyecto muestra información de películas populares, incluyendo su título, sinopsis y calificación.
 
 ---
 
